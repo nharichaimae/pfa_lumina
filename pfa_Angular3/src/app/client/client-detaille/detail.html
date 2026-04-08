@@ -1,0 +1,36 @@
+<ng-container *ngIf="loading$ | async; else content">
+  <div class="text-center p-5">
+    Chargement...
+  </div>
+</ng-container>
+
+<ng-template #content>
+  <ng-container *ngIf="client$ | async as client; else notFound">
+
+    <div class="card p-3">
+      <img *ngIf="client.photoProfil"
+           [src]="'http://127.0.0.1:8000/uploads/' + client.photoProfil"
+           width="120">
+
+      <h3>{{ client.nom }} {{ client.prenom }}</h3>
+      <p><strong>Email:</strong> {{ client.email }}</p>
+      <p><strong>Téléphone:</strong> {{ client.telephone }}</p>
+      <p><strong>CIN:</strong> {{ client.cin }}</p>
+
+      <button class="btn btn-primary mt-3" routerLink="/clients">
+        ← Retour à la liste
+      </button>
+    </div>
+
+  </ng-container>
+</ng-template>
+
+<ng-template #notFound>
+  <div class="text-center">
+    Client non trouvé
+    <br>
+    <button class="btn btn-primary mt-3" routerLink="/clients">
+      ← Retour à la liste
+    </button>
+  </div>
+</ng-template>

@@ -1,0 +1,167 @@
+/* design-professionnel.scss */
+
+.container {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  h2 {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #1a2639;
+    margin-bottom: 2rem !important;
+    letter-spacing: -0.01em;
+
+    i, .feather {
+      margin-right: 1rem;
+      font-size: 2.2rem;
+      color: #2c3e50;
+      opacity: 0.8;
+    }
+
+    &::after {
+      content: '';
+      flex: 1;
+      margin-left: 2rem;
+      height: 2px;
+      background: linear-gradient(90deg, #e0e7ff, transparent);
+    }
+  }
+
+  .alert-info {
+    background-color: #f0f4ff;
+    border: 1px solid #d0dfff;
+    color: #1e3a8a;
+    font-weight: 500;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 0.95rem;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+  }
+
+  .table-responsive {
+    margin-top: 1.5rem;
+    border-radius: 14px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-style: hidden; /* pour que le border-radius s'applique correctement */
+    border-radius: 14px;
+    overflow: hidden;
+    font-size: 0.95rem;
+
+    thead {
+      background-color: #f8fafd;
+      border-bottom: 2px solid #e9edf4;
+
+      th {
+        padding: 1rem 1.2rem;
+        text-align: center;
+        font-weight: 600;
+        color: #1e293b;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 0.03em;
+        white-space: nowrap;
+      }
+    }
+
+    tbody {
+      tr {
+        transition: background-color 0.2s ease;
+
+        &:hover {
+          background-color: #f1f5fe;
+        }
+
+        td {
+          padding: 1rem 1.2rem;
+          text-align: center;
+          color: #334155;
+          border-bottom: 1px solid #ecf1f7;
+          vertical-align: middle;
+        }
+
+        &:last-child td {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+
+  /* Badges redessinés pour un style plus sobre */
+  .badge {
+    padding: 0.35rem 0.9rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+    display: inline-block;
+    background: #f1f5f9;
+    color: #1e293b;
+
+    // On personnalise les couleurs Bootstrap sans les !important
+    &.bg-success {
+      background: #e6f7e6 !important;
+      color: #0f6e3f !important;
+      border-color: #b8e0b8;
+    }
+
+    &.bg-danger {
+      background: #fee9e9 !important;
+      color: #a12b2b !important;
+      border-color: #f5c2c2;
+    }
+
+    &.bg-warning {
+      background: #fff3d1 !important;
+      color: #8e6100 !important;
+      border-color: #ffe5a3;
+    }
+
+    // Si d'autres badges utilisés
+    &.bg-info {
+      background: #e1f0fa !important;
+      color: #075a8c !important;
+      border-color: #b6d9f0;
+    }
+  }
+
+  /* Adaptation pour les petits écrans */
+  @media (max-width: 768px) {
+    padding: 1rem;
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem !important;
+
+      i, .feather {
+        font-size: 1.6rem;
+      }
+    }
+
+    .table-responsive {
+      margin-top: 1rem;
+    }
+
+    table {
+      th, td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+<div class="add-equipement-container">
+
+  <h2>Ajouter Équipement</h2>
+
+  <!-- message -->
+  <div *ngIf="message" class="msg">
+    {{ message }}
+  </div>
+
+  <form [formGroup]="equipementForm" (ngSubmit)="onSubmit()" class="form-card">
+    <label>Type d’équipement</label>
+    <div class="type-row">
+      <i
+        *ngIf="selectedType"
+        [class]="selectedType.icon"
+        class="type-icon"
+        aria-hidden="true"
+      ></i>
+
+      <select [(ngModel)]="selectedTypeId" (change)="onTypeChange()" [ngModelOptions]="{standalone: true}">
+        <option *ngFor="let t of equipementTypes" [value]="t.id_type">
+          {{ t.nom }}
+        </option>
+      </select>
+    </div>
+
+    <!-- DESCRIPTION -->
+    <label>Description</label>
+    <textarea
+      formControlName="description"
+      rows="3"
+      placeholder="Ex: TV du salon..."
+    ></textarea>
+
+
+    <!-- BUTTON -->
+    <button type="submit" class="btn-add">
+      Ajouter
+    </button>
+
+  </form>
+</div>

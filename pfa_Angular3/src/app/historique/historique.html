@@ -1,0 +1,34 @@
+<div class="page">
+  <h2>Historique des paiements</h2>
+
+
+  <div *ngIf="loading" class="loading">Chargement...</div>
+
+  <div *ngIf="errorMsg" class="error">{{ errorMsg }}</div>
+
+ <table class="table" *ngIf="!loading && paiements.length > 0">
+    <thead>
+      <tr>
+       <th>Montant</th><th>Date</th><th>Statut</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of paiements">
+        
+        <td>{{ p.montant }}</td>
+       <td class="date-cell">
+  <span>📅</span>
+  {{ p.datePaiement | date:'medium' }}
+<td>
+  <span class="status" [ngClass]="p.statut.toLowerCase()">
+    {{ p.statut }}
+  </span>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && paiements.length === 0 && !errorMsg" class="empty">
+    Aucun paiement trouvé.
+  </div>
+</div>

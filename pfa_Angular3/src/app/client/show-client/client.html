@@ -1,0 +1,31 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Liste des clients</h3>
+    <button class="btn btn-success" routerLink="/clients/add">+ Ajouter un client</button>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-hover mb-0">
+      <thead class="table-light">
+        <tr>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Email</th>
+          <th>Téléphone</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+       <tr *ngFor="let client of clients | clientFilter:searchText">
+          <td>{{ client.nom }}</td>
+          <td>{{ client.prenom }}</td>
+          <td>{{ client.email }}</td>
+          <td>{{ client.telephone }}</td>
+          <td>
+            <button class="badge me-2 theme-bg text-white f-12" (click)="voirDetails(client.id)">Détails</button>
+            <button class="badge me-2 theme-bg2 text-white f-12" (click)="supprimerClient(client.id)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

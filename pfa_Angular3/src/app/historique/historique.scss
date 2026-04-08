@@ -1,0 +1,158 @@
+/* ===== PAGE ===== */
+.page {
+  padding: 30px;
+  background: #f4f6f9;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* ===== TITRE ===== */
+h2 {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #1e293b;
+}
+
+/* ===== BOUTON ===== */
+.btn-refresh {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.btn-refresh:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.3);
+}
+
+/* ===== TABLE ===== */
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+/* ===== HEADER ===== */
+.table thead {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.table th {
+  padding: 18px 20px;
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ===== BODY ===== */
+.table td {
+  padding: 18px 20px;
+  font-size: 14px;
+  color: #334155;
+  border-top: 1px solid #f1f5f9;
+}
+
+/* ===== HOVER EFFECT ===== */
+.table tbody tr {
+  transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+  background: #f8fafc;
+  transform: scale(1.01);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== DATE STYLE ===== */
+.date-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #64748b;
+}
+
+/* ===== STATUS BADGES ===== */
+.badge-success {
+  background: #dcfce7;
+  color: #166534;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-warning {
+  background: #fef9c3;
+  color: #92400e;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-danger {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ===== LOADING ===== */
+.loading {
+  padding: 15px;
+  background: #e0f2fe;
+  border-left: 5px solid #0284c7;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  color: #0369a1;
+  font-weight: 500;
+}
+
+/* ===== ERROR ===== */
+.error {
+  padding: 15px;
+  background: #fee2e2;
+  border-left: 5px solid #dc2626;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  color: #991b1b;
+  font-weight: 500;
+}
+
+/* ===== EMPTY STATE ===== */
+.empty {
+  padding: 18px;
+  background: #f1f5f9;
+  border-radius: 10px;
+  text-align: center;
+  color: #64748b;
+  margin-top: 15px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .table th,
+  .table td {
+    padding: 12px;
+    font-size: 12px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}

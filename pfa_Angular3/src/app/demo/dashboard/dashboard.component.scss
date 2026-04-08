@@ -1,0 +1,51 @@
+.dashboard-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* ==== CARDS ==== */
+.stat-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.chart-card {
+  min-height: 360px;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+}
+
+.stat-value {
+  font-size: 36px;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.stat-label {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* ==== GRAPHIQUES ==== */
+.chart-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px;
+  height: 100%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.chart-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #374151;
+}

@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.logo-header {
+  height: 85px;   /* taille moyenne */
+  width: auto;
+  margin-right: 0 !important;
+
+  
+}
+.b-title {
+  font-size: 18px;   /* ajuste selon tes goûts */
+  font-weight: 500;
+  margin-left: 0 !important;
+  
+}
+.b-brand {
+     margin-left: 0 !important;
+  }
+ .b-brand {
+    gap: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.logo-header, .b-title {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+}

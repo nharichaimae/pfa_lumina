@@ -1,0 +1,78 @@
+.auth-wrapper {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-content {
+  position: relative;
+  width: 400px;
+  z-index: 2;
+}
+
+.auth-bg .r {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  top: -100px;
+  left: -100px;
+}
+
+.auth-bg .r.s {
+  width: 200px;
+  height: 200px;
+  top: auto;
+  bottom: -80px;
+  right: -80px;
+}
+
+.card {
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.auth-icon {
+  font-size: 50px;
+  color: #2575fc;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 45px;
+}
+
+.toggle-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #6a11cb;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.toggle-icon:hover {
+  color: #2575fc;
+}
+
+
+.btn-primary {
+  background: #2575fc;
+  border: none;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background: #6a11cb;
+}

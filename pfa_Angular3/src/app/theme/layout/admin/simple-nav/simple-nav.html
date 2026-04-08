@@ -1,0 +1,105 @@
+<nav class="sidebar">
+
+<!-- LOGO -->
+<div class="brand">
+  <img src="assets/images/image2.png" alt="Lumina Smart Home" class="brand-logo">
+
+  <div class="brand-text">
+    <span class="brand-title">LUMINA</span>
+    <span class="brand-subtitle">SMART HOME</span>
+  </div>
+</div>
+
+  <!-- ADMIN MENU -->
+  <ul *ngIf="isAdmin()">
+    <li
+      routerLink="/dashboard"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <i class="feather icon-home"></i>
+      <span>Dashboard</span>
+    </li>
+
+    <li
+      routerLink="/clients"
+      routerLinkActive="active"
+    >
+      <i class="feather icon-users"></i>
+      <span>Comptes</span>
+    </li>
+
+    <li
+      routerLink="/admin-profile"
+      routerLinkActive="active"
+    >
+      <i class="feather icon-user"></i>
+      <span>Profil</span>
+    </li>
+
+        <li
+      routerLink="/historique-paiement"
+      routerLinkActive="active"
+    >
+     <i class="feather icon-credit-card"></i>
+      <span>Paiement</span>
+    </li>
+  </ul>
+
+  <!-- CLIENT MENU -->
+  <ul *ngIf="isClient()">
+    <li
+      routerLink="/client-dash"
+      routerLinkActive="active"
+    >
+      <i class="feather icon-home"></i>
+      <span>Dashboard</span>
+    </li>
+
+    <li
+      routerLink="/client-profile"
+      routerLinkActive="active"
+    >
+      <i class="feather icon-user"></i>
+      <span>Profil</span>
+    </li>
+        <li
+      routerLink="/pieces"
+      routerLinkActive="active"
+    >
+      <i class="feather icon-plus-square"></i>
+      <span>Piece</span>
+    </li>
+    <li routerLink="/client-historique" routerLinkActive="active">
+    <i class="feather icon-credit-card"></i>
+    <span>Historique Paiement</span>
+  </li>
+ <!-- NOUVEAU : Paiement One-Shot -->
+  <li
+    routerLink="/paiement"
+    routerLinkActive="active"
+  >
+    <i class="feather icon-credit-card"></i>
+    <span>Paiement</span>
+  </li>
+
+  <!-- NOUVEAU : Abonnement -->
+  <li
+    routerLink="/abonnement"
+    routerLinkActive="active"
+  >
+    <i class="feather icon-package"></i>
+    <span>Abonnement</span>
+  </li>
+
+  </ul>
+
+  <!-- LOGOUT -->
+  <div class="logout">
+    <button (click)="logout()">
+      <i class="feather icon-log-out"></i>
+      Déconnexion
+    </button>
+  </div>
+
+</nav>

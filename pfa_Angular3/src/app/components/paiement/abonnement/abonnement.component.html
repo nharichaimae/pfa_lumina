@@ -1,0 +1,26 @@
+<div class="payment-wrapper">
+  <div class="payment-card">
+
+    <h2 class="title">Abonnement</h2>
+    <p class="subtitle">Souscrivez facilement à votre offre</p>
+
+    <form [formGroup]="abonnementForm" (ngSubmit)="creerAbonnement()">
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" formControlName="email" placeholder="exemple@email.com">
+      </div>
+
+      <div class="form-group">
+        <label>Carte bancaire</label>
+        <div id="card-element" class="card-input"></div>
+      </div>
+
+      <button class="pay-button" type="submit" [disabled]="abonnementForm.invalid">
+        Créer Abonnement
+      </button>
+
+    </form>
+    
+  </div>
+</div>

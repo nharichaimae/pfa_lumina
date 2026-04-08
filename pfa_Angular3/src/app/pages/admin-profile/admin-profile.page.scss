@@ -1,0 +1,172 @@
+/* ===============================
+   ADMIN PROFILE PAGE – FINAL CSS
+   =============================== */
+
+.profile-shell {
+  max-width: 1040px;
+  margin: 22px auto;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
+}
+
+/* ===============================
+   HERO HEADER
+   =============================== */
+.profile-hero {
+  position: relative;
+  padding: 60px 28px 70px;
+  text-align: center;
+  color: #ffffff;
+
+  /* 🎨 Dégradé mauve / violet */
+  background: linear-gradient(
+  135deg,
+  #6A5CA9 0%,
+  #4F7DBA 35%,
+  #4FB3C8 65%,
+  #3CCFD6 100%
+);
+
+}
+
+/* Bouton modifier */
+.edit-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  border: none;
+  border-radius: 999px;
+  padding: 12px 20px;
+
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  transition: background 0.2s ease;
+
+  i {
+    font-size: 16px;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.26);
+  }
+}
+
+/* ===============================
+   NOM + PRÉNOM
+   =============================== */
+.profile-name {
+  margin: 0;
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+
+  /* Texte blanc + lisibilité */
+  color: #ffffff;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* ===============================
+   CARD INFORMATIONS
+   =============================== */
+.profile-card {
+  padding: 28px 36px 36px;
+}
+
+/* Titre card */
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2a37;
+
+  padding-bottom: 14px;
+  border-bottom: 1px solid #e8edf4;
+
+  i {
+    font-size: 20px;
+    color: #6b7cf5;
+  }
+}
+
+/* Grid 2 colonnes */
+.grid {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px 40px;
+}
+
+/* Champ */
+.field {
+  padding-bottom: 14px;
+  border-bottom: 1px solid #edf0f6;
+}
+
+/* Label */
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b778c;
+  margin-bottom: 10px;
+}
+
+/* Valeur */
+.value {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+/* ===============================
+   STATES
+   =============================== */
+.state {
+  max-width: 1040px;
+  margin: 18px auto;
+  color: #6b778c;
+  text-align: center;
+}
+
+.state-error {
+  color: #b42318;
+  font-weight: 600;
+}
+
+/* ===============================
+   RESPONSIVE
+   =============================== */
+@media (max-width: 820px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-name {
+    font-size: 32px;
+  }
+
+  .profile-card {
+    padding: 22px 18px 26px;
+  }
+
+  .edit-btn {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+}

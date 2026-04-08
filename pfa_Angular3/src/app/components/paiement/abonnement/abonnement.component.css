@@ -1,0 +1,106 @@
+body {
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(135deg,#667eea,#764ba2);
+  min-height: 100vh;
+  margin: 0;
+}
+
+.payment-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.payment-card {
+  background: white;
+  padding: 35px;
+  width: 360px;
+  border-radius: 14px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 22px;
+  color: #1a1f36;
+}
+
+.subtitle {
+  text-align: center;
+  color: #777;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #6772e5;
+  box-shadow: 0 0 0 2px rgba(103,114,229,0.2);
+}
+
+.card-input {
+  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 8px;
+  background: #fafafa;
+  transition: 0.3s;
+}
+
+.card-input:focus-within {
+  border-color: #6772e5;
+  box-shadow: 0 0 0 2px rgba(103,114,229,0.2);
+}
+
+.pay-button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg,#6772e5,#5469d4);
+  border: none;
+  color: white;
+  font-size: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.pay-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.pay-button:active {
+  transform: scale(0.98);
+}
+
+.pay-button:disabled {
+  background: #a5b4fc;
+  cursor: not-allowed;
+}

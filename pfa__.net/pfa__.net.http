@@ -1,0 +1,6 @@
+@pfa__.net_HostAddress = http://localhost:5297
+
+GET {{pfa__.net_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

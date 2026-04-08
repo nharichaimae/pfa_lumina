@@ -1,0 +1,18 @@
+<div class="add-form">
+  <input [(ngModel)]="newPieceName" placeholder="Nom de la pièce">
+
+  <div style="display:flex; align-items:center; gap:10px;">
+    <i *ngIf="selectedType"
+       [class]="selectedType.icon"
+       style="font-size:20px;">
+    </i>
+
+    <select [(ngModel)]="selectedTypeId" (change)="onTypeChange()">
+      <option *ngFor="let type of uniqueTypes" [value]="type.id_type">
+        {{ type.nom }}
+      </option>
+    </select>
+  </div>
+
+  <button (click)="addPiece()">Ajouter</button>
+</div>

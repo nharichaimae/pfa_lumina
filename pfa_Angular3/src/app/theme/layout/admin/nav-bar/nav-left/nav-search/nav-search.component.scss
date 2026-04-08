@@ -1,0 +1,25 @@
+.main-search {
+  position: absolute; // ⭐ flotte dans la navbar
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* animation existante conservée */
+.main-search .form-control {
+  transition: width 0.3s ease;
+}
+
+/* bouton search */
+.search-btn {
+  height: 38px;
+}
+
+/* bouton close */
+.search-close {
+  cursor: pointer;
+}

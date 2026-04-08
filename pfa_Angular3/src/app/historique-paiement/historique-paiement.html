@@ -1,0 +1,62 @@
+<div class="container mt-4">
+
+  <h2 class="mb-4">
+    <i class="feather icon-credit-card"></i>
+    Historique des Paiements
+  </h2>
+
+  <!-- 🔄 Message si vide -->
+  <div *ngIf="!historique || historique.length === 0" class="alert alert-info">
+    Aucun paiement trouvé.
+  </div>
+
+  <!-- 📋 Tableau -->
+  <div class="table-responsive" *ngIf="historique && historique.length > 0">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Montant</th>
+          <th>Statut Abonnement</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let h of historique">
+          <td>{{ h.nom }}</td>
+          <td>{{ h.prenom }}</td>
+          <td>{{ h.montant }} DH</td>
+
+          <td>
+            <span 
+              class="badge"
+              [ngClass]="{
+                'bg-success': h.statutAbonnement === 'ACTIF',
+                'bg-danger': h.statutAbonnement === 'INACTIF'
+              }">
+              {{ h.statutAbonnement }}
+            </span>
+          </td>
+          <td>
+          <button
+            *ngIf="!h.blocked"
+            class="btn btn-danger btn-sm me-2 rounded shadow-sm"
+            (click)="bloquer(h.userId)">
+            <i class="bi bi-lock-fill me-1"></i> Bloquer
+          </button>
+
+          <button
+            *ngIf="h.blocked"
+            class="btn btn-success btn-sm rounded shadow-sm"
+            (click)="debloquer(h.userId)">
+            <i class="bi bi-unlock-fill me-1"></i> Débloquer
+          </button>
+      </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

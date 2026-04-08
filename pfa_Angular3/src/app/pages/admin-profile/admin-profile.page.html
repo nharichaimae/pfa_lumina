@@ -1,0 +1,50 @@
+<div class="profile-shell" *ngIf="(profile$ | async) as p">
+  <!-- Header -->
+  <section class="profile-hero">
+    <button class="edit-btn" type="button" (click)="goEdit()">
+      <i class="feather icon-edit-2"></i>
+      Modifier le profil
+    </button>
+
+
+    <h1 class="profile-name">
+    {{ p.nom }} {{ p.prenom }}
+  </h1>
+  </section>
+
+  <!-- Card -->
+  <section class="profile-card">
+    <div class="card-title">
+      <i class="feather icon-user"></i>
+      <span>Informations personnelles</span>
+    </div>
+
+    <div class="grid">
+      <!-- Col 1 -->
+      <div class="field">
+        <div class="label">Nom</div>
+        <div class="value">{{ p.nom }}</div>
+      </div>
+
+      <div class="field">
+        <div class="label">Prénom</div>
+        <div class="value">{{ p.prenom }}</div>
+      </div>
+
+      <!-- Col 2 -->
+      <div class="field">
+        <div class="label">Email</div>
+        <div class="value">{{ p.email }}</div>
+      </div>
+
+      <div class="field">
+        <div class="label">Rôle</div>
+        <div class="value">{{ p.role }}</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- States -->
+<div class="state" *ngIf="(loading$ | async)">Chargement...</div>
+<div class="state state-error" *ngIf="(error$ | async)">Impossible de charger le profil.</div>

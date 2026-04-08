@@ -1,0 +1,132 @@
+.add-form {
+  background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 450px;
+  margin: 20px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.add-form input {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border: 2px solid #dee2e6;
+  border-radius: 12px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background: white;
+  box-sizing: border-box;
+}
+
+.add-form input:focus {
+  outline: none;
+  border-color: #4dabf7;
+  box-shadow: 0 0 0 4px rgba(77, 171, 247, 0.15);
+}
+
+.add-form input::placeholder {
+  color: #adb5bd;
+  font-style: italic;
+}
+
+.add-form > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 2px solid #dee2e6;
+}
+
+.add-form i {
+  font-size: 24px !important;
+  min-width: 30px;
+  text-align: center;
+  color: #495057;
+  transition: color 0.2s ease;
+}
+
+.add-form select {
+  flex: 1;
+  padding: 10px 12px;
+  border: none;
+  background: transparent;
+  font-size: 15px;
+  color: #212529;
+  cursor: pointer;
+  outline: none;
+}
+
+.add-form select:hover {
+  background-color: #f1f3f5;
+  border-radius: 8px;
+}
+
+.add-form button {
+  width: 100%;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #4dabf7 0%, #339af0 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(77, 171, 247, 0.3);
+  text-transform: uppercase;
+}
+
+.add-form button:hover {
+  background: linear-gradient(135deg, #339af0 0%, #1c7ed6 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(51, 154, 240, 0.4);
+}
+
+.add-form button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(77, 171, 247, 0.3);
+}
+
+/* Animation pour l'icône */
+.add-form i {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Style pour les options du select */
+.add-form select option {
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* Responsive design */
+@media (max-width: 500px) {
+  .add-form {
+    margin: 10px;
+    padding: 20px;
+  }
+  
+  .add-form > div {
+    gap: 8px;
+  }
+  
+  .add-form i {
+    font-size: 20px !important;
+  }
+}

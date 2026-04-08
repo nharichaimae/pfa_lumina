@@ -1,0 +1,44 @@
+<ng-container *ngIf="!(loading$ | async); else loading">
+
+  <ng-container *ngIf="client$ | async as client">
+
+    <div class="card">
+      <div class="card-body text-center">
+
+        <img
+          *ngIf="client.photoProfil" [src]="'http://127.0.0.1:8000/uploads/' + client.photoProfil"
+          class="img-radius mb-3"
+          width="100"
+        />
+
+        <h4>{{ client.nom }} {{ client.prenom }}</h4>
+        <p class="text-muted">{{ client.email }}</p>
+
+        <hr />
+
+        <div class="row text-start mt-3">
+          <div class="col-md-6">
+            <p><strong>Téléphone :</strong> {{ client.telephone }}</p>
+            <p><strong>CIN :</strong> {{ client.cin }}</p>
+          </div>
+          <div class="col-md-6">
+            <p><strong>Rôle :</strong> CLIENT</p>
+          </div>
+        </div>
+
+        <div class="text-end mt-3">
+          <a routerLink="/client-profile/edit" class="btn btn-primary">
+            Modifier le profil
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </ng-container>
+
+</ng-container>
+
+<ng-template #loading>
+  <p>Chargement du profil...</p>
+</ng-template>

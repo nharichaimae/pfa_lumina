@@ -1,0 +1,131 @@
+.sidebar {
+  width: 260px;
+  height: 100vh;
+ 
+  background: linear-gradient(
+    180deg,
+    #a8cae4 0%,
+    #7188a9 50%,
+    #496489 100%
+  );
+
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 12px rgba(0,0,0,.2);
+}
+
+.top-navbar {
+  height: 70px;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;   /* centre le conteneur */
+}
+.brand {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  gap: 0;              /* ⬅️ TRÈS PROCHE (clé du résultat) */
+  padding-left: 12px;
+}
+
+/* LOGO GRAND (comme 2ᵉ image) */
+.brand-logo {
+  height: 90px;          /* ⬅️ GRAND ET LISIBLE */
+  width: auto; ;
+  flex-shrink: 0;
+  
+  display: block;         /* ⬅️ enlève espace inline */
+  margin: 0;              /* ⬅️ supprime marges */
+  padding: 0;
+
+}
+
+/* TEXTE (comme 1ʳᵉ image) */
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: -37px; 
+  line-height: 1.20;     /* ⬅️ compact */
+     /* ⬅️ colle encore plus au logo */
+}
+
+.brand-title {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+.brand-subtitle {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+
+ul {
+  list-style: none;
+padding: 10px 0 20px;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  padding: 14px 25px;
+  cursor: pointer;
+  transition: all .3s ease;
+   color: #3b4c65;
+  border-left: 4px solid transparent;
+}
+
+li i {
+  font-size: 18px;
+  margin-right: 12px;
+}
+li:hover {
+  background: rgba(16, 22, 46, 0.08);
+  transform: translateX(4px);
+}
+
+li.active {
+  background: rgba(82, 113, 157, 0.75);
+  color: #ffffff;
+  // border-left: 4px solid #ffffff;
+}
+.logout {
+  margin-top: auto;
+  padding: 20px;
+}
+
+.logout button {
+  width: 100%;
+  border: none;
+   background: rgba(255,255,255,.12);
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all .3s ease;
+}
+
+.logout button i {
+  margin-right: 8px;
+}
+
+.logout button:hover {
+  background: rgba(121, 154, 201, 0.922);
+  color: #002b36;
+}

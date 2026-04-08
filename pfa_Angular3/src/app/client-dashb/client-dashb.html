@@ -1,0 +1,60 @@
+<div class="pieces-container">
+  <div class="piece-card" *ngFor="let piece of pieces">
+    <div class="piece-header">
+      <h3 style="display:flex; align-items:center; gap:10px;">
+        <i *ngIf="piece.icon || piece.Icon"
+           [class]="piece.icon || piece.Icon"
+           style="font-size:20px;">
+        </i>
+        {{ piece.nom || piece.typeNom || piece.TypeNom }}
+      </h3>
+      <div class="piece-actions">
+        <button class="menu-btn" (click)="piece.showMenu = !piece.showMenu">⋮</button>
+        <div class="menu-dropdown" *ngIf="piece.showMenu">
+          <button (click)="goToAddEquipement(piece.id); piece.showMenu=false">
+            ➕ Ajouter Équipement
+          </button>
+          <button (click)="duplicatePiece(piece.id); piece.showMenu=false">
+            📋 Dupliquer Pièce
+          </button>
+          <button class="btn-delete" (click)="deletePiece(piece.id); piece.showMenu=false">
+            🗑️ Supprimer Pièce
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <ul class="equipements-list">
+      <li *ngFor="let equip of (piece.equipements || [])">
+        <span style="display:flex; align-items:center; gap:10px;">
+          <i *ngIf="equip.icon || equip.Icon"
+             [class]="equip.icon || equip.Icon"
+             style="font-size:18px;">
+          </i>
+          {{ equip.nom || equip.typeNom || equip.TypeNom }}
+        </span>
+        <div class="equip-actions">
+
+       
+          <label class="switch">
+             <input type="checkbox" [(ngModel)]="equip.etat" (change)="toggleEquip(equip)">
+            <span class="slider round"></span>
+          </label>
+
+          <button class="config-btn" (click)="goToCondition(equip)" title="Configurer">⚡</button>
+          <button class="delete-btn" (click)="deleteEquip(equip.id)">🗑️</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="voice-section">
+      <button 
+        class="voice-global-btn" 
+        (click)="toggleVoice()"
+        [class.recording]="isRecording">
+        
+        <div class="voice-wave">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+     <i class="fa-solid fa-microphone"></i></button>
+</div>
