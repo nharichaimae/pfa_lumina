@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AiNotificationService } from 'src/app/ai-notification/ai-notification.service';
 
 @Component({
   selector: 'app-simple-nav',
@@ -14,8 +15,16 @@ export class SimpleNavComponent {
 
   role: 'ADMIN' | 'CLIENT' | null = null;
 
-  constructor(private router: Router) {
+  /*constructor(private router: Router) {
     this.role = localStorage.getItem('role') as 'ADMIN' | 'CLIENT';
+  }*/
+
+    constructor(
+    private router: Router,
+    private aiService: AiNotificationService  
+  ) {
+    const raw = localStorage.getItem('role') || '';
+    this.role = raw.toUpperCase() as 'ADMIN' | 'CLIENT';
   }
 
   isAdmin(): boolean {

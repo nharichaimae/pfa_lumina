@@ -1,0 +1,121 @@
+<div class="ai-notifications-wrapper" *ngIf="suggestions.length > 0">
+
+  <div class="ai-notif-header">
+    <span class="ai-badge">
+      <span class="ai-dot"></span>
+      AI Suggestions
+    </span>
+    <span class="notif-count">{{ suggestions.length }}</span>
+  </div>
+
+
+  <div class="ai-notif-card"
+       *ngFor="let s of suggestions; trackBy: trackBySuggestion">
+
+    <div class="card-header">
+      <div class="equip-icon">
+        <span class="material-icons">{{ s.icon }}</span>
+      </div>
+
+      <div class="equip-info">
+        <span class="equip-room">{{ s.piece }}</span>
+        <span class="equip-label">{{ s.nom }}</span>
+      </div>
+
+      <button class="btn-close"
+              (click)="dismiss(s.equipementId.toString())">
+        <span class="material-icons">close</span>
+      </button>
+    </div>
+    <div class="card-divider"></div>
+
+    <p class="notif-message">{{ s.message }}</p>
+
+    <div class="confidence-bar-wrap">
+      <span class="confidence-label">Confiance IA</span>
+
+      <div class="confidence-bar">
+        <div class="confidence-fill"
+             [class]="getConfidenceClass(s.confidence)"
+             [style.width]="getConfidencePercent(s.confidence)">
+        </div>
+      </div>
+
+      <span class="confidence-value"
+            [class]="getConfidenceClass(s.confidence)">
+        {{ getConfidencePercent(s.confidence) }}
+      </span>
+    </div>
+
+    <div class="card-actions">
+      <button class="btn-confirm" (click)="confirm(s)">
+        <span class="material-icons">check</span>
+        Oui, allumer
+      </button>
+    </div>
+
+
+    <div class="timer-bar-wrap">
+      <!--<div class="timer-track">
+        <div class="timer-fill"
+             [style.width]="getTimerPercent(s.timeLeft)">
+        </div>
+      </div>-->
+      <span class="timer-lbl">{{ formatTime(s.timeLeft) }}</span>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Panneau notifications manquées -->
+<div class="missed-panel" *ngIf="showMissedPanel">
+
+  <div class="missed-panel-header">
+    <span class="material-icons">notifications</span>
+    Notifications manquées
+
+    <button class="btn-close-panel" (click)="toggleMissedPanel()">
+      <span class="material-icons">close</span>
+    </button>
+  </div>
+
+  <!-- Aucune -->
+  <div *ngIf="missedNotifs.length === 0"
+       style="padding:16px; font-size:13px; color:#718096;">
+    Aucune notification manquée
+  </div>
+
+  <!-- Liste -->
+  <div *ngFor="let m of missedNotifs" class="missed-item">
+
+    <div class="missed-item-header">
+      <span class="material-icons missed-icon">{{ m.icon }}</span>
+
+      <div class="missed-item-info">
+        <span class="missed-nom">{{ m.nom }}</span>
+        <span class="missed-piece">{{ m.piece }}</span>
+      </div>
+
+      <span class="missed-time">
+        {{ formatMissedTime(m.missedAt) }}
+      </span>
+    </div>
+
+    <p class="missed-message">{{ m.message }}</p>
+
+    <div class="missed-actions">
+      <button class="btn-missed-confirm" (click)="confirmMissed(m)">
+        <span class="material-icons">check</span>
+        Oui
+      </button>
+
+      <button class="btn-missed-reject" (click)="rejectMissed(m)">
+        <span class="material-icons">close</span>
+        Non
+      </button>
+    </div>
+
+  </div>
+
+</div>

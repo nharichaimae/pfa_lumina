@@ -13,11 +13,11 @@ import {
 import { SpinnerComponent } from './theme/shared/components/spinner/spinner.component';
 import { LoadingService } from './services/loading';
 import { LoadingComponent } from './loading/loading';
-
+import { AiNotificationComponent } from './ai-notification/ai-notification.component'; 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [SpinnerComponent, RouterModule, RouterOutlet, LoadingComponent],
+  imports: [SpinnerComponent, RouterModule, RouterOutlet, LoadingComponent, AiNotificationComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

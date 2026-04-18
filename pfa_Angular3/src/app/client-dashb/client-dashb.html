@@ -37,7 +37,7 @@
 
        
           <label class="switch">
-             <input type="checkbox" [(ngModel)]="equip.etat" (change)="toggleEquip(equip)">
+            <input type="checkbox" [checked]="equip.etat" (change)="toggleEquip(equip)">
             <span class="slider round"></span>
           </label>
 

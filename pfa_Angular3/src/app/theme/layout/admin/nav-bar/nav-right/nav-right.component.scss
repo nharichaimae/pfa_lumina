@@ -2,3 +2,42 @@
   font-weight: 500;
   cursor: pointer;
 }
+
+.bell-btn {
+  position:        relative;
+  background:      none;
+  border:          none;
+  cursor:          pointer;
+  padding:         8px;
+  border-radius:   50%;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  transition:      background 0.2s;
+
+  &:hover {
+    background: rgba(74, 127, 165, 0.12);
+  }
+
+  i {
+    font-size: 20px;
+    color:     #4a7fa5;
+  }
+}
+
+.bell-badge {
+  position:        absolute;
+  top:             2px;
+  right:           2px;
+  background:      #e53e3e;
+  color:           white;
+  font-size:       10px;
+  font-weight:     700;
+  min-width:       16px;
+  height:          16px;
+  border-radius:   999px;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  padding:         0 3px;
+}

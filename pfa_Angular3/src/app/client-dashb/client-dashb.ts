@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { ConditionService } from '../services/condition.service';
 import RecordRTC, { StereoAudioRecorder } from 'recordrtc';
 import { VoiceService } from '../services/voice';
+import { AiNotificationService } from '../ai-notification/ai-notification.service';
 
 @Component({
   selector: 'app-client-dashb',
@@ -36,17 +37,29 @@ export class ClientDashb implements OnInit, OnDestroy {
     private cd: ChangeDetectorRef,
     private conditionService: ConditionService,
     private voiceService: VoiceService,
+    private aiService: AiNotificationService,
   ) {}
 
-  ngOnInit() {
-    this.loadPieceTypes();
+ ngOnInit() {
+  this.loadPieceTypes();
 
-    // ✅ FIXED : async intervalle
-    this.refreshTimer = setInterval(async () => {
-      await this.loadEtatsEquipements();
-      this.cd.detectChanges();
-    }, 60000);
-  }
+  //  Écouter quand l'IA allume un équipement
+  this.aiService.equipementAllume$.subscribe(equipId => {
+    this.pieces.forEach(piece => {
+      piece.equipements.forEach((equip: any) => {
+        if (equip.id === equipId) {
+          equip.etat = true; // ← mise à jour immédiate
+        }
+      });
+    });
+    this.cd.detectChanges();
+  });
+
+  this.refreshTimer = setInterval(async () => {
+    await this.loadEtatsEquipements();
+    this.cd.detectChanges();
+  }, 60000);
+}
 
   ngOnDestroy() {
     if (this.refreshTimer) clearInterval(this.refreshTimer);
@@ -64,31 +77,31 @@ export class ClientDashb implements OnInit, OnDestroy {
   }
 
   loadPieces() {
-    this.pieceService.getPieces().subscribe({
-      next: async (data: any[]) => {
-        this.pieces = (data || []).map(p => {
-          const typeId = p.typeId ?? p.type_id ?? p.typeID ?? p.type_Id;
-          const foundType = this.pieceTypes.find(t => t.id_type === typeId);
-          return {
-            ...p,
-            showMenu: false,
-            id: p.id ?? p.id_piece ?? p.id_Piece ?? p.Id_Piece,
-            nom: p.nom ?? p.Nom,
-            icon: p.icon ?? foundType?.icon ?? '',
-            typeNom: p.typeNom ?? foundType?.nom ?? '',
-            equipements: (p.equipements ?? p.Equipements ?? []).map((e: any) => ({
-              ...e,
-              etat: false // état par défaut OFF
-            }))
-          };
-        });
+  this.pieceService.getPieces().subscribe({
+    next: async (data: any[]) => {
+      this.pieces = (data || []).map(p => {
+        const typeId = p.typeId ?? p.type_id ?? p.typeID ?? p.type_Id;
+        const foundType = this.pieceTypes.find(t => t.id_type === typeId);
+        return {
+          ...p,
+          showMenu: false,
+          id: p.id ?? p.id_piece ?? p.id_Piece ?? p.Id_Piece,
+          nom: p.nom ?? p.Nom,
+          icon: p.icon ?? foundType?.icon ?? '',
+          typeNom: p.typeNom ?? foundType?.nom ?? '',
+          equipements: (p.equipements ?? p.Equipements ?? []).map((e: any) => ({
+            ...e,
+            etat: (e.etat ?? e.Etat ?? 'Off').toString().toUpperCase() === 'ON' // ✅ état réel
+          }))
+        };
+      });
 
-        await this.loadEtatsEquipements();
-        this.cd.detectChanges();
-      },
-      error: (err) => console.error('Erreur getPieces:', err)
-    });
-  }
+      await this.loadEtatsEquipements();
+      this.cd.detectChanges();
+    },
+    error: (err) => console.error('Erreur getPieces:', err)
+  });
+}
 
   // ✅ Lit seulement les conditions AUTO créées par Hangfire
   async loadEtatsEquipements() {
@@ -181,20 +194,19 @@ export class ClientDashb implements OnInit, OnDestroy {
     });
   }
 
-  toggleEquip(equip: any) {
-    const newEtat = equip.etat ? "ON" : "OFF";
+toggleEquip(equip: any) {
+  const newEtat = equip.etat ? "OFF" : "ON";
 
-    this.pieceService.updateEquipementEtat(equip.id, newEtat).subscribe({
-      next: () => {
-        equip.etat = newEtat === "ON";
-        this.cd.detectChanges();
-      },
-      error: () => {
-        equip.etat = !equip.etat;
-        this.cd.detectChanges();
-      }
-    });
-  }
+  this.pieceService.updateEquipementEtat(equip.id, newEtat).subscribe({
+    next: () => {
+      equip.etat = newEtat === "ON";
+      this.cd.detectChanges();
+    },
+    error: () => {
+      this.cd.detectChanges();
+    }
+  });
+}
 
 // VOICE
 
