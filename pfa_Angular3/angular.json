@@ -26,7 +26,6 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-<<<<<<< HEAD
             "assets": [
               "src/favicon.ico",
               "src/assets",
@@ -39,11 +38,6 @@
             "scripts": [
               "node_modules/apexcharts/dist/apexcharts.min.js"
             ]
-=======
-            "assets": ["src/favicon.ico", "src/assets", "src/fake-data"],
-            "styles": ["node_modules/bootstrap/scss/bootstrap.scss", "src/styles.scss"],
-            "scripts": ["node_modules/apexcharts/dist/apexcharts.min.js"]
->>>>>>> e79486fca33179aa8f9fbbceb40c944edddd78fc
           },
           "configurations": {
             "production": {
@@ -51,12 +45,12 @@
                 {
                   "type": "initial",
                   "maximumWarning": "2mb",
-                  "maximumError": "2mb"
+                  "maximumError": "3mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "10kb",
+                  "maximumError": "15kb"
                 }
               ],
               "fileReplacements": [
@@ -73,7 +67,6 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-<<<<<<< HEAD
               "namedChunks": true,
               "fileReplacements": [
                 {
@@ -81,21 +74,15 @@
                   "with": "src/environments/environment.development.ts"
                 }
               ]
-=======
-              "namedChunks": true
->>>>>>> e79486fca33179aa8f9fbbceb40c944edddd78fc
             }
           },
           "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-<<<<<<< HEAD
           "options": {
             "proxyConfig": "proxy.conf.json"
           },
-=======
->>>>>>> e79486fca33179aa8f9fbbceb40c944edddd78fc
           "configurations": {
             "production": {
               "buildTarget": "datta-able-free-angular-admin-template:build:production"
@@ -115,14 +102,10 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-<<<<<<< HEAD
             "lintFilePatterns": [
               "src/**/*.ts",
               "src/**/*.html"
             ]
-=======
-            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
->>>>>>> e79486fca33179aa8f9fbbceb40c944edddd78fc
           }
         }
       }
@@ -130,12 +113,8 @@
   },
   "cli": {
     "analytics": "0eaad924-6e2a-434b-aad5-51d9f46776fc",
-<<<<<<< HEAD
     "schematicCollections": [
       "@angular-eslint/schematics"
     ]
-=======
-    "schematicCollections": ["@angular-eslint/schematics"]
->>>>>>> e79486fca33179aa8f9fbbceb40c944edddd78fc
   }
 }

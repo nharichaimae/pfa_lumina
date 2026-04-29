@@ -9,7 +9,8 @@ import { CommonModule } from '@angular/common';
   selector: 'app-auth-signin',
   templateUrl: './auth-signin.component.html',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule]
+  imports: [ReactiveFormsModule, CommonModule],
+  styleUrls: ['./auth-signin.component.scss']
 })
 export class AuthSigninComponent {
   loginForm: FormGroup;
@@ -105,8 +106,14 @@ export class AuthSigninComponent {
           }
         },
         error: (err) => {
-          this.errorMessage = err.error.message || 'Erreur de connexion';
-        }
+  console.log('LOGIN ERROR:', err);
+  alert(JSON.stringify(err));
+
+  this.errorMessage =
+    err.error?.message ||
+    err.message ||
+    'Erreur de connexion';
+}
       });
   }
 

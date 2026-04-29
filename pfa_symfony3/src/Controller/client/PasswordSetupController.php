@@ -2,8 +2,9 @@
 
 namespace App\Controller\client;
 
-use App\Entity\auth\PasswordSetupToken;
+use App\auth\Mapper\SetPasswordMapper;
 use App\Entity\client\Client;
+use App\Repository\auth\IPasswordSetupTokenRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,19 +18,21 @@ class PasswordSetupController extends AbstractController
     #[Route('/api/set-password', name: 'api_set_password', methods: ['POST'])]
     public function setPassword(
         Request $request,
+        IPasswordSetupTokenRepository $tokenRepository,
         EntityManagerInterface $em,
         UserPasswordHasherInterface $passwordHasher
     ): JsonResponse {
         $data = json_decode($request->getContent(), true);
 
-        if (!isset($data['token'], $data['password'])) {
+        $setPasswordDTO = SetPasswordMapper::toRequestDTO($data ?? []);
+
+        if (!$setPasswordDTO->getToken() || !$setPasswordDTO->getPassword()) {
             return new JsonResponse([
                 'message' => 'Token et mot de passe requis'
             ], Response::HTTP_BAD_REQUEST);
         }
 
-        $tokenEntity = $em->getRepository(PasswordSetupToken::class)
-            ->findOneBy(['token' => $data['token']]);
+        $tokenEntity = $tokenRepository->findByToken($setPasswordDTO->getToken());
 
         if (!$tokenEntity) {
             return new JsonResponse([
@@ -49,7 +52,7 @@ class PasswordSetupController extends AbstractController
             ], Response::HTTP_BAD_REQUEST);
         }
 
-        if (strlen($data['password']) < 8) {
+        if (strlen($setPasswordDTO->getPassword()) < 8) {
             return new JsonResponse([
                 'message' => 'Le mot de passe doit contenir au moins 8 caractères'
             ], Response::HTTP_BAD_REQUEST);
@@ -63,17 +66,24 @@ class PasswordSetupController extends AbstractController
             ], Response::HTTP_FORBIDDEN);
         }
 
-        $hashedPassword = $passwordHasher->hashPassword($user, $data['password']);
+        $hashedPassword = $passwordHasher->hashPassword(
+            $user,
+            $setPasswordDTO->getPassword()
+        );
 
-$user->setPassword($hashedPassword);
-$user->setMustChangePassword(false);
+        $user->setPassword($hashedPassword);
+        $user->setMustChangePassword(false);
 
-$em->remove($tokenEntity);
+        $em->remove($tokenEntity);
+        $em->flush();
 
-$em->flush();
+        $responseDTO = SetPasswordMapper::toResponseDTO(
+            'Mot de passe défini avec succès'
+        );
 
-        return new JsonResponse([
-            'message' => 'Mot de passe défini avec succès'
-        ], Response::HTTP_OK);
+        return new JsonResponse(
+            SetPasswordMapper::toArray($responseDTO),
+            Response::HTTP_OK
+        );
     }
 }

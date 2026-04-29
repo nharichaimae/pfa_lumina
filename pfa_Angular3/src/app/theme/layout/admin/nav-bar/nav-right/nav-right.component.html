@@ -9,9 +9,13 @@
   </button>
 
   <!-- Nom utilisateur -->
-  <div class="user-info d-flex align-items-center">
-    <i class="feather icon-user me-2"></i>
+  <div class="user-info" (click)="toggleUser()">
+  <i class="feather icon-user"></i>
+
+  <div class="user-tooltip" *ngIf="showUser">
     {{ userPrenom }} {{ userNom }}
   </div>
+</div>
+
 
 </div>

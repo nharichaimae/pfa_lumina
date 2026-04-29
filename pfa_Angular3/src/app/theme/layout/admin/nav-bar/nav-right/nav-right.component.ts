@@ -7,21 +7,21 @@ import { AiNotificationService } from 'src/app/ai-notification/ai-notification.s
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector:    'app-nav-right',
-  standalone:  true,
-  imports:     [SharedModule, CommonModule],
+  selector: 'app-nav-right',
+  standalone: true,
+  imports: [SharedModule, CommonModule],
   templateUrl: './nav-right.component.html',
-  styleUrls:   ['./nav-right.component.scss'],
-  providers:   [NgbDropdownConfig]
+  styleUrls: ['./nav-right.component.scss'],
+  providers: [NgbDropdownConfig]
 })
 export class NavRightComponent implements OnInit, OnDestroy {
-
-  userNom:    string = '';
+  userNom: string = '';
   userPrenom: string = '';
   missedCount = 0;
+  showUser = false;
 
-  private authService  = inject(AuthService);
-  private aiService    = inject(AiNotificationService);
+  private authService = inject(AuthService);
+  private aiService = inject(AiNotificationService);
   private subscription = new Subscription();
 
   constructor() {
@@ -30,29 +30,30 @@ export class NavRightComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-  this.userNom    = this.authService.getNom()    || '';
-  this.userPrenom = this.authService.getPrenom() || '';
+    this.userNom = this.authService.getNom() || '';
+    this.userPrenom = this.authService.getPrenom() || '';
 
-  // 👈 Charger le count dès la navbar
-  const userId = localStorage.getItem('userId') ?? localStorage.getItem('id') ?? 'guest';
-  this.aiService.getMissedNotifs(userId).subscribe({
-    next: res => {
-      this.aiService.updateMissedCount((res.missed ?? []).length);
-    },
-    error: () => {}
-  });
+    const userId = localStorage.getItem('userId') ?? localStorage.getItem('id') ?? 'guest';
+    this.aiService.getMissedNotifs(userId).subscribe({
+      next: res => {
+        this.aiService.updateMissedCount((res.missed ?? []).length);
+      },
+      error: () => {}
+    });
 
-  // Écouter le count des notifs manquées
-  this.subscription.add(
-    this.aiService.missedCount$.subscribe(count => {
-      this.missedCount = count;
-    })
-  );
-}
+    this.subscription.add(
+      this.aiService.missedCount$.subscribe(count => {
+        this.missedCount = count;
+      })
+    );
+  }
 
-  // Clic sur la cloche 
   onBellClick(): void {
     this.aiService.togglePanel();
+  }
+
+  toggleUser(): void {
+    this.showUser = !this.showUser;
   }
 
   ngOnDestroy(): void {
@@ -60,7 +61,7 @@ export class NavRightComponent implements OnInit, OnDestroy {
   }
 
   isClient(): boolean {
-  const role = localStorage.getItem('role') || '';
-  return role.toUpperCase() === 'CLIENT';
-}
+    const role = localStorage.getItem('role') || '';
+    return role.toUpperCase() === 'CLIENT';
+  }
 }

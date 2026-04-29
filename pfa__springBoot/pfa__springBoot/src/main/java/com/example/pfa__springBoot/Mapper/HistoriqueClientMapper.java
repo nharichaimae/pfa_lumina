@@ -16,9 +16,7 @@ public class HistoriqueClientMapper {
                 paiement.getMontant(),
                 paiement.getDatePaiement(),
                 paiement.getStatut(),
-                paiement.getAbonnement() != null
-                        ? paiement.getAbonnement().getId()
-                        : null,
+                paiement.getAbonnement() != null ? paiement.getAbonnement().getId() : null,
                 paiement.getUserId()
         );
     }

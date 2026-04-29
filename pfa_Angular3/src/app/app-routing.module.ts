@@ -9,13 +9,14 @@ import { GuestComponent } from './theme/layout/guest/guest.component';
 import { AuthGuard } from '../app/guards/auth-guard';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+
   {
     path: '',
     component: AdminComponent,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 
-      // Dashboard (admin only)
       {
         path: 'dashboard',
         loadComponent: () =>
@@ -174,6 +175,11 @@ const routes: Routes = [
     component: GuestComponent,
     children: [
       {
+        path: 'home',
+        loadComponent: () =>
+          import('./home/home').then(c => c.HomeComponent)
+      },
+      {
         path: 'login',
         loadComponent: () =>
           import('./demo/pages/authentication/auth-signin/auth-signin.component')
@@ -186,12 +192,11 @@ const routes: Routes = [
             .then(c => c.AuthSignupComponent)
       },
       {
-      path: 'set-password',
-      loadComponent: () =>
-        import('./pages/set-password/set-password')
-          .then(c => c.SetPasswordComponent)
-    },
-     
+        path: 'set-password',
+        loadComponent: () =>
+          import('./pages/set-password/set-password')
+            .then(c => c.SetPasswordComponent)
+      },
       {
         path: 'reset-password',
         loadComponent: () =>
@@ -200,8 +205,6 @@ const routes: Routes = [
       }
     ]
   }
-
-
 ];
 
 

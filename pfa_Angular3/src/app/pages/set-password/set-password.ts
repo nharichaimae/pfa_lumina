@@ -8,8 +8,8 @@ import { AuthService } from '../../services/auth';
   selector: 'app-set-password',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: 'set-password.html',
-  styleUrls: ['set-password.scss']
+  templateUrl: './set-password.html',
+  styleUrls: ['./set-password.scss']
 })
 export class SetPasswordComponent implements OnInit {
   form!: FormGroup;

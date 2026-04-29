@@ -47,13 +47,19 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngular", policy =>
     {
-        policy.WithOrigins("http://localhost:4200")
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+        policy
+            .SetIsOriginAllowed(origin =>
+                origin.StartsWith("http://localhost") ||
+                origin.StartsWith("https://localhost") ||
+                origin == "capacitor://localhost")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
     });
 });
 
 var app = builder.Build();
+app.UseRouting();
+
 
 // ---------------- Middleware ----------------
 
@@ -80,4 +86,4 @@ RecurringJob.AddOrUpdate<RegleJob>(
     "* * * * *"
 );
 
-app.Run();
+app.Run("http://0.0.0.0:5297");

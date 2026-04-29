@@ -1,18 +1,23 @@
-
 .container {
   max-width: 100%;
+  width: 100%;
+  padding-left: 12px;
+  padding-right: 12px;
+  box-sizing: border-box;
 }
-
 
 .page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  gap: 10px;
+  flex-wrap: wrap;
 
   h3 {
     font-weight: 600;
     color: #1f2937;
+    margin: 0;
   }
 
   .btn-add {
@@ -21,32 +26,32 @@
     border-radius: 6px;
     padding: 8px 16px;
     font-weight: 500;
+    border: none;
 
     &:hover {
       background-color: #0398db;
     }
   }
 }
-.search-bar {
-  margin-bottom: 15px;
 
-  input {
-    border-radius: 6px;
-    padding: 10px 14px;
-    border: 1px solid #e5e7eb;
+/* vue desktop visible par défaut */
+.desktop-view {
+  display: block;
+}
 
-    &:focus {
-      border-color: #04a9f5;
-      box-shadow: 0 0 0 0.15rem rgba(4, 169, 245, 0.2);
-    }
-  }
+/* vue mobile cachée par défaut */
+.mobile-view {
+  display: none;
 }
-.card {
-  border: none;
-  border-radius: 10px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+
+.table-responsive {
+  width: 100%;
+  overflow: visible !important;
 }
+
 .table {
+  width: 100%;
+  table-layout: fixed;
   margin-bottom: 0;
 
   thead {
@@ -58,6 +63,10 @@
       text-transform: uppercase;
       color: #6b7280;
       border-bottom: 1px solid #e5e7eb;
+      padding: 10px 8px;
+      text-align: center;
+      word-break: break-word;
+      white-space: normal;
     }
   }
 
@@ -73,51 +82,127 @@
         vertical-align: middle;
         font-size: 14px;
         color: #374151;
+        padding: 10px 8px;
+        text-align: center;
+        word-break: break-word;
+        white-space: normal;
       }
     }
   }
 }
-.actions {
-  text-align: center;
 
-  .dropdown-toggle {
-    background: transparent;
+.table td button {
+  display: inline-block;
+  margin: 2px;
+  white-space: normal;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+/* CARTES MOBILE */
+.client-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+.client-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.label {
+  font-weight: 600;
+  color: #374151;
+  min-width: 85px;
+}
+
+.value {
+  color: #111827;
+  text-align: right;
+  word-break: break-word;
+}
+
+.email {
+  font-size: 13px;
+}
+
+.client-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+
+  button {
+    flex: 1;
+    margin: 0;
+    padding: 8px 10px;
     border: none;
-    font-size: 18px;
-    color: #6b7280;
-
-    &:focus {
-      box-shadow: none;
-    }
-  }
-
-  .dropdown-menu {
     border-radius: 8px;
-    border: none;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-
-    .dropdown-item {
-      font-size: 14px;
-      padding: 8px 16px;
-
-      &:hover {
-        background-color: #f3f4f6;
-      }
-
-      &.delete {
-        color: #ef4444;
-      }
-    }
   }
 }
-@media (max-width: 768px) {
+
+/* Tablette */
+@media (max-width: 991px) {
   .page-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
   }
 
-  .table {
+  .page-header .btn-add {
+    width: 100%;
+  }
+
+  .table thead th,
+  .table tbody td {
+    font-size: 12px;
+    padding: 8px 6px;
+  }
+}
+
+/* Téléphone seulement */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .page-header h3 {
+    font-size: 18px;
+  }
+
+  .desktop-view {
+    display: none;
+  }
+
+  .mobile-view {
+    display: block;
+  }
+}
+
+/* Très petit téléphone */
+@media (max-width: 480px) {
+  .page-header h3 {
+    font-size: 16px;
+  }
+
+  .client-card {
+    padding: 12px;
+  }
+
+  .label,
+  .value {
     font-size: 13px;
+  }
+
+  .client-actions button {
+    font-size: 11px;
+    padding: 7px 8px;
   }
 }

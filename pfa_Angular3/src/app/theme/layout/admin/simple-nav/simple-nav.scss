@@ -1,59 +1,64 @@
 .sidebar {
   width: 260px;
   height: 100vh;
- 
-  background: linear-gradient(
-    180deg,
-    #a8cae4 0%,
-    #7188a9 50%,
-    #496489 100%
-  );
-
+  background: linear-gradient(180deg, #a8cae4 0%, #7188a9 50%, #496489 100%);
   color: #fff;
   position: fixed;
   top: 0;
   left: 0;
   display: flex;
   flex-direction: column;
-  box-shadow: 2px 0 12px rgba(0,0,0,.2);
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.2);
+  z-index: 2000;
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
 }
 
-.top-navbar {
-  height: 70px;
-  position: relative;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;   /* centre le conteneur */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
 }
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 20px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
 .brand {
   height: 72px;
   display: flex;
   align-items: center;
-  gap: 0;              /* ⬅️ TRÈS PROCHE (clé du résultat) */
+  gap: 0;
   padding-left: 12px;
+  padding-right: 12px;
 }
 
-/* LOGO GRAND (comme 2ᵉ image) */
 .brand-logo {
-  height: 90px;          /* ⬅️ GRAND ET LISIBLE */
-  width: auto; ;
+  height: 90px;
+  width: auto;
   flex-shrink: 0;
-  
-  display: block;         /* ⬅️ enlève espace inline */
-  margin: 0;              /* ⬅️ supprime marges */
+  display: block;
+  margin: 0;
   padding: 0;
-
 }
 
-/* TEXTE (comme 1ʳᵉ image) */
 .brand-text {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: -37px; 
-  line-height: 1.20;     /* ⬅️ compact */
-     /* ⬅️ colle encore plus au logo */
+  margin-left: -37px;
+  line-height: 1.2;
 }
 
 .brand-title {
@@ -71,10 +76,9 @@
   opacity: 0.9;
 }
 
-
 ul {
   list-style: none;
-padding: 10px 0 20px;
+  padding: 18px 0 20px;
   margin: 0;
 }
 
@@ -83,15 +87,19 @@ li {
   align-items: center;
   padding: 14px 25px;
   cursor: pointer;
-  transition: all .3s ease;
-   color: #3b4c65;
+  transition: all 0.3s ease;
+  color: #3b4c65;
   border-left: 4px solid transparent;
+  white-space: nowrap;
 }
 
 li i {
   font-size: 18px;
   margin-right: 12px;
+  min-width: 20px;
+  text-align: center;
 }
+
 li:hover {
   background: rgba(16, 22, 46, 0.08);
   transform: translateX(4px);
@@ -100,8 +108,8 @@ li:hover {
 li.active {
   background: rgba(82, 113, 157, 0.75);
   color: #ffffff;
-  // border-left: 4px solid #ffffff;
 }
+
 .logout {
   margin-top: auto;
   padding: 20px;
@@ -110,7 +118,7 @@ li.active {
 .logout button {
   width: 100%;
   border: none;
-   background: rgba(255,255,255,.12);
+  background: rgba(255, 255, 255, 0.12);
   color: #ffffff;
   padding: 10px;
   border-radius: 20px;
@@ -118,7 +126,7 @@ li.active {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
 .logout button i {
@@ -128,4 +136,64 @@ li.active {
 .logout button:hover {
   background: rgba(121, 154, 201, 0.922);
   color: #002b36;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1999;
+}
+:host {
+  display: block;
+  width: 260px;
+  min-width: 260px;
+  flex-shrink: 0;
+  transition: width 0.3s ease, min-width 0.3s ease, opacity 0.3s ease;
+}
+
+@media (min-width: 993px) {
+  :host.sidebar-hidden {
+    width: 0 !important;
+    min-width: 0 !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+  }
+}
+
+@media (max-width: 992px) {
+  :host {
+    width: auto;
+    min-width: auto;
+    opacity: 1;
+    overflow: visible;
+  }
+
+  :host.sidebar-hidden {
+    width: auto !important;
+    min-width: auto !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+  }
+}
+@media (min-width: 993px) {
+  .sidebar {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 992px) {
+  .sidebar {
+    width: 240px;
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .brand {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }

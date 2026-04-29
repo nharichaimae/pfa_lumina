@@ -11,7 +11,7 @@ export class AuthService {
   private readonly USER_ID_KEY = 'userId';
   private readonly NOM_KEY = 'nom';
   private readonly PRENOM_KEY = 'prenom';
-  private readonly API_URL = 'http://127.0.0.1:8000/api';
+  private readonly API_URL = 'http://localhost:8000/api';
 
   constructor(private http: HttpClient) {}
 

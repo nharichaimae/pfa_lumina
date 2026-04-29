@@ -1,5 +1,5 @@
 .auth-wrapper {
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  background: #ffffff;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -18,29 +18,82 @@
   position: absolute;
   width: 300px;
   height: 300px;
-  background: rgba(255,255,255,0.1);
   border-radius: 50%;
-  top: -100px;
-  left: -100px;
+  background: linear-gradient(
+    135deg,
+    #6a5ca9 0%,
+    #4f7dba 35%,
+    #4fb3c8 65%,
+    #3ccfd6 100%
+  ) !important;
+  opacity: 1;
+  z-index: -1;
 }
 
-.auth-bg .r.s {
-  width: 200px;
-  height: 200px;
-  top: auto;
-  bottom: -80px;
-  right: -80px;
+/* Grand cercle en haut */
+.auth-bg .r:nth-child(1) {
+  width: 320px;
+  height: 320px;
+  top: -140px;
+  right: -130px;
+}
+
+/* Petit cercle à droite */
+.auth-bg .r:nth-child(2) {
+  width: 25px;
+  height: 25px;
+  top: 160px;
+  right: -190px;
+}
+
+/* Petit cercle à gauche */
+.auth-bg .r:nth-child(3) {
+  width: 25px;
+  height: 25px;
+  bottom: 150px;
+  left: -220px;
+}
+
+/* Grand cercle en bas */
+.auth-bg .r:nth-child(4) {
+  width: 320px;
+  height: 320px;
+  bottom: -150px;
+  left: -150px;
 }
 
 .card {
-  border-radius: 15px;
-  border: none;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+}
+
+.card-body {
+  padding: 35px 32px;
 }
 
 .auth-icon {
-  font-size: 50px;
-  color: #2575fc;
+  font-size: 36px;
+  color: #3ccfd6;
+}
+
+h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2b2f33;
+}
+
+.form-control {
+  height: 46px;
+  border-radius: 5px;
+  border: 1px solid #d8dee4;
+  font-size: 15px;
+}
+
+.form-control:focus {
+  border-color: #4fb3c8;
+  box-shadow: 0 0 0 0.2rem rgba(79, 179, 200, 0.15);
 }
 
 .password-wrapper {
@@ -54,25 +107,67 @@
 .toggle-icon {
   position: absolute;
   right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 23px;
   cursor: pointer;
-  color: #6a11cb;
+  color: #2b2f33;
   font-size: 18px;
-  transition: 0.3s;
 }
 
 .toggle-icon:hover {
-  color: #2575fc;
+  color: #3ccfd6;
 }
 
+.checkbox input {
+  width: 20px;
+  height: 20px;
+}
+
+.checkbox label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.text-primary {
+  color: #0aa7e8 !important;
+  font-weight: 600;
+}
+
+.text-primary:hover {
+  color: #3ccfd6 !important;
+}
 
 .btn-primary {
-  background: #2575fc;
-  border: none;
+  height: 47px;
+  background: #0aa7e8 !important;
+  border: none !important;
+  border-radius: 6px;
+  font-size: 16px;
   transition: 0.3s;
 }
 
 .btn-primary:hover {
-  background: #6a11cb;
+  background: linear-gradient(
+    135deg,
+    #6a5ca9 0%,
+    #4f7dba 35%,
+    #4fb3c8 65%,
+    #3ccfd6 100%
+  ) !important;
+}
+
+.btn-light {
+  height: 47px;
+  border-radius: 6px;
+}
+
+.invalid-feedback {
+  text-align: left;
+  font-size: 13px;
+}
+
+.text-danger,
+.text-success {
+  font-size: 14px;
+  margin-top: 10px;
 }

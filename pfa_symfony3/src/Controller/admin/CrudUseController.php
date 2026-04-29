@@ -62,7 +62,7 @@ class CrudUseController extends AbstractController
             $activationLink = "http://localhost:4200/set-password?token=" . $tokenValue;
 
             $email = (new Email())
-                ->from('no-reply@house.com')
+                ->from('morehim.niama01@gmail.com')
                 ->to($client->getEmail())
                 ->subject('Activation de votre compte')
                 ->text(
@@ -73,7 +73,13 @@ class CrudUseController extends AbstractController
                     "Ce lien expire dans 24 heures."
                 );
 
-            $mailer->send($email);
+            try {
+    $mailer->send($email);
+} catch (\Throwable $e) {
+    return $this->json([
+        'error_mail' => $e->getMessage()
+    ], 500);
+}
 
             return $this->json([
                 'message' => 'Client ajouté avec succès ✅',

@@ -1,32 +1,47 @@
 <div class="page">
   <h2>Historique des paiements</h2>
 
-
   <div *ngIf="loading" class="loading">Chargement...</div>
 
   <div *ngIf="errorMsg" class="error">{{ errorMsg }}</div>
 
- <table class="table" *ngIf="!loading && paiements.length > 0">
-    <thead>
-      <tr>
-       <th>Montant</th><th>Date</th><th>Statut</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let p of paiements">
-        
-        <td>{{ p.montant }}</td>
-       <td class="date-cell">
-  <span>📅</span>
-  {{ p.datePaiement | date:'medium' }}
-<td>
-  <span class="status" [ngClass]="p.statut.toLowerCase()">
-    {{ p.statut }}
+  <div class="table-wrapper" *ngIf="!loading && paiements.length > 0">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Montant</th>
+          <th>Date</th>
+          <th>Statut</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of paiements">
+          <td>{{ p.montant }}</td>
+
+          <td class="date-cell">
+            <span>📅</span>
+            <span>{{ p.datePaiement | date:'dd/MM/yyyy HH:mm' }}</span>
+          </td>
+
+          <td>
+            <span class="status" [ngClass]="p.statut.toLowerCase()">
+              {{ p.statut }}
+            </span>
+          </td>
+
+          <td>
+  <span
+    class="type-badge"
+    [ngClass]="p.abonnementId != null ? 'abonnement' : 'paiement'"
+  >
+    {{ p.abonnementId != null ? 'ABONNEMENT' : 'PAIEMENT' }}
   </span>
 </td>
-      </tr>
-    </tbody>
-  </table>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <div *ngIf="!loading && paiements.length === 0 && !errorMsg" class="empty">
     Aucun paiement trouvé.

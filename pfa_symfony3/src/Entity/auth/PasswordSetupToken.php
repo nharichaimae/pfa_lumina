@@ -3,10 +3,11 @@
 namespace App\Entity\auth;
 
 use App\Entity\user\Utilisateur;
+use App\Repository\auth\PasswordSetupTokenRepository;
 use Doctrine\ORM\Mapping as ORM;
 use DateTimeImmutable;
 
-#[ORM\Entity]
+#[ORM\Entity(repositoryClass: PasswordSetupTokenRepository::class)]
 class PasswordSetupToken
 {
     #[ORM\Id]
@@ -27,15 +28,9 @@ class PasswordSetupToken
     #[ORM\Column(type: 'boolean', options: ['default' => false])]
     private bool $used = false;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+    public function getId(): ?int { return $this->id; }
 
-    public function getToken(): string
-    {
-        return $this->token;
-    }
+    public function getToken(): string { return $this->token; }
 
     public function setToken(string $token): self
     {
@@ -43,10 +38,7 @@ class PasswordSetupToken
         return $this;
     }
 
-    public function getUser(): Utilisateur
-    {
-        return $this->user;
-    }
+    public function getUser(): Utilisateur { return $this->user; }
 
     public function setUser(Utilisateur $user): self
     {
@@ -54,10 +46,7 @@ class PasswordSetupToken
         return $this;
     }
 
-    public function getExpiresAt(): DateTimeImmutable
-    {
-        return $this->expiresAt;
-    }
+    public function getExpiresAt(): DateTimeImmutable { return $this->expiresAt; }
 
     public function setExpiresAt(DateTimeImmutable $expiresAt): self
     {
@@ -65,10 +54,7 @@ class PasswordSetupToken
         return $this;
     }
 
-    public function isUsed(): bool
-    {
-        return $this->used;
-    }
+    public function isUsed(): bool { return $this->used; }
 
     public function setUsed(bool $used): self
     {
