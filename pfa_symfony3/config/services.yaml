@@ -1,0 +1,27 @@
+services:
+
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\:
+        resource: '../src/'
+
+    App\Controller\:
+        resource: '../src/Controller/'
+        tags: ['controller.service_arguments']
+
+    App\Repository\admin\AdministrateurRepositoryInterface:
+        alias: App\Repository\admin\AdministrateurRepository
+
+    App\Repository\admin\DashboardRepositoryInterface:
+        alias: App\Repository\admin\DashboardRepository
+
+    App\Repository\auth\UserRepositoryInterface:
+        alias: App\Repository\auth\UserRepository
+
+    App\Repository\client\ClientRepositoryInterface:
+        alias: App\Repository\client\ClientRepository
+
+    App\Repository\auth\IPasswordSetupTokenRepository:
+        alias: App\Repository\auth\PasswordSetupTokenRepository

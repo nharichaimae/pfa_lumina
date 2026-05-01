@@ -1,0 +1,25 @@
+nelmio_cors:
+    defaults:
+        origin_regex: true
+        allow_origin:
+            - '^https?://localhost(:[0-9]+)?$'
+            - '^http://localhost$'
+            - '^capacitor://localhost$'
+        allow_methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS']
+        allow_headers: ['Content-Type', 'Authorization', 'X-Requested-With']
+        expose_headers: ['Link', 'Content-Type', 'Authorization']
+        max_age: 3600
+        allow_credentials: false
+
+    paths:
+        '^/':
+            origin_regex: true
+            allow_origin:
+                - '^https?://localhost(:[0-9]+)?$'
+                - '^http://localhost$'
+                - '^capacitor://localhost$'
+            allow_methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS']
+            allow_headers: ['Content-Type', 'Authorization', 'X-Requested-With']
+            expose_headers: ['Link', 'Content-Type', 'Authorization']
+            max_age: 3600
+            allow_credentials: false

@@ -1,0 +1,102 @@
+<div class="form-wrapper">
+
+  <!-- HEADER -->
+  <header class="form-header">
+    <button class="btn-back" (click)="goBack()">← Retour</button>
+    <div class="clock-display">
+      <span class="time">{{ currentTime }}</span>
+      <span class="date">{{ currentDate }}</span>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="form-hero">
+    <div class="eq-badge">
+      <span class="eq-icon-big">{{ getIcon() }}</span>
+      <div class="eq-info">
+        <h1 class="eq-name">{{ nomEquipement }}</h1>
+        <p class="eq-type">{{ typeEquipement | uppercase }}</p>
+        <p class="eq-id">ID #{{ idEquipement }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-container">
+
+    <!-- FORM CARD -->
+    <div class="form-card">
+      <h2 class="form-title">📅 Planifier une règle</h2>
+
+      <!-- DATE -->
+      <div class="field-group">
+        <label class="field-label">📆 Date de la règle</label>
+        <input type="date" class="field-input" [(ngModel)]="dateRegle">
+      </div>
+
+      <!-- HEURES -->
+      <div class="time-fields">
+        <div class="field-group">
+          <label class="field-label">🟢 Heure début</label>
+          <input type="time" class="field-input" [(ngModel)]="heureDebut">
+        </div>
+        <div class="time-arrow">→</div>
+        <div class="field-group">
+          <label class="field-label">🔴 Heure fin</label>
+          <input type="time" class="field-input" [(ngModel)]="heureFin">
+        </div>
+      </div>
+
+      <!-- PREVIEW -->
+      <div class="preview-box">
+        <p class="preview-label">Aperçu de la règle</p>
+        <p class="preview-text">
+          <span class="preview-date">📅 {{ dateRegle }}</span>
+          <span class="preview-sep">|</span>
+          <span class="preview-time">🟢 {{ heureDebut }}</span>
+          <span class="preview-sep">→</span>
+          <span class="preview-time">🔴 {{ heureFin }}</span>
+        </p>
+      </div>
+
+      <!-- ALERTS -->
+      <div class="alert-success" *ngIf="success">✅ {{ success }}</div>
+      <div class="alert-error" *ngIf="error">❌ {{ error }}</div>
+
+      <!-- SUBMIT -->
+      <button class="btn-submit" (click)="onSubmit()" [disabled]="loading">
+        <span *ngIf="!loading">📅 Créer la règle</span>
+        <span *ngIf="loading">⏳ Création en cours...</span>
+      </button>
+    </div>
+
+    <!-- REGLES LIST -->
+    <div class="regles-card">
+      <h2 class="form-title">📋 Règles planifiées</h2>
+
+      <div class="loading-hist" *ngIf="loadingRegles">
+        <div class="spinner-sm"></div> Chargement...
+      </div>
+
+      <div class="empty-hist" *ngIf="!loadingRegles && regles.length === 0">
+        <span>📭</span>
+        <p>Aucune règle planifiée</p>
+      </div>
+
+      <div class="regles-list" *ngIf="!loadingRegles && regles.length > 0">
+        <div class="regle-item" *ngFor="let r of regles">
+          <div class="regle-left">
+            <span class="regle-date">📅 {{ formatDate(r.dateRegle) }}</span>
+            <div class="regle-hours">
+              <span class="hour-start">🟢 {{ r.heureDebut }}</span>
+              <span class="hour-arrow">→</span>
+              <span class="hour-end">🔴 {{ r.heureFin }}</span>
+            </div>
+            <span class="regle-id">#{{ r.idRegle }}</span>
+          </div>
+          <button class="btn-delete" (click)="deleteRegle(r.idRegle)">🗑️</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

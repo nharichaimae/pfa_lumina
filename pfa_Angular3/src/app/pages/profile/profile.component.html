@@ -1,0 +1,51 @@
+<div class="profile-shell" *ngIf="client$ | async as client">
+  <div class="profile-hero">
+    <a routerLink="/client-profile/edit" class="edit-btn">
+      <i class="ti ti-edit"></i>
+      Modifier
+    </a>
+
+    <div class="profile-avatar-wrap">
+      <img
+        *ngIf="client.photoProfil"
+        [src]="'http://127.0.0.1:8000/uploads/' + client.photoProfil"
+        class="profile-avatar"
+        alt="Photo profil"
+      />
+    </div>
+
+    <h1 class="profile-name">{{ client.nom }} {{ client.prenom }}</h1>
+    <div class="profile-subtitle">{{ client.email }}</div>
+  </div>
+
+  <div class="profile-card">
+    <div class="card-title">
+      <i class="ti ti-user-circle"></i>
+      Informations personnelles
+    </div>
+
+    <div class="grid">
+      <div class="field">
+        <div class="label">Téléphone</div>
+        <div class="value">{{ client.telephone }}</div>
+      </div>
+
+      <div class="field">
+        <div class="label">CIN</div>
+        <div class="value">{{ client.cin }}</div>
+      </div>
+
+      <div class="field">
+        <div class="label">Email</div>
+        <div class="value email">{{ client.email }}</div>
+      </div>
+
+      <div class="field">
+        <div class="label">Rôle</div>
+        <div class="value">
+          <span class="role-badge">Client</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

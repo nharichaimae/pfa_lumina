@@ -1,0 +1,277 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  min-height: 100vh;
+  transition: all 0.3s ease;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  height: 70px;
+  width: 100%;
+  padding: 0 24px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-sizing: border-box;
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.navbar.scrolled {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* ===== LOGO IN TOP NAV ===== */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 4px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  animation: fadeInLogo 0.3s ease;
+}
+
+.navbar-logo img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.logo-title {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  color: #1e293b;
+}
+
+.logo-subtitle {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #64748b;
+}
+
+@keyframes fadeInLogo {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ===== BUTTONS ===== */
+.icon-btn {
+  background: #f1f5f9;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon-btn:hover {
+  background: #e2e8f0;
+}
+
+.icon-btn i {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.menu-btn {
+  margin-right: 2px;
+}
+
+/* ===== CONTENT ===== */
+.content {
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+/* ===== SEARCH ===== */
+.navbar-left app-nav-search {
+  flex: 1;
+  min-width: 0;
+  max-width: 420px;
+}
+
+.navbar-left app-nav-search input,
+.navbar-left app-nav-search .search-input,
+.navbar-left app-nav-search .form-control {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* ===== TABLET ===== */
+@media (max-width: 992px) {
+  .layout {
+    display: block;
+  }
+
+  .main {
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  .navbar {
+    height: 64px;
+    padding: 0 14px;
+  }
+
+  .navbar-left {
+    gap: 8px;
+  }
+
+  .navbar-right {
+    gap: 8px;
+  }
+
+  .icon-btn {
+    padding: 8px 9px;
+    border-radius: 10px;
+  }
+
+  .icon-btn i {
+    font-size: 18px;
+  }
+
+  .content {
+    padding: 16px;
+  }
+
+  .navbar-left app-nav-search {
+    max-width: none;
+  }
+
+  .navbar-logo {
+    padding: 5px 8px;
+    gap: 8px;
+  }
+
+  .navbar-logo img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .logo-title {
+    font-size: 14px;
+  }
+
+  .logo-subtitle {
+    font-size: 10px;
+  }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 576px) {
+  .layout {
+    overflow-x: hidden;
+  }
+
+  .navbar {
+    height: 56px;
+    padding: 0 10px;
+  }
+
+  .navbar-left {
+    gap: 6px;
+    overflow: hidden;
+  }
+
+  .navbar-right {
+    gap: 4px;
+  }
+
+  .icon-btn {
+    padding: 7px;
+    border-radius: 9px;
+  }
+
+  .icon-btn i {
+    font-size: 16px;
+  }
+
+  .menu-btn {
+    margin-right: 0;
+  }
+
+  .content {
+    padding: 12px 10px;
+  }
+
+  .navbar-left app-nav-search {
+    min-width: 0;
+    flex: 1;
+    max-width: none;
+  }
+
+  .navbar-left app-nav-search input,
+  .navbar-left app-nav-search .search-input,
+  .navbar-left app-nav-search .form-control {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .navbar-logo {
+    padding: 4px 6px;
+    gap: 6px;
+    margin-right: 0;
+  }
+
+  .navbar-logo img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .logo-subtitle {
+    display: none;
+  }
+
+  .logo-title {
+    font-size: 13px;
+  }
+}

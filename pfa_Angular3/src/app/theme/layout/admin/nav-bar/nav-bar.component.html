@@ -1,0 +1,19 @@
+<header>
+  <div class="nav-left-wrapper">
+    <app-nav-left></app-nav-left>
+  </div>
+
+  <div class="nav-right-wrapper">
+    <app-nav-search></app-nav-search>
+    <app-nav-right></app-nav-right>
+  </div>
+
+
+  <button class="bell-btn" (click)="onBellClick()">
+  <i class="feather icon-bell"></i>
+  <span class="bell-badge" *ngIf="missedCount > 0">
+    {{ missedCount > 99 ? '99+' : missedCount }}
+  </span>
+</button>
+
+</header>

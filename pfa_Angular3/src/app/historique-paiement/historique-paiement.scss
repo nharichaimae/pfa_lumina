@@ -1,0 +1,103 @@
+.payment-history {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.payment-history h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1e293b;
+}
+
+.payment-history table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.payment-history th,
+.payment-history td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+  word-break: break-word;
+}
+
+.payment-history th {
+  background: #f1f5f9;
+  font-weight: 700;
+}
+
+.payment-history .badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.payment-history .bg-success {
+  background: #d1fae5 !important;
+  color: #065f46 !important;
+}
+
+.payment-history .bg-danger {
+  background: #fee2e2 !important;
+  color: #991b1b !important;
+}
+
+.payment-history .btn {
+  font-size: 13px;
+  padding: 6px 10px;
+  margin: 2px 0;
+}
+
+/* Tablette */
+@media (max-width: 991px) {
+  .payment-history h2 {
+    font-size: 22px;
+  }
+
+  .payment-history th,
+  .payment-history td {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .payment-history .btn {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+}
+
+/* Téléphone */
+@media (max-width: 767px) {
+  .payment-history {
+    padding: 10px;
+  }
+
+  .payment-history h2 {
+    font-size: 18px;
+  }
+
+  .payment-history th,
+  .payment-history td {
+    padding: 6px;
+    font-size: 11px;
+  }
+
+  .payment-history .badge {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+
+  .payment-history .btn {
+    font-size: 10px;
+    padding: 4px 6px;
+  }
+}

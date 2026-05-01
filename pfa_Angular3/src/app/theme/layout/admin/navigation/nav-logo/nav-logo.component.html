@@ -1,0 +1,11 @@
+<div class="d-flex align-items-center justify-content-between px-2 py-1">
+  <!-- Logo + Titre rapprochés -->
+  <a [routerLink]="['/dashboard/default']" class="b-brand d-flex align-items-center">
+    <img src="assets/images/lumina-logo.png" alt="Lumina Smart Home" class="logo-header" />
+    <span class="b-title" style="margin-left:2px;">Smart Home</span>
+  </a>
+  <!-- Bouton mobile/menu -->
+  <a href="javascript:void(0)" class="mobile-menu" [ngClass]="{ on: navCollapsed }" id="mobile-collapse" (click)="navCollapse()">
+    <span></span>
+  </a>
+</div>

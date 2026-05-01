@@ -1,0 +1,64 @@
+<h1 class="dashboard-title">Dashboard Administrateur</h1>
+
+<!-- CARDS -->
+<div class="row g-4 mt-2">
+  <div
+    class="col-xl-3 col-md-6"
+    *ngFor="let card of [
+      { label: 'Utilisateurs', value: data?.totalUsers, color: 'primary' },
+      { label: 'Clients', value: data?.totalClients, color: 'info' },
+      { label: 'Clients actifs', value: data?.activeClients, color: 'success' },
+      { label: 'Clients inactifs', value: data?.inactiveClients, color: 'danger' }
+    ]"
+  >
+    <div class="stat-card">
+      <div class="stat-value">{{ card.value }}</div>
+      <div class="stat-label">{{ card.label }}</div>
+    </div>
+  </div>
+</div>
+
+<hr class="my-4" />
+
+<!-- GRAPHIQUES -->
+<div class="row g-4 mt-4">
+
+  <!-- Ligne 1 : 2 graphes -->
+  <div class="col-xl-6 col-md-6">
+    <div class="chart-card">
+      <h5 class="chart-title">Utilisateurs par rôle</h5>
+      <apx-chart
+        [series]="rolesChart.series"
+        [chart]="rolesChart.chart"
+        [labels]="rolesChart.labels">
+      </apx-chart>
+    </div>
+  </div>
+
+  <div class="col-xl-6 col-md-6">
+    <div class="chart-card">
+      <h5 class="chart-title">Totaux</h5>
+      <apx-chart
+        [series]="totalsChart.series"
+        [chart]="totalsChart.chart"
+        [xaxis]="totalsChart.xaxis">
+      </apx-chart>
+    </div>
+  </div>
+
+  <!-- Ligne 2 : 1 graphe centré -->
+  <div class="col-xl-6 col-md-8 mx-auto">
+    <div class="chart-card">
+      <h5 class="chart-title text-center">Clients par mois</h5>
+      <apx-chart
+  *ngIf="clientsChart.series?.length"
+  [series]="clientsChart.series"
+  [chart]="clientsChart.chart"
+  [xaxis]="clientsChart.xaxis">
+</apx-chart>
+
+    </div>
+  </div>
+
+</div>
+

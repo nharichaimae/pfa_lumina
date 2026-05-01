@@ -1,0 +1,318 @@
+[
+  {
+    "ContainingType": "pfa__.net.Controllers.ConditionsController",
+    "Method": "GetAll",
+    "RelativePath": "api/Conditions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pfa__.net.Controllers.ConditionsController",
+    "Method": "Create",
+    "RelativePath": "api/Conditions",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "pfa__.net.DTO.ConditionCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pfa__.net.Controllers.ConditionsController",
+    "Method": "GetById",
+    "RelativePath": "api/Conditions/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pfa__.net.Controllers.ConditionsController",
+    "Method": "Delete",
+    "RelativePath": "api/Conditions/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pfa__.net.Controllers.ConditionsController",
+    "Method": "GetByEquipement",
+    "RelativePath": "api/Conditions/equipement/{idEquipement}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idEquipement",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pfa__.net.Controllers.ConditionsController",
+    "Method": "GetByRegle",
+    "RelativePath": "api/Conditions/regle/{idRegle}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idRegle",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pfa__.net.Controllers.EquipementController",
+    "Method": "SupprimerEquipe",
+    "RelativePath": "api/equipement/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pfa__.net.Controllers.EquipementController",
+    "Method": "UpdateEtat",
+    "RelativePath": "api/equipement/{id}/etat",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "pfa__.net.DTO.UpdateEtatDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pfa__.net.Controllers.EquipementController",
+    "Method": "GetEquipementTypes",
+    "RelativePath": "api/equipementtypes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pfa__.net.Controllers.PieceController",
+    "Method": "AddPiece",
+    "RelativePath": "api/piece",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "pfa__.net.DTO.AddPieceDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pfa__.net.Controllers.PieceController",
+    "Method": "SupprimerPiece",
+    "RelativePath": "api/piece/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pfa__.net.Controllers.PieceController",
+    "Method": "DuplicatePiece",
+    "RelativePath": "api/piece/{id}/duplicate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pfa__.net.Controllers.EquipementController",
+    "Method": "AddEquipement",
+    "RelativePath": "api/piece/{pieceId}/equipement",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pieceId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "pfa__.net.DTO.AddEquipementDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pfa__.net.Controllers.PieceController",
+    "Method": "GetPiecesByUser",
+    "RelativePath": "api/pieces",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pfa__.net.Controllers.PieceController",
+    "Method": "GetPieceTypes",
+    "RelativePath": "api/piecetypes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pfa__.net.Controllers.ReglesController",
+    "Method": "GetAll",
+    "RelativePath": "api/Regles",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pfa__.net.Controllers.ReglesController",
+    "Method": "Create",
+    "RelativePath": "api/Regles",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "pfa__.net.DTO.RegleCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pfa__.net.Controllers.ReglesController",
+    "Method": "GetById",
+    "RelativePath": "api/Regles/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pfa__.net.Controllers.ReglesController",
+    "Method": "Delete",
+    "RelativePath": "api/Regles/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pfa__.net.Controllers.ReglesController",
+    "Method": "GetByEquipement",
+    "RelativePath": "api/Regles/equipement/{idEquipement}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idEquipement",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pfa__.net.Controllers.VoiceController",
+    "Method": "ControlEquipement",
+    "RelativePath": "api/voice/control",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "audio",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

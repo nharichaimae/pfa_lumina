@@ -1,0 +1,21 @@
+<div class="nav-right d-flex align-items-center gap-3 px-3">
+
+  <!--seulement pour CLIENT -->
+  <button class="bell-btn" (click)="onBellClick()" *ngIf="isClient()">
+    <i class="feather icon-bell"></i>
+    <span class="bell-badge" *ngIf="missedCount > 0">
+      {{ missedCount > 99 ? '99+' : missedCount }}
+    </span>
+  </button>
+
+  <!-- Nom utilisateur -->
+  <div class="user-info" (click)="toggleUser()">
+  <i class="feather icon-user"></i>
+
+  <div class="user-tooltip" *ngIf="showUser">
+    {{ userPrenom }} {{ userNom }}
+  </div>
+</div>
+
+
+</div>

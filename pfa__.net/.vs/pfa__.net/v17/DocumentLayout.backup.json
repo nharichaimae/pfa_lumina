@@ -1,0 +1,327 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|c:\\users\\j.p.m\\desktop\\pfa-final\\pfa__.net\\helpers\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|solutionrelative:helpers\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|c:\\users\\j.p.m\\desktop\\pfa-final\\pfa__.net\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|c:\\users\\j.p.m\\desktop\\pfa-final\\pfa__.net\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|c:\\users\\j.p.m\\desktop\\pfa-final\\pfa__.net\\models\\regle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|solutionrelative:models\\regle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|c:\\users\\j.p.m\\desktop\\pfa-final\\pfa__.net\\models\\conditionhistorique.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|solutionrelative:models\\conditionhistorique.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|c:\\users\\j.p.m\\desktop\\pfa-final\\pfa__.net\\services\\textservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|solutionrelative:services\\textservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|c:\\users\\j.p.m\\desktop\\pfa-final\\pfa__.net\\services\\speechservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|solutionrelative:services\\speechservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|c:\\users\\j.p.m\\desktop\\pfa-final\\pfa__.net\\controllers\\voicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|solutionrelative:controllers\\voicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|c:\\users\\j.p.m\\desktop\\pfa-final\\pfa__.net\\services\\commandvocaleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|solutionrelative:services\\commandvocaleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|c:\\users\\j.p.m\\desktop\\pfa-final\\pfa__.net\\services\\equipementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|solutionrelative:services\\equipementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|c:\\users\\j.p.m\\desktop\\pfa-final\\pfa__.net\\controllers\\conditionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|solutionrelative:controllers\\conditionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|c:\\users\\j.p.m\\desktop\\pfa-final\\pfa__.net\\controllers\\piececontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|solutionrelative:controllers\\piececontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|c:\\users\\j.p.m\\desktop\\pfa-final\\pfa__.net\\models\\piece.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|solutionrelative:models\\piece.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|c:\\users\\j.p.m\\desktop\\pfa-final\\pfa__.net\\models\\equipement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|solutionrelative:models\\equipement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\J.P.M\\Desktop\\pfaversion\\nvProjet\\pfa__.net\\Controllers\\VoiceController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|c:\\users\\j.p.m\\desktop\\pfa-final\\pfa__.net\\dto\\piecereaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|solutionrelative:dto\\piecereaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|c:\\users\\j.p.m\\desktop\\pfa-final\\pfa__.net\\dto\\addpiecedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|solutionrelative:dto\\addpiecedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|c:\\users\\j.p.m\\desktop\\pfa-final\\pfa__.net\\models\\piecetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|solutionrelative:models\\piecetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|c:\\users\\j.p.m\\desktop\\pfa-final\\pfa__.net\\enums\\piecetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F496307C-D860-5F55-8331-EEDB7DBF5F46}|pfa__.net.csproj|solutionrelative:enums\\piecetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 18,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ConditionHistorique.cs",
+              "DocumentMoniker": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Models\\ConditionHistorique.cs",
+              "RelativeDocumentMoniker": "Models\\ConditionHistorique.cs",
+              "ToolTip": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Models\\ConditionHistorique.cs",
+              "RelativeToolTip": "Models\\ConditionHistorique.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAqwBsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T21:57:39.386Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABrAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-31T00:33:38.862Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "VoiceController.cs",
+              "DocumentMoniker": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Controllers\\VoiceController.cs",
+              "RelativeDocumentMoniker": "Controllers\\VoiceController.cs",
+              "ToolTip": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Controllers\\VoiceController.cs",
+              "RelativeToolTip": "Controllers\\VoiceController.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAABUAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T23:26:43.741Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CommandVocaleService.cs",
+              "DocumentMoniker": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Services\\CommandVocaleService.cs",
+              "RelativeDocumentMoniker": "Services\\CommandVocaleService.cs",
+              "ToolTip": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Services\\CommandVocaleService.cs",
+              "RelativeToolTip": "Services\\CommandVocaleService.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAAADkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T23:24:29.419Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "EquipementService.cs",
+              "DocumentMoniker": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Services\\EquipementService.cs",
+              "RelativeDocumentMoniker": "Services\\EquipementService.cs",
+              "ToolTip": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Services\\EquipementService.cs",
+              "RelativeToolTip": "Services\\EquipementService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T23:21:31.358Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TextService.cs",
+              "DocumentMoniker": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Services\\TextService.cs",
+              "RelativeDocumentMoniker": "Services\\TextService.cs",
+              "ToolTip": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Services\\TextService.cs",
+              "RelativeToolTip": "Services\\TextService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T23:20:40.635Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Regle.cs",
+              "DocumentMoniker": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Models\\Regle.cs",
+              "RelativeDocumentMoniker": "Models\\Regle.cs",
+              "ToolTip": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Models\\Regle.cs",
+              "RelativeToolTip": "Models\\Regle.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAA+wBMAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T22:21:06.736Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ConditionsController.cs",
+              "DocumentMoniker": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Controllers\\ConditionsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ConditionsController.cs",
+              "ToolTip": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Controllers\\ConditionsController.cs",
+              "RelativeToolTip": "Controllers\\ConditionsController.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAAAFoAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T22:15:29.512Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "VoiceController.cs",
+              "DocumentMoniker": "C:\\Users\\J.P.M\\Desktop\\pfaversion\\nvProjet\\pfa__.net\\Controllers\\VoiceController.cs",
+              "RelativeDocumentMoniker": "..\\..\\pfaversion\\nvProjet\\pfa__.net\\Controllers\\VoiceController.cs",
+              "ToolTip": "C:\\Users\\J.P.M\\Desktop\\pfaversion\\nvProjet\\pfa__.net\\Controllers\\VoiceController.cs",
+              "RelativeToolTip": "..\\..\\pfaversion\\nvProjet\\pfa__.net\\Controllers\\VoiceController.cs",
+              "ViewState": "AgIAAKIAAAAAAAAAAAAYwLwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T08:30:08.18Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SpeechService.cs",
+              "DocumentMoniker": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Services\\SpeechService.cs",
+              "RelativeDocumentMoniker": "Services\\SpeechService.cs",
+              "ToolTip": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Services\\SpeechService.cs",
+              "RelativeToolTip": "Services\\SpeechService.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAAAE8AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-08T21:28:21.792Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "PieceController.cs",
+              "DocumentMoniker": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Controllers\\PieceController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PieceController.cs",
+              "ToolTip": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Controllers\\PieceController.cs",
+              "RelativeToolTip": "Controllers\\PieceController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-24T11:00:13.271Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAQwAkAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-24T09:31:26.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "PieceReadDto.cs",
+              "DocumentMoniker": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\DTO\\PieceReadDto.cs",
+              "RelativeDocumentMoniker": "DTO\\PieceReadDto.cs",
+              "ToolTip": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\DTO\\PieceReadDto.cs",
+              "RelativeToolTip": "DTO\\PieceReadDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-24T10:59:04.051Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Equipement.cs",
+              "DocumentMoniker": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Models\\Equipement.cs",
+              "RelativeDocumentMoniker": "Models\\Equipement.cs",
+              "ToolTip": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Models\\Equipement.cs",
+              "RelativeToolTip": "Models\\Equipement.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAAAkAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-24T11:37:43.123Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AddPieceDto.cs",
+              "DocumentMoniker": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\DTO\\AddPieceDto.cs",
+              "RelativeDocumentMoniker": "DTO\\AddPieceDto.cs",
+              "ToolTip": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\DTO\\AddPieceDto.cs",
+              "RelativeToolTip": "DTO\\AddPieceDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-24T10:57:33.246Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "PieceType.cs",
+              "DocumentMoniker": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Models\\PieceType.cs",
+              "RelativeDocumentMoniker": "Models\\PieceType.cs",
+              "ToolTip": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Models\\PieceType.cs",
+              "RelativeToolTip": "Models\\PieceType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAkwAoAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-24T11:26:10.271Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "PieceType.cs",
+              "DocumentMoniker": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Enums\\PieceType.cs",
+              "RelativeDocumentMoniker": "Enums\\PieceType.cs",
+              "ToolTip": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Enums\\PieceType.cs",
+              "RelativeToolTip": "Enums\\PieceType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-24T10:54:42.57Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Piece.cs",
+              "DocumentMoniker": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Models\\Piece.cs",
+              "RelativeDocumentMoniker": "Models\\Piece.cs",
+              "ToolTip": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Models\\Piece.cs",
+              "RelativeToolTip": "Models\\Piece.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA3wBkAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-24T10:55:54.278Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "JwtHelper.cs",
+              "DocumentMoniker": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Helpers\\JwtHelper.cs",
+              "RelativeDocumentMoniker": "Helpers\\JwtHelper.cs",
+              "ToolTip": "C:\\Users\\J.P.M\\Desktop\\pfa-final\\pfa__.net\\Helpers\\JwtHelper.cs",
+              "RelativeToolTip": "Helpers\\JwtHelper.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAQwBUAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T22:34:54.889Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

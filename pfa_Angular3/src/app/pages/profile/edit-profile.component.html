@@ -1,0 +1,43 @@
+<div class="card">
+  <div class="card-header">
+    <h5>Modifier le profil</h5>
+  </div>
+
+  <div class="card-body">
+    <form [formGroup]="form" (ngSubmit)="save()">
+
+      <div class="form-group">
+        <label>Email</label>
+        <input class="form-control" formControlName="email" disabled />
+      </div>
+
+      <div class="form-group">
+        <label>Nom</label>
+        <input class="form-control" formControlName="nom" />
+      </div>
+
+      <div class="form-group">
+        <label>Prénom</label>
+        <input class="form-control" formControlName="prenom" />
+      </div>
+
+      <div class="form-group">
+        <label>Téléphone</label>
+        <input class="form-control" formControlName="telephone" />
+      </div>
+
+      <div class="form-group">
+        <label>CIN</label>
+        <input class="form-control" formControlName="cin" />
+      </div>
+
+      <div class="form-group">
+        <label>Nouveau mot de passe</label>
+        <input type="password" class="form-control" formControlName="password" />
+      </div>
+
+      <button class="btn btn-success mt-3">Enregistrer</button>
+
+    </form>
+  </div>
+</div>
