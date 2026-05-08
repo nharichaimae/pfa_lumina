@@ -14,12 +14,14 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './client-dashb.html',
   styleUrl: './client-dashb.scss',
   standalone: true,
-  imports: [CommonModule, FormsModule,TranslateModule],
+  imports: [CommonModule, FormsModule, TranslateModule],
 })
 export class ClientDashb implements OnInit, OnDestroy {
   pieces: any[] = [];
   pieceTypes: PieceType[] = [];
   private refreshTimer: any;
+
+  isLoading = true; // ← FLAG AJOUTÉ
 
   stream: MediaStream | null = null;
   recorder: any;
@@ -32,7 +34,6 @@ export class ClientDashb implements OnInit, OnDestroy {
   feedbackEquipement = '';
   feedbackText = '';
   message: string | undefined;
-  
 
   constructor(
     private pieceService: PieceService,
@@ -73,6 +74,7 @@ export class ClientDashb implements OnInit, OnDestroy {
   }
 
   loadPieces() {
+    this.isLoading = true; // ← RESET à chaque rechargement (ex: après delete/duplicate)
     this.pieceService.getPieces().subscribe({
       next: async (data: any[]) => {
         console.log('RAW DATA API:', JSON.stringify(data[0]));
@@ -83,7 +85,7 @@ export class ClientDashb implements OnInit, OnDestroy {
           return {
             ...p,
             showMenu: false,
-id: p.id_piece ?? p.Id_Piece ?? p.Id ?? p.id ?? 0,
+            id: p.id_piece ?? p.Id_Piece ?? p.Id ?? p.id ?? 0,
             nom: p.nom ?? p.Nom,
             icon: p.icon ?? foundType?.icon ?? '',
             typeNom: p.typeNom ?? foundType?.nomFr ?? '',
@@ -98,9 +100,15 @@ id: p.id_piece ?? p.Id_Piece ?? p.Id ?? p.id ?? 0,
         });
 
         await this.loadEtatsEquipements();
+
+        this.isLoading = false; // ← TERMINÉ : on affiche le bon état
         this.cd.detectChanges();
       },
-      error: (err) => console.error('Erreur getPieces:', err)
+      error: (err) => {
+        console.error('Erreur getPieces:', err);
+        this.isLoading = false; // ← Aussi en cas d'erreur pour ne pas bloquer l'UI
+        this.cd.detectChanges();
+      }
     });
   }
 
@@ -145,24 +153,24 @@ id: p.id_piece ?? p.Id_Piece ?? p.Id ?? p.id ?? 0,
             });
           });
         } catch {
-          
+          // silently ignore
         }
       }
     }
   }
 
-goToAddEquipement(pieceId: any) {
-  const id = Number(pieceId);
-  console.log('pieceId reçu:', pieceId, '→ converti:', id);
-  
-  if (!id || id === 0 || isNaN(id)) {
-    console.error('Toutes les clés de la pièce:', pieceId);
-    this.message = 'Erreur : pieceId invalide';
-    return;
+  goToAddEquipement(pieceId: any) {
+    const id = Number(pieceId);
+    console.log('pieceId reçu:', pieceId, '→ converti:', id);
+
+    if (!id || id === 0 || isNaN(id)) {
+      console.error('Toutes les clés de la pièce:', pieceId);
+      this.message = 'Erreur : pieceId invalide';
+      return;
+    }
+
+    this.router.navigate(['/equipement', id]);
   }
-  
-  this.router.navigate(['/equipement', id]);
-}
 
   goToCondition(equip: any) {
     const nom = equip.nom?.toLowerCase() || '';
@@ -213,22 +221,21 @@ goToAddEquipement(pieceId: any) {
   }
 
   toggleEquip(equip: any) {
+    const newEtat = equip.etat ? 'ON' : 'OFF';
 
-  const newEtat = equip.etat ? 'ON' : 'OFF';
+    console.log('Etat envoyé:', newEtat);
 
-  console.log('Etat envoyé:', newEtat);
-
-  this.pieceService.updateEquipementEtat(equip.id, newEtat).subscribe({
-    next: () => {
-      equip.etat = newEtat === 'ON';
-      this.cd.detectChanges();
-    },
-    error: (err) => {
-      console.error(err);
-      this.cd.detectChanges();
-    }
-  });
-};
+    this.pieceService.updateEquipementEtat(equip.id, newEtat).subscribe({
+      next: () => {
+        equip.etat = newEtat === 'ON';
+        this.cd.detectChanges();
+      },
+      error: (err) => {
+        console.error(err);
+        this.cd.detectChanges();
+      }
+    });
+  }
 
   private updateEquipementLocalState(equipId: any, newEtat: boolean) {
     this.zone.run(() => {
@@ -242,10 +249,7 @@ goToAddEquipement(pieceId: any) {
           );
 
           if (currentId === idToFind) {
-            return {
-              ...equip,
-              etat: newEtat
-            };
+            return { ...equip, etat: newEtat };
           }
 
           return equip;
@@ -387,9 +391,7 @@ goToAddEquipement(pieceId: any) {
       utterance.lang = 'fr-FR';
       utterance.rate = 1;
       utterance.pitch = 1;
-
       utterance.onend = () => resolve();
-
       speechSynthesis.speak(utterance);
     });
   }
@@ -454,8 +456,7 @@ goToAddEquipement(pieceId: any) {
     });
   }
 
-  // Ajoutez cette méthode dans votre classe ClientDashb
-goToPieces() {
-  this.router.navigate(['/pieces']);
-}
+  goToPieces() {
+    this.router.navigate(['/pieces']);
+  }
 }

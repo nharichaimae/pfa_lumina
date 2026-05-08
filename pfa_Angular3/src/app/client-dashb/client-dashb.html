@@ -1,6 +1,10 @@
-<!-- CAS 1 : PIÈCES EXISTANTES -->
-<ng-container *ngIf="pieces && pieces.length > 0; else noPieces">
+<!-- SPINNER PENDANT LE CHARGEMENT -->
+<div *ngIf="isLoading" class="loading-state">
+  <div class="spinner"></div>
+</div>
 
+<!-- CAS 1 : PIÈCES EXISTANTES -->
+<ng-container *ngIf="!isLoading && pieces && pieces.length > 0; else noPieces">
   <div class="pieces-container">
     <div class="piece-card" *ngFor="let piece of pieces">
       <div class="piece-header">
@@ -17,17 +21,17 @@
                   [attr.aria-label]="'DASHBOARD.MENU_OPTIONS' | translate">
             ⋮
           </button>
-         <div class="menu-dropdown" *ngIf="piece.showMenu">
-<button (click)="goToAddEquipement(piece.id); piece.showMenu=false">
-  ➕ {{ 'PIECE.ADD_EQUIPMENT' | translate }}
-</button>
-<button (click)="duplicatePiece(piece.id); piece.showMenu=false">
-  📋 {{ 'PIECE.DUPLICATE' | translate }}
-</button>
-<button class="btn-delete" (click)="deletePiece(piece.id); piece.showMenu=false">
-  🗑️ {{ 'PIECE.DELETE' | translate }}
-</button>
-</div>
+          <div class="menu-dropdown" *ngIf="piece.showMenu">
+            <button (click)="goToAddEquipement(piece.id); piece.showMenu=false">
+              ➕ {{ 'PIECE.ADD_EQUIPMENT' | translate }}
+            </button>
+            <button (click)="duplicatePiece(piece.id); piece.showMenu=false">
+              📋 {{ 'PIECE.DUPLICATE' | translate }}
+            </button>
+            <button class="btn-delete" (click)="deletePiece(piece.id); piece.showMenu=false">
+              🗑️ {{ 'PIECE.DELETE' | translate }}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -80,12 +84,11 @@
       </button>
     </div>
   </div>
-
 </ng-container>
 
-<!-- CAS 2 : AUCUNE PIÈCE (EMPTY STATE) -->
+<!-- CAS 2 : AUCUNE PIÈCE (EMPTY STATE) — seulement après chargement terminé -->
 <ng-template #noPieces>
-  <div class="empty-state-container">
+  <div *ngIf="!isLoading" class="empty-state-container">
     <div class="empty-illustration">
       <i class="feather icon-home"></i>
     </div>
