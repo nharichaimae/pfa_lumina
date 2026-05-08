@@ -1,0 +1,212 @@
+{
+  "BRAND": {
+    "TITLE": "LUMINA",
+    "SUBTITLE": "SMART HOME"
+  },
+
+  "NAV": {
+    "DASHBOARD": "Tableau de bord",
+    "ACCOUNTS": "Comptes",
+    "PROFILE": "Profil",
+    "PAYMENT": "Paiement",
+    "PIECE": "Pièce",
+    "HISTORIC_PAYMENT": "Historique des paiements",
+    "SUBSCRIPTION": "Abonnement",
+    "LOGOUT": "Déconnexion"
+  },
+
+  "COMMON": {
+    "YES": "Oui",
+    "NO": "Non",
+    "ADD": "Ajouter",
+    "DELETE": "Supprimer",
+    "EDIT": "Modifier",
+    "BACK": "Retour",
+    "LOADING": "Chargement...",
+    "SAVE": "Enregistrer",
+    "CANCEL": "Annuler"
+  },
+
+"PROFILE": {
+  "EDIT_TITLE": "Modifier le profil",
+  "INFO_TITLE": "Informations personnelles",
+  "NEW_PASSWORD": "Nouveau mot de passe",
+  "ROLE_LABEL": "Rôle",
+  "ROLE_VALUE": "Client",
+  "AVATAR_ALT": "Photo de profil",
+  "ERROR_LOAD": "Impossible de charger le profil."
+},
+
+ "AI": {
+  "TITLE": "Suggestions IA",
+  "MISSED": "Notifications manquées",
+  "EMPTY": "Aucune notification manquée",
+  "CONFIDENCE": "Confiance IA",
+  "CONFIRM": "Oui, allumer",
+  "MISSED_TITLE": "Notifications manquées",
+  "NO_MISSED": "Aucune notification manquée",
+  "ON_BUTTON": "Allumer",
+  "YES": "Oui",
+  "NO": "Non",
+  "NOTIFICATIONS_TITLE": "Suggestions IA",
+  "SUGGESTION_MSG": "Il est recommandé d'allumer {{nom}} dans {{piece}}"
+},
+"CLIENT": {
+  "TITLE": "Liste des clients",
+  "ADD": "Ajouter un client",
+  "ADD_TITLE": "Ajouter un client",
+  "DETAILS": "Détails",
+  "NOM": "Nom",
+  "PRENOM": "Prénom",
+  "EMAIL": "Email",
+  "CIN": "CIN",
+  "TELEPHONE": "Téléphone",
+  "PASSWORD": "Mot de passe",
+  "ACTIONS": "Actions",
+  "DELETE": "Supprimer",
+  "NOT_FOUND": "Client introuvable",
+  "SUBMIT": "Ajouter",
+  "BACK": "Retour à la liste",
+  "ERROR_NOM": "Le nom est requis",
+  "ERROR_PRENOM": "Le prénom est requis",
+  "ERROR_EMAIL_REQUIRED": "L'email est requis",
+  "ERROR_EMAIL_INVALID": "Email invalide",
+  "ERROR_PASSWORD_REQUIRED": "Le mot de passe est requis",
+  "ERROR_PASSWORD_MIN": "Minimum 8 caractères",
+  "ERROR_TEL_REQUIRED": "Le téléphone est requis",
+  "ERROR_TEL_PATTERN": "Format invalide (10 chiffres)",
+  "ERROR_CIN": "Le CIN est requis"
+},
+
+"LOGIN": {
+  "TITLE": "Connexion",
+  "EMAIL": "Email",
+  "EMAIL_REQUIRED": "L'email est requis",
+  "EMAIL_INVALID": "Email invalide",
+  "PASSWORD": "Mot de passe",
+  "PASSWORD_REQUIRED": "Le mot de passe est requis",
+  "PASSWORD_MIN": "Minimum 8 caractères",
+  "REMEMBER": "Se souvenir de moi",
+  "FORGOT": "Mot de passe oublié ?",
+  "BUTTON": "Se connecter"
+},
+"FORGOT": {
+  "TITLE": "Mot de passe oublié",
+  "DESCRIPTION": "Entrez votre email pour recevoir un lien de réinitialisation",
+  "EMAIL": "Email",
+  "EMAIL_REQUIRED": "L'email est requis",
+  "EMAIL_INVALID": "Email invalide",
+  "SEND": "Envoyer",
+  "BACK": "Retour"
+},
+
+  "HOME": {
+    "WELCOME": "Votre maison pense, écoute et obéit",
+    "DESC": "Contrôlez votre maison intelligemment avec Lumina",
+    "MODES_TITLE": "Modes de contrôle",
+    "AI": "IA prédictive",
+    "VOICE": "Commande vocale",
+    "MANUAL": "Contrôle manuel",
+    "CONDITION": "Conditions"
+  },
+
+"PIECE_FORM": {
+    "PLACEHOLDER": "Nom de la pièce",
+    "ADD_BUTTON": "Ajouter la pièce",
+    "SELECT_TYPE": "Choisir un type"
+  },
+  "PIECE": {
+    "ADD_EQUIPMENT": "Ajouter un équipement",
+    "DUPLICATE": "Dupliquer pièce",
+    "DELETE": "Supprimer pièce"
+  },
+
+"EQUIPEMENT": {
+  "TITLE": "Ajouter un équipement",
+  "TYPE_LABEL": "Type d'équipement",
+  "DESC_LABEL": "Description",
+  "DESC_PLACEHOLDER": "Entrez les détails de l'équipement ici...",
+  "ADD_BUTTON": "Ajouter l'équipement",
+  "ADD_TITLE": "Ajouter un nouvel équipement",
+  "TYPE": "Type d'équipement",
+  "SELECT_PROMPT": "-- Sélectionner un type --",
+  "DESCRIPTION": "Description",
+  "DESCRIPTION_PLACEHOLDER": "Entrez les détails de l'équipement ici...",
+  "SUCCESS_MSG": "Équipement ajouté avec succès !",
+  "ERROR_MSG": "Une erreur est survenue lors de l'ajout de l'équipement."
+},
+
+"PAYMENT": {
+    "TITLE": "Historique des Paiements",
+    "EMPTY": "Aucun paiement trouvé.",
+    "LOADING": "Chargement...",
+    "ERROR_ID": "Impossible de récupérer l'ID du client",
+    "ERROR_LOAD": "Erreur lors du chargement",
+    "COLUMNS": {
+      "NAME": "Nom",
+      "FIRSTNAME": "Prénom",
+      "AMOUNT": "Montant",
+      "STATUS": "Statut",
+      "DATE": "Date",
+      "ACTION": "Action"
+    },
+    "ACTIONS": {
+      "BLOCK": "Bloquer",
+      "UNBLOCK": "Débloquer",
+      "CONFIRM_BLOCK": "Bloquer cet utilisateur ?",
+      "CONFIRM_UNBLOCK": "Débloquer cet utilisateur ?"
+    }},
+
+"DASHBOARD": {
+    "TITLE": "Dashboard Administrateur",
+    "USERS": "Utilisateurs",
+    "CLIENTS": "Clients",
+    "ACTIVE_CLIENTS": "Clients actifs",
+    "INACTIVE_CLIENTS": "Clients inactifs",
+    "ROLES": "Utilisateurs par rôle",
+    "TOTALS": "Totaux",
+    "CLIENTS_BY_MONTH": "Clients par mois",
+    "NO_PIECES_TITLE": "Aucune pièce configurée",
+    "NO_PIECES_DESC": "Commencez par ajouter les pièces de votre maison (Salon, Cuisine, etc.)",
+    "ADD_FIRST_PIECE": "Ajouter ma première pièce"
+},
+
+"SUBSCRIPTION": {
+    "TITLE": "Souscription Premium",
+    "SUBTITLE": "Accédez à toutes les fonctionnalités intelligentes",
+    "EMAIL": "Adresse Email",
+    "EMAIL_PLACEHOLDER": "votre@email.com",
+    "CARD": "Informations de paiement",
+    "CREATE": "Activer mon abonnement"
+  },
+
+  "REGLE": {
+  "TITLE": "Planifier une règle automatique",
+  "REPEAT": "Répéter chaque jour",
+  "REPEAT_ON": "✅ Règle appliquée tous les jours",
+  "REPEAT_OFF": "Activez pour répéter chaque jour",
+  "DATE": "📆 Date de la règle",
+  "HOUR_START": "🟢 Heure début",
+  "HOUR_END": "🔴 Heure fin",
+  "PREVIEW": "Aperçu",
+  "PREVIEW_DAILY": "🔁 Chaque jour",
+  "CREATE": "📅 Créer la règle",
+  "CREATING": "⏳ En cours...",
+  "LIST_TITLE": "📋 Règles planifiées",
+  "LOADING": "Chargement...",
+  "EMPTY": "Aucune règle planifiée",
+  "EACH_DAY": "🔁 Chaque jour",
+  "TAB": "📅 Règles"
+},
+"CONDITION": {
+  "TITLE": "⚡ Appliquer une condition",
+  "STATE_LABEL": "État de l'équipement",
+  "HINT": "Sélectionnez l'état souhaité",
+  "SUBMIT": "⚡ Appliquer maintenant",
+  "SUBMITTING": "⏳ En cours...",
+  "HISTORY_TITLE": "📋 Historique des conditions",
+  "LOADING": "Chargement...",
+  "EMPTY": "Aucune condition enregistrée",
+  "TAB": "⚡ Conditions"
+}
+}

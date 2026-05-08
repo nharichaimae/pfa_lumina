@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../../../services/auth';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-auth-signin',
   templateUrl: './auth-signin.component.html',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule,TranslateModule],
   styleUrls: ['./auth-signin.component.scss']
 })
 export class AuthSigninComponent {
@@ -30,7 +31,8 @@ export class AuthSigninComponent {
     private fb: FormBuilder,
     private http: HttpClient,
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+        private cd: ChangeDetectorRef
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -68,6 +70,7 @@ export class AuthSigninComponent {
     if (currentEmail) {
       this.forgotPasswordForm.patchValue({ email: currentEmail });
     }
+       this.cd.detectChanges();
   }
 
   closeForgotPassword() {
@@ -76,6 +79,7 @@ export class AuthSigninComponent {
     this.forgotErrorMessage = '';
     this.forgotSuccessMessage = '';
     this.forgotPasswordForm.reset();
+     this.cd.detectChanges();
   }
 
   onSubmit() {
@@ -133,7 +137,7 @@ export class AuthSigninComponent {
           this.forgotErrorMessage = '';
         },
         error: (err) => {
-          this.forgotErrorMessage = err.error.message || 'Erreur lors de l’envoi de l’email';
+          this.forgotErrorMessage = err.error?.message || "Erreur lors de l'envoi de l'email";
           this.forgotSuccessMessage = '';
         }
       });

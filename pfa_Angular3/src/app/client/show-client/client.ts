@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SearchService } from '../../services/search.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { ClientFilterPipe } from "../../pipes/client-filter-pipe";
 
 
@@ -20,7 +21,7 @@ interface Client {
 @Component({
   selector: 'app-client',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, ClientFilterPipe],
+  imports: [CommonModule, FormsModule, RouterModule, ClientFilterPipe,TranslateModule],
   templateUrl: './client.html',
   styleUrls: ['./client.scss'],
 })

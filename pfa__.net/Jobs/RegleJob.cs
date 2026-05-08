@@ -37,13 +37,13 @@ namespace pfa__.net.Jobs
 
             foreach (var regle in regles)
             {
-                // ✅ string -> TimeSpan -> minutes
-                var tsDebut = TimeSpan.Parse(regle.HeureDebut);
-                var tsFin   = TimeSpan.Parse(regle.HeureFin);
-                int debut   = (int)tsDebut.TotalMinutes;
-                int fin     = (int)tsFin.TotalMinutes;
+                // ✅ FIX IMPORTANT : TimeSpan déjà prêt
+                int debut = (int)regle.HeureDebut.TotalMinutes;
+                int fin   = (int)regle.HeureFin.TotalMinutes;
 
-                Console.WriteLine($"[RegleJob] {regle.Equipement?.Nom} | debut={debut}min fin={fin}min now={maintenant}min");
+                Console.WriteLine(
+                    $"[RegleJob] {regle.Equipement?.Nom} | debut={debut}min fin={fin}min now={maintenant}min"
+                );
 
                 string? valeurAttendue = null;
 
@@ -57,6 +57,7 @@ namespace pfa__.net.Jobs
                         .FirstOrDefaultAsync();
 
                     valeurAttendue = derniereManuelle?.Valeur ?? "ON";
+
                     Console.WriteLine($"[RegleJob] → heureDebut atteinte ! valeur={valeurAttendue}");
                 }
                 else if (maintenant == fin)
@@ -68,6 +69,7 @@ namespace pfa__.net.Jobs
                         .FirstOrDefaultAsync();
 
                     valeurAttendue = (derniereCondition?.Valeur == "ON") ? "OFF" : "ON";
+
                     Console.WriteLine($"[RegleJob] → heureFin atteinte ! valeur={valeurAttendue}");
                 }
                 else
@@ -84,22 +86,22 @@ namespace pfa__.net.Jobs
                 bool doitCreer = derniereAutoRegle == null ||
                                  (DateTime.Now - derniereAutoRegle.DateHeure).TotalMinutes >= 1;
 
-                Console.WriteLine($"[RegleJob] doitCreer={doitCreer} (derniere auto: {derniereAutoRegle?.DateHeure})");
+                Console.WriteLine($"[RegleJob] doitCreer={doitCreer}");
 
                 if (doitCreer)
                 {
                     var nouvelleCondition = new ConditionHistorique
                     {
-                        IdRegle   = regle.IdRegle,
-                        Valeur    = valeurAttendue,
+                        IdRegle = regle.IdRegle,
+                        Valeur = valeurAttendue,
                         DateHeure = DateTime.Now,
-                        Source    = "auto"
+                        Source = "auto"
                     };
 
                     _context.ConditionHistoriques.Add(nouvelleCondition);
                     await _context.SaveChangesAsync();
 
-                    Console.WriteLine($"[RegleJob] ✅✅ CRÉÉ → {regle.Equipement?.Nom} = {valeurAttendue}");
+                    Console.WriteLine($"[RegleJob] ✅ CRÉÉ → {regle.Equipement?.Nom} = {valeurAttendue}");
                 }
                 else
                 {

@@ -1,0 +1,208 @@
+{
+  "BRAND": {
+    "TITLE": "LUMINA",
+    "SUBTITLE": "SMART HOME"
+  },
+
+  "NAV": {
+    "DASHBOARD": "Dashboard",
+    "ACCOUNTS": "Accounts",
+    "PROFILE": "Profile",
+    "PAYMENT": "Payment",
+    "PIECE": "Room",
+    "HISTORIC_PAYMENT": "Payment History",
+    "SUBSCRIPTION": "Subscription",
+    "LOGOUT": "Logout"
+  },
+
+  "COMMON": {
+    "YES": "Yes",
+    "NO": "No",
+    "ADD": "Add",
+    "DELETE": "Delete",
+    "EDIT": "Edit",
+    "BACK": "Back",
+    "LOADING": "Loading...",
+    "SAVE": "Save",
+    "CANCEL": "Cancel"
+  },
+"AI": {
+  "TITLE": "AI Suggestions",
+  "MISSED": "Missed notifications",
+  "EMPTY": "No missed notifications",
+  "CONFIDENCE": "AI Confidence",
+  "CONFIRM": "Yes, turn on",
+  "MISSED_TITLE": "Missed notifications",
+  "NO_MISSED": "No missed notifications",
+  "ON_BUTTON": "Turn on",
+  "YES": "Yes",
+  "NO": "No",
+  "NOTIFICATIONS_TITLE": "AI Suggestions",
+"SUGGESTION_MSG": "It is recommended to turn on {{nom}} in {{piece}}"},
+"CLIENT": {
+  "TITLE": "Client List",
+  "ADD": "Add a client",
+  "ADD_TITLE": "Add a Client",
+  "DETAILS": "Details",
+  "NOM": "Last Name",
+  "PRENOM": "First Name",
+  "EMAIL": "Email",
+  "CIN": "CIN",
+  "TELEPHONE": "Phone",
+  "PASSWORD": "Password",
+  "ACTIONS": "Actions",
+  "DELETE": "Delete",
+  "NOT_FOUND": "Client not found",
+  "SUBMIT": "Add Client",
+  "BACK": "Back to list",
+  "ERROR_NOM": "Last name is required",
+  "ERROR_PRENOM": "First name is required",
+  "ERROR_EMAIL_REQUIRED": "Email is required",
+  "ERROR_EMAIL_INVALID": "Invalid email",
+  "ERROR_PASSWORD_REQUIRED": "Password is required",
+  "ERROR_PASSWORD_MIN": "Minimum 8 characters",
+  "ERROR_TEL_REQUIRED": "Phone is required",
+  "ERROR_TEL_PATTERN": "Invalid format (10 digits)",
+  "ERROR_CIN": "CIN is required"
+},
+
+"LOGIN": {
+  "TITLE": "Sign In",
+  "EMAIL": "Email",
+  "EMAIL_REQUIRED": "Email is required",
+  "EMAIL_INVALID": "Invalid email",
+  "PASSWORD": "Password",
+  "PASSWORD_REQUIRED": "Password is required",
+  "PASSWORD_MIN": "Minimum 8 characters",
+  "REMEMBER": "Remember me",
+  "FORGOT": "Forgot password?",
+  "BUTTON": "Sign In"
+},
+"FORGOT": {
+  "TITLE": "Forgot Password",
+  "DESCRIPTION": "Enter your email to receive a reset link",
+  "EMAIL": "Email",
+  "EMAIL_REQUIRED": "Email is required",
+  "EMAIL_INVALID": "Invalid email",
+  "SEND": "Send",
+  "BACK": "Back"
+},
+
+  "HOME": {
+    "WELCOME": "Your home thinks, listens and obeys",
+    "DESC": "Control your smart home with Lumina",
+    "MODES_TITLE": "Control modes",
+    "AI": "Predictive AI",
+    "VOICE": "Voice control",
+    "MANUAL": "Manual control",
+    "CONDITION": "Conditions"
+  },
+
+"PROFILE": {
+  "EDIT_TITLE": "Edit Profile",
+  "INFO_TITLE": "Personal Information",
+  "NEW_PASSWORD": "New Password",
+  "ROLE_LABEL": "Role",
+  "ROLE_VALUE": "Client",
+  "AVATAR_ALT": "Profile picture",
+  "ERROR_LOAD": "Unable to load profile."
+},
+"PIECE_FORM": {
+    "PLACEHOLDER": "Room name",
+    "ADD_BUTTON": "Add Room",
+    "SELECT_TYPE": "Choose a type"
+  },
+  "PIECE": {
+    "ADD_EQUIPMENT": "Add equipment",
+    "DUPLICATE": "Duplicate room",
+    "DELETE": "Delete room"
+  },
+
+"EQUIPEMENT": {
+  "TITLE": "Add Equipment",
+  "TYPE_LABEL": "Equipment Type",
+  "DESC_LABEL": "Description",
+  "DESC_PLACEHOLDER": "Enter equipment details here...",
+  "ADD_BUTTON": "Add Equipment",
+  "ADD_TITLE": "Add New Equipment",
+  "TYPE": "Equipment Type",
+  "SELECT_PROMPT": "-- Select a type --",
+  "DESCRIPTION": "Description",
+  "DESCRIPTION_PLACEHOLDER": "Enter equipment details here...",
+  "SUCCESS_MSG": "Equipment added successfully!",
+  "ERROR_MSG": "An error occurred while adding the equipment."
+},
+
+  "SUBSCRIPTION": {
+    "TITLE": "Premium Subscription",
+    "SUBTITLE": "Access all smart features",
+    "EMAIL": "Email Address",
+    "EMAIL_PLACEHOLDER": "your@email.com",
+    "CARD": "Payment Information",
+    "CREATE": "Activate my subscription"
+  },
+
+  "PAYMENT": {
+    "TITLE": "Payment History",
+    "EMPTY": "No payments found.",
+    "LOADING": "Loading...",
+    "ERROR_ID": "Unable to retrieve client ID",
+    "ERROR_LOAD": "Error during loading",
+    "COLUMNS": {
+      "NAME": "Last Name",
+      "FIRSTNAME": "First Name",
+      "AMOUNT": "Amount",
+      "STATUS": "Status",
+      "DATE": "Date",
+      "ACTION": "Action"
+    },
+    "ACTIONS": {
+      "BLOCK": "Block",
+      "UNBLOCK": "Unblock",
+      "CONFIRM_BLOCK": "Block this user?",
+      "CONFIRM_UNBLOCK": "Unblock this user?"
+    }},
+
+ "DASHBOARD": {
+    "TITLE": "Admin Dashboard",
+    "USERS": "Users",
+    "CLIENTS": "Clients",
+    "ACTIVE_CLIENTS": "Active clients",
+    "INACTIVE_CLIENTS": "Inactive clients",
+    "ROLES": "Users by role",
+    "TOTALS": "Totals",
+    "CLIENTS_BY_MONTH": "Clients per month",
+    "NO_PIECES_TITLE": "No rooms configured",
+    "NO_PIECES_DESC": "Start by adding the rooms of your house (Living Room, Kitchen, etc.)",
+    "ADD_FIRST_PIECE": "Add my first room"
+},
+"REGLE": {
+  "TITLE": "Schedule an automatic rule",
+  "REPEAT": "Repeat every day",
+  "REPEAT_ON": "✅ Rule applied every day",
+  "REPEAT_OFF": "Enable to repeat every day",
+  "DATE": "📆 Rule date",
+  "HOUR_START": "🟢 Start time",
+  "HOUR_END": "🔴 End time",
+  "PREVIEW": "Preview",
+  "PREVIEW_DAILY": "🔁 Every day",
+  "CREATE": "📅 Create rule",
+  "CREATING": "⏳ Processing...",
+  "LIST_TITLE": "📋 Scheduled rules",
+  "LOADING": "Loading...",
+  "EMPTY": "No scheduled rules",
+  "EACH_DAY": "🔁 Every day",
+  "TAB": "📅 Rules"
+},
+"CONDITION": {
+  "TITLE": "⚡ Apply a condition",
+  "STATE_LABEL": "Equipment state",
+  "HINT": "Select the desired state",
+  "SUBMIT": "⚡ Apply now",
+  "SUBMITTING": "⏳ Processing...",
+  "HISTORY_TITLE": "📋 Condition history",
+  "LOADING": "Loading...",
+  "EMPTY": "No conditions recorded",
+  "TAB": "⚡ Conditions"
+}
+}

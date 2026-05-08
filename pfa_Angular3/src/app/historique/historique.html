@@ -1,49 +1,43 @@
 <div class="page">
-  <h2>Historique des paiements</h2>
+  <h2>{{ 'PAYMENT.TITLE' | translate }}</h2>
 
-  <div *ngIf="loading" class="loading">Chargement...</div>
-
-  <div *ngIf="errorMsg" class="error">{{ errorMsg }}</div>
-
-  <div class="table-wrapper" *ngIf="!loading && paiements.length > 0">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Montant</th>
-          <th>Date</th>
-          <th>Statut</th>
-          <th>Type</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let p of paiements">
-          <td>{{ p.montant }}</td>
-
-          <td class="date-cell">
-            <span>📅</span>
-            <span>{{ p.datePaiement | date:'dd/MM/yyyy HH:mm' }}</span>
-          </td>
-
-          <td>
-            <span class="status" [ngClass]="p.statut.toLowerCase()">
-              {{ p.statut }}
-            </span>
-          </td>
-
-          <td>
-  <span
-    class="type-badge"
-    [ngClass]="p.abonnementId != null ? 'abonnement' : 'paiement'"
-  >
-    {{ p.abonnementId != null ? 'ABONNEMENT' : 'PAIEMENT' }}
-  </span>
-</td>
-        </tr>
-      </tbody>
-    </table>
+  <!-- 🔄 Message de chargement -->
+  <div *ngIf="loading" class="loading">
+    {{ 'PAYMENT.LOADING' | translate }}
   </div>
 
+  <!-- ❌ Message d'erreur -->
+  <div *ngIf="errorMsg" class="error">
+    {{ errorMsg | translate }}
+  </div>
+
+  <!-- 📋 Tableau des paiements -->
+  <table class="table" *ngIf="!loading && paiements.length > 0">
+    <thead>
+      <tr>
+        <th>{{ 'PAYMENT.COLUMNS.AMOUNT' | translate }}</th>
+        <th>{{ 'PAYMENT.COLUMNS.DATE' | translate }}</th>
+        <th>{{ 'PAYMENT.COLUMNS.STATUS' | translate }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of paiements">
+        <td>{{ p.montant }} DH</td>
+        <td class="date-cell">
+          <span>📅</span>
+          {{ p.datePaiement | date:'medium' }}
+        </td>
+        <td>
+          <span class="status" [ngClass]="p.statut.toLowerCase()">
+            {{ p.statut }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 📭 Message si vide -->
   <div *ngIf="!loading && paiements.length === 0 && !errorMsg" class="empty">
-    Aucun paiement trouvé.
+    {{ 'PAYMENT.EMPTY' | translate }}
   </div>
 </div>

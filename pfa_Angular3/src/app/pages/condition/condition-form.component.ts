@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { ConditionService } from '../../services/condition.service';
 import { RegleService } from '../../services/regle.service';
 import { Condition, Regle } from '../../Models/models';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-condition-form',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, TranslateModule],
   templateUrl: './condition-form.component.html',
   styleUrls: ['./condition-form.component.css']
 })
@@ -168,6 +169,8 @@ export class ConditionFormComponent implements OnInit, OnDestroy {
         this.errorRegle  = 'Erreur lors de la création de la règle';
         this.loadingRegle = false;
       }
+
+      
     });
   }
 

@@ -9,16 +9,26 @@ namespace pfa__.net.Mapper
         {
             return new ConditionDto
             {
-                Id             = condition.Id,
-                IdEquipement   = condition.Regle?.IdEquipement ?? 0,
-                NomEquipement  = condition.Regle?.Equipement?.Nom ?? string.Empty,
+                Id = condition.Id,
+
+                IdEquipement = condition.Regle?.IdEquipement ?? 0,
+
+                NomEquipement = condition.Regle?.Equipement?.Nom ?? string.Empty,
+
                 TypeEquipement = condition.Regle?.Equipement?.Etat ?? string.Empty,
-                IdRegle        = condition.IdRegle,
-                HeureDebut     = condition.Regle?.HeureDebut ?? string.Empty,
-                HeureFin       = condition.Regle?.HeureFin ?? string.Empty,
-                Valeur         = condition.Valeur,
-                DateHeure      = condition.DateHeure,
-                Source         = condition.Source
+
+                IdRegle = condition.IdRegle,
+
+                // ✅ FIX ICI
+                HeureDebut = condition.Regle?.HeureDebut.ToString(@"hh\:mm") ?? string.Empty,
+
+                HeureFin = condition.Regle?.HeureFin.ToString(@"hh\:mm") ?? string.Empty,
+
+                Valeur = condition.Valeur,
+
+                DateHeure = condition.DateHeure,
+
+                Source = condition.Source
             };
         }
 

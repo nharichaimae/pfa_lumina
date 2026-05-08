@@ -3,12 +3,13 @@ import { StripeService } from '../../../services/StripeService';
 import { AuthService } from '../../../services/auth';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';import { loadStripe, Stripe, StripeCardElement, StripeElements } from '@stripe/stripe-js';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-abonnement',
   templateUrl: './abonnement.component.html',
   styleUrls: ['./abonnement.component.css'],
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule,TranslateModule],
 })
 export class AbonnementComponent implements OnInit {
 

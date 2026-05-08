@@ -2,15 +2,16 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { finalize } from 'rxjs/operators';
 import { PaiementService, PaiementDTO} from '../services/paiement.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-historique',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,TranslateModule],
   templateUrl: './historique.html',
   styleUrls: ['./historique.scss']
 })
-export class HistoriqueComponent implements OnInit {
+export class HistoriqueClientComponent implements OnInit {
 
   userId = 0;
   paiements: PaiementDTO[] = [];

@@ -49,20 +49,20 @@ namespace pfa__.net.Controllers
         }
 
         // ✅ GET api/equipementtypes
-        [HttpGet("equipementtypes")]
-        public async Task<IActionResult> GetEquipementTypes()
-        {
-            var types = await _context.EquipementTypes.ToListAsync();
-
-            var result = types.Select(t => new
-            {
-                id_type = t.id_type,
-                nom = t.Nom,
-                icon = t.Icon
-            });
-
-            return Ok(result);
-        }
+[HttpGet("equipementtypes")]
+public async Task<IActionResult> GetEquipementTypes()
+{
+    var types = await _context.EquipementTypes.ToListAsync();
+    var result = types.Select(t => new
+    {
+        id_type = t.id_type,
+        nom   = t.Nom,
+        nomFr = t.NomFr,   
+        nomEn = t.NomEn,  
+        icon  = t.Icon
+    });
+    return Ok(result);
+}
         [HttpPut("equipement/{id}/etat")]
         public async Task<IActionResult> UpdateEtat(int id, [FromBody] UpdateEtatDto dto)
         {

@@ -23,7 +23,8 @@ namespace pfa__.net.Mapper
                 Id = piece.Id_Piece,
                 Nom = piece.Nom ?? "",
 
-                TypeNom = piece.PieceType != null ? piece.PieceType.Nom : "",
+              TypeNomFr = piece.PieceType?.NomFr ?? "",
+TypeNomEn = piece.PieceType?.NomEn ?? "",
                 Icon = piece.PieceType != null ? piece.PieceType.Icon : "",
 
                 Equipements = piece.Equipements?

@@ -31,6 +31,8 @@
     "@ionic/angular": "^8.8.4",
     "@microsoft/signalr": "^10.0.0",
     "@ng-bootstrap/ng-bootstrap": "20.0.0",
+    "@ngx-translate/core": "^15.0.0",
+    "@ngx-translate/http-loader": "^8.0.0",
     "@popperjs/core": "2.11.8",
     "@stripe/stripe-js": "^8.9.0",
     "apexcharts": "5.3.6",

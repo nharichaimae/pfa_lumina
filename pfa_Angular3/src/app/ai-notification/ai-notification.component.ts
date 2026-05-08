@@ -6,37 +6,38 @@ import {
   AiNotificationService, AiSuggestion, MissedNotification,
 } from './ai-notification.service';
 import { filter, Subscription } from 'rxjs';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 const CONFIDENCE_THRESHOLD = 0.70;
-const COOLDOWN_MS           = 5 * 60 * 1000;
+const COOLDOWN_MS = 5 * 60 * 1000;
 
 @Component({
-  selector:    'app-ai-notification',
-  standalone:  true,
-  imports:     [CommonModule],
+  selector: 'app-ai-notification',
+  standalone: true,
+  imports: [CommonModule , TranslateModule],
   templateUrl: './ai-notification.component.html',
-  styleUrls:   ['./ai-notification.component.scss'],
+  styleUrls: ['./ai-notification.component.scss'],
 })
 export class AiNotificationComponent implements OnInit, OnDestroy {
 
-  suggestions:     (AiSuggestion & { receivedAt: number; timeLeft: number })[] = [];
-  missedNotifs:    MissedNotification[] = [];
+  suggestions: (AiSuggestion & { receivedAt: number; timeLeft: number })[] = [];
+  missedNotifs: MissedNotification[] = [];
   showMissedPanel = false;
-  dismissingIds   = new Set<number>();
+  dismissingIds = new Set<number>();
 
   private pendingActions: { equipment: string; confirmed: boolean }[] = [];
-  private batchTimer:     any;
-  private timerInterval:  any;
-  private subscription  = new Subscription();
-  private handledIds    = new Set<number>();
+  private batchTimer: any;
+  private timerInterval: any;
+  private subscription = new Subscription();
+  private handledIds = new Set<number>();
 
   private testParams = {
-    hour: 22,
-    temperature: -7,
+    hour: 23,
+    temperature: -1,
     is_daylight: 0,
-    is_holiday:  0,
-    is_weekend:  0,
-    day_type:    'workday',
+    is_holiday: 0,
+    is_weekend: 0,
+    day_type: 'workday',
   };
 
   private get userId(): string {
@@ -46,7 +47,8 @@ export class AiNotificationComponent implements OnInit, OnDestroy {
   constructor(
     private aiService: AiNotificationService,
     private cdr: ChangeDetectorRef,
-  ) {}
+   private translateService: TranslateService 
+   ) {}
 
   ngOnInit(): void {
     this.suggestions = [];
@@ -60,7 +62,7 @@ export class AiNotificationComponent implements OnInit, OnDestroy {
       .pipe(filter(s => s.some(x => x.confidence > CONFIDENCE_THRESHOLD)))
       .subscribe(suggestions => {
         const handledMap = this.getHandledMap();
-        const now        = Date.now();
+        const now = Date.now();
 
         suggestions
           .filter(s => s.confidence > CONFIDENCE_THRESHOLD)
@@ -72,13 +74,17 @@ export class AiNotificationComponent implements OnInit, OnDestroy {
               (now - handledMap[s.equipementId]) < COOLDOWN_MS;
 
             if (!alreadyHandled && !alreadyShowing && !cooldownActive) {
-              // offset de 2s par carte → 1ère expire T+10s, 2ème T+12s, etc.
-              this.suggestions.push({ ...s, receivedAt: now + i * 2_000, timeLeft: 10 });
+              this.suggestions.push({
+                ...s,
+                receivedAt: now + i * 2000,
+                timeLeft: 10,
+              });
             }
           });
 
         this.cdr.detectChanges();
       });
+
     this.subscription.add(sub);
 
     this.subscription.add(
@@ -93,6 +99,7 @@ export class AiNotificationComponent implements OnInit, OnDestroy {
 
       this.suggestions.forEach(s => {
         const timeLeft = 10 - Math.floor((now - s.receivedAt) / 1000);
+
         if (timeLeft <= 0 && !this.handledIds.has(s.equipementId)) {
           this.handledIds.add(s.equipementId);
           this.saveHandledToStorage();
@@ -112,7 +119,7 @@ export class AiNotificationComponent implements OnInit, OnDestroy {
     }, 1000);
   }
 
-  // ─── Missed notifications ──────────────────────────────────────────────────
+  // ───────────────── MISSSED NOTIFS ─────────────────
 
   private loadMissedFromServer(): void {
     this.aiService.getMissedNotifs(this.userId).subscribe({
@@ -121,9 +128,13 @@ export class AiNotificationComponent implements OnInit, OnDestroy {
         this.aiService.updateMissedCount(this.missedNotifs.length);
         this.cdr.detectChanges();
       },
-      error: () => { this.missedNotifs = []; },
+      error: () => {
+        this.missedNotifs = [];
+      },
     });
   }
+
+
 
   private storeMissedNotif(s: AiSuggestion): void {
     const exists = this.missedNotifs.find(m => m.equipementId === s.equipementId);
@@ -131,13 +142,13 @@ export class AiNotificationComponent implements OnInit, OnDestroy {
 
     const missed: MissedNotification = {
       equipementId: s.equipementId,
-      equipment:    s.equipment,
-      nom:          s.nom,
-      piece:        s.piece,
-      icon:         s.icon,
-      message:      s.message,
-      confidence:   s.confidence,
-      missedAt:     new Date().toISOString(),
+      equipment: s.equipment,
+      nom: s.nom,
+      piece: s.piece,
+      icon: s.icon,
+      message: s.message,
+      confidence: s.confidence,
+      missedAt: new Date().toISOString(),
     };
 
     this.aiService.saveMissedNotif(this.userId, missed).subscribe({
@@ -149,14 +160,17 @@ export class AiNotificationComponent implements OnInit, OnDestroy {
     });
   }
 
-  get missedCount(): number { return this.missedNotifs.length; }
+  get missedCount(): number {
+    return this.missedNotifs.length;
+  }
 
-  toggleMissedPanel(): void { this.showMissedPanel = !this.showMissedPanel; }
+  toggleMissedPanel(): void {
+    this.showMissedPanel = !this.showMissedPanel;
+  }
 
   confirmMissed(m: MissedNotification): void {
     this.aiService.allumerEquipement(m.equipementId).subscribe({
-      next:  () => this.aiService.emitEquipementAllume(m.equipementId),
-      error: err => console.error('Erreur allumage :', err),
+      next: () => this.aiService.emitEquipementAllume(m.equipementId),
     });
 
     this.aiService.deleteMissedNotif(this.userId, m.equipementId).subscribe();
@@ -187,11 +201,12 @@ export class AiNotificationComponent implements OnInit, OnDestroy {
 
   formatMissedTime(isoStr: string): string {
     return new Date(isoStr).toLocaleTimeString('fr-FR', {
-      hour: '2-digit', minute: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
     });
   }
 
-  // ─── Active suggestions ────────────────────────────────────────────────────
+  // ───────────────── SUGGESTIONS ─────────────────
 
   confirm(s: AiSuggestion): void {
     this.handledIds.add(s.equipementId);
@@ -202,8 +217,7 @@ export class AiNotificationComponent implements OnInit, OnDestroy {
     this.saveHandledMap(handledMap);
 
     this.aiService.allumerEquipement(s.equipementId).subscribe({
-      next:  () => this.aiService.emitEquipementAllume(s.equipementId),
-      error: err => console.error('Erreur allumage :', err),
+      next: () => this.aiService.emitEquipementAllume(s.equipementId),
     });
 
     this.pendingActions.push({ equipment: s.equipment, confirmed: true });
@@ -223,15 +237,16 @@ export class AiNotificationComponent implements OnInit, OnDestroy {
   }
 
   private onIgnored(s: AiSuggestion): void {
-    console.log(`${s.equipment} ignoré (timeout) → missed notif uniquement`);
+    console.log(`${s.equipment} ignoré (timeout)`);
   }
 
-  dismiss(key: string): void { this.dismissSilent(key); }
+  dismiss(key: string): void {
+    this.dismissSilent(key);
+  }
 
   private dismissSilent(key: string): void {
     const id = Number(key);
     this.dismissingIds.add(id);
-    this.cdr.detectChanges();
 
     setTimeout(() => {
       this.aiService.dismissSuggestion(key);
@@ -243,7 +258,7 @@ export class AiNotificationComponent implements OnInit, OnDestroy {
     }, 420);
   }
 
-  // ─── Batch feedback ────────────────────────────────────────────────────────
+  // ───────────────── BATCH ─────────────────
 
   private scheduleBatchFeedback(): void {
     clearTimeout(this.batchTimer);
@@ -251,34 +266,27 @@ export class AiNotificationComponent implements OnInit, OnDestroy {
   }
 
   private sendBatchFeedback(): void {
-    const confirmedOnly = this.pendingActions.filter(a => a.confirmed === true);
+    const confirmedOnly = this.pendingActions.filter(a => a.confirmed);
 
     if (confirmedOnly.length === 0) {
       this.pendingActions = [];
       return;
     }
 
-    const payload = {
+    this.aiService.sendBatchFeedback({
       equipment_actions: confirmedOnly,
-      temperature:       this.testParams.temperature,
-      is_daylight:       this.testParams.is_daylight,
-      day_type:          this.testParams.day_type,
-    };
-
-    this.aiService.sendBatchFeedback(payload).subscribe({
-      next:  res => console.log('Batch envoyé :', res),
-      error: err => console.error('Erreur batch :', err),
-    });
+      temperature: this.testParams.temperature,
+      is_daylight: this.testParams.is_daylight,
+      day_type: this.testParams.day_type,
+    }).subscribe();
 
     this.pendingActions = [];
   }
 
-  // ─── Helpers ───────────────────────────────────────────────────────────────
+  // ───────────────── HELPERS ─────────────────
 
-  formatTime(s: number): string { return `${s}s`; }
-
-  getTimerPercent(timeLeft: number): string {
-    return `${(timeLeft / 10) * 100}%`;
+  formatTime(s: number): string {
+    return `${s}s`;
   }
 
   getConfidencePercent(c: number): string {
@@ -300,36 +308,18 @@ export class AiNotificationComponent implements OnInit, OnDestroy {
     this.aiService.resetService();
   }
 
-  // ─── LocalStorage ──────────────────────────────────────────────────────────
+  // ───────────────── LOCAL STORAGE ─────────────────
 
   private getHandledFromStorage(): Set<number> {
-    const map = this.getHandledMap();
-    const now = Date.now();
-    const valid = new Set<number>();
-
-    Object.entries(map).forEach(([id, ts]) => {
-      if ((now - (ts as number)) < COOLDOWN_MS) {
-        valid.add(Number(id));
-      }
-    });
-
-    const cleaned: Record<number, number> = {};
-    Object.entries(map).forEach(([id, ts]) => {
-      if ((now - (ts as number)) < COOLDOWN_MS) {
-        cleaned[Number(id)] = ts as number;
-      }
-    });
-    this.saveHandledMap(cleaned);
-
-    return valid;
+    return new Set(
+      Object.keys(this.getHandledMap()).map(Number)
+    );
   }
 
   private saveHandledToStorage(): void {
     const map = this.getHandledMap();
     this.handledIds.forEach(id => {
-      if (!map[id]) {
-        map[id] = Date.now();
-      }
+      map[id] = Date.now();
     });
     this.saveHandledMap(map);
   }

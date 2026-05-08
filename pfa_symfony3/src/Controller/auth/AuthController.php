@@ -30,48 +30,41 @@ class AuthController extends AbstractController
     }
 
     #[Route('/api/login', name: 'api_login', methods: ['POST'])]
-    public function login(Request $request): JsonResponse
-    {
-        $data = json_decode($request->getContent(), true);
+public function login(Request $request): JsonResponse
+{
+    $data = json_decode($request->getContent(), true);
 
-        if (!$data || !isset($data['email'], $data['password'])) {
-            return new JsonResponse(
-                ['message' => 'Email et mot de passe requis'],
-                Response::HTTP_BAD_REQUEST
-            );
-        }
-
-        $loginRequest = new LoginRequestDTO(
-                $data['email'],
-                $data['password']
-            );
-
-        $user = $this->userRepository->login(
-            $loginRequest,
-            $this->passwordHasher
+    if (!$data || !isset($data['email'], $data['password'])) {
+        return new JsonResponse(
+            ['message' => 'Email et mot de passe requis'],
+            Response::HTTP_BAD_REQUEST
         );
-
-        if (!$user) {
-            return new JsonResponse([
-                'authenticated' => false,
-                'message' => 'Identifiants invalides'
-            ], Response::HTTP_UNAUTHORIZED);
-        }
-
-        $token = $this->jwtManager->create($user);
-        $loginDTO = UserMapper::toLoginResponse($user, $token);
-
-        return new JsonResponse([
-            'authenticated' => $loginDTO->authenticated,
-            'token' => $loginDTO->token,
-            'id' => $loginDTO->id,
-            'email' => $loginDTO->email,
-            'role' => $loginDTO->role,
-            'nom'=> $loginDTO->nom,
-            'prenom'=> $loginDTO->prenom,
-            'mustChangePassword' => $loginDTO->mustChangePassword,
-        ], Response::HTTP_OK);
     }
+
+    $loginRequest = new LoginRequestDTO($data['email'], $data['password']);
+    $user = $this->userRepository->login($loginRequest, $this->passwordHasher);
+
+    if (!$user) {
+        return new JsonResponse([
+            'authenticated' => false,
+            'message' => 'Identifiants invalides'
+        ], Response::HTTP_UNAUTHORIZED);
+    }
+
+    $token = $this->jwtManager->create($user);
+    $loginDTO = UserMapper::toLoginResponse($user, $token);
+
+    return new JsonResponse([
+        'authenticated'      => $loginDTO->authenticated,
+        'token'              => $loginDTO->token,
+        'id'                 => $loginDTO->id,
+        'email'              => $loginDTO->email,
+        'role'               => $loginDTO->role,
+        'nom'                => $loginDTO->nom,
+        'prenom'             => $loginDTO->prenom,
+        'mustChangePassword' => $loginDTO->mustChangePassword,
+    ], Response::HTTP_OK);
+}
 #[Route('/api/users/{id}', methods: ['GET'])]
 public function getUserById(int $id): JsonResponse
 {

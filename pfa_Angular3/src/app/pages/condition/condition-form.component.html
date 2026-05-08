@@ -7,7 +7,6 @@
       <div class="eq-info">
         <h1 class="eq-name">{{ nomEquipement }}</h1>
         <p class="eq-type">{{ typeEquipement | uppercase }}</p>
-        <p class="eq-id">ID #{{ idEquipement }}</p>
       </div>
       <div class="eq-clock">
         <span class="clock-time">{{ currentTime }}</span>
@@ -16,14 +15,14 @@
     </div>
   </div>
 
-  <!-- TABS — Règles en premier -->
+  <!-- TABS -->
   <div class="tabs-bar">
     <button class="tab-btn" [class.active]="activeTab === 'regle'" (click)="activeTab = 'regle'">
-      📅 Règles
+      {{ 'REGLE.TAB' | translate }}
       <span class="tab-count" *ngIf="regles.length > 0">{{ regles.length }}</span>
     </button>
     <button class="tab-btn" [class.active]="activeTab === 'condition'" (click)="activeTab = 'condition'">
-      ⚡ Conditions
+      {{ 'CONDITION.TAB' | translate }}
       <span class="tab-count" *ngIf="historique.length > 0">{{ historique.length }}</span>
     </button>
   </div>
@@ -34,14 +33,16 @@
 
       <!-- FORM RÈGLE -->
       <div class="form-card">
-        <h2 class="card-title">📅 Planifier une règle automatique</h2>
+        <h2 class="card-title">{{ 'REGLE.TITLE' | translate }}</h2>
 
         <div class="field-group">
           <div class="chaque-jour-row">
             <div>
-              <span class="field-label" style="margin-bottom:0">🔁 Répéter chaque jour</span>
+              <span class="field-label" style="margin-bottom:0">
+                🔁 {{ 'REGLE.REPEAT' | translate }}
+              </span>
               <p class="field-hint" style="margin-top:4px">
-                {{ chaqueJour ? '✅ Règle appliquée tous les jours' : 'Activez pour répéter chaque jour' }}
+                {{ (chaqueJour ? 'REGLE.REPEAT_ON' : 'REGLE.REPEAT_OFF') | translate }}
               </p>
             </div>
             <label class="switch">
@@ -52,26 +53,26 @@
         </div>
 
         <div class="field-group" *ngIf="!chaqueJour">
-          <label class="field-label">📆 Date de la règle</label>
+          <label class="field-label">{{ 'REGLE.DATE' | translate }}</label>
           <input type="date" class="field-input" [(ngModel)]="dateRegle">
         </div>
 
         <div class="time-row">
           <div class="field-group flex-1">
-            <label class="field-label">🟢 Heure début</label>
+            <label class="field-label">{{ 'REGLE.HOUR_START' | translate }}</label>
             <input type="time" class="field-input" [(ngModel)]="heureDebut">
           </div>
           <span class="time-sep">→</span>
           <div class="field-group flex-1">
-            <label class="field-label">🔴 Heure fin</label>
+            <label class="field-label">{{ 'REGLE.HOUR_END' | translate }}</label>
             <input type="time" class="field-input" [(ngModel)]="heureFin">
           </div>
         </div>
 
         <div class="preview-box">
-          <p class="preview-label">Aperçu</p>
+          <p class="preview-label">{{ 'REGLE.PREVIEW' | translate }}</p>
           <p class="preview-text" *ngIf="chaqueJour">
-            🔁 Chaque jour &nbsp;|&nbsp; 🟢 {{ heureDebut }} → 🔴 {{ heureFin }}
+            {{ 'REGLE.PREVIEW_DAILY' | translate }} &nbsp;|&nbsp; 🟢 {{ heureDebut }} → 🔴 {{ heureFin }}
           </p>
           <p class="preview-text" *ngIf="!chaqueJour">
             📅 {{ dateRegle }} &nbsp;|&nbsp; 🟢 {{ heureDebut }} → 🔴 {{ heureFin }}
@@ -82,25 +83,25 @@
         <div class="alert-error"   *ngIf="errorRegle">❌ {{ errorRegle }}</div>
 
         <button class="btn-submit btn-violet" (click)="submitRegle()" [disabled]="loadingRegle">
-          <span *ngIf="!loadingRegle">📅 Créer la règle</span>
-          <span *ngIf="loadingRegle">⏳ En cours...</span>
+          <span *ngIf="!loadingRegle">{{ 'REGLE.CREATE' | translate }}</span>
+          <span *ngIf="loadingRegle">{{ 'REGLE.CREATING' | translate }}</span>
         </button>
       </div>
 
       <!-- LISTE RÈGLES -->
       <div class="form-card">
-        <h2 class="card-title">📋 Règles planifiées</h2>
+        <h2 class="card-title">{{ 'REGLE.LIST_TITLE' | translate }}</h2>
         <div class="loading-state" *ngIf="loadingRegles">
-          <div class="spinner-sm"></div> Chargement...
+          <div class="spinner-sm"></div> {{ 'REGLE.LOADING' | translate }}
         </div>
         <div class="empty-state" *ngIf="!loadingRegles && regles.length === 0">
-          <span>📭</span><p>Aucune règle planifiée</p>
+          <span>📭</span><p>{{ 'REGLE.EMPTY' | translate }}</p>
         </div>
         <div class="list-scroll" *ngIf="!loadingRegles && regles.length > 0">
           <div class="list-item" *ngFor="let r of regles">
             <div class="item-left">
               <span class="item-date-big">
-                {{ r.chaqueJour ? '🔁 Chaque jour' : '📅 ' + formatDateShort(r.dateRegle) }}
+                {{ r.chaqueJour ? ('REGLE.EACH_DAY' | translate) : '📅 ' + formatDateShort(r.dateRegle) }}
               </span>
               <div class="regle-hours">
                 <span class="h-start">🟢 {{ r.heureDebut }}</span>
@@ -123,10 +124,10 @@
 
       <!-- FORM CONDITION -->
       <div class="form-card">
-        <h2 class="card-title">⚡ Appliquer une condition</h2>
+        <h2 class="card-title">{{ 'CONDITION.TITLE' | translate }}</h2>
 
         <div class="field-group">
-          <label class="field-label">État de l'équipement</label>
+          <label class="field-label">{{ 'CONDITION.STATE_LABEL' | translate }}</label>
           <div class="toggle-group">
             <button class="toggle-btn" [class.active-on]="valeurOnOff === 'ON'" (click)="valeurOnOff = 'ON'">
               <span>💡</span> ON
@@ -135,26 +136,26 @@
               <span>🌑</span> OFF
             </button>
           </div>
-          <p class="field-hint">Sélectionnez l'état souhaité</p>
+          <p class="field-hint">{{ 'CONDITION.HINT' | translate }}</p>
         </div>
 
         <div class="alert-success" *ngIf="successCondition">{{ successCondition }}</div>
         <div class="alert-error"   *ngIf="errorCondition">❌ {{ errorCondition }}</div>
 
         <button class="btn-submit btn-indigo" (click)="submitCondition()" [disabled]="loadingCondition">
-          <span *ngIf="!loadingCondition">⚡ Appliquer maintenant</span>
-          <span *ngIf="loadingCondition">⏳ En cours...</span>
+          <span *ngIf="!loadingCondition">{{ 'CONDITION.SUBMIT' | translate }}</span>
+          <span *ngIf="loadingCondition">{{ 'CONDITION.SUBMITTING' | translate }}</span>
         </button>
       </div>
 
       <!-- HISTORIQUE CONDITIONS -->
       <div class="form-card">
-        <h2 class="card-title">📋 Historique des conditions</h2>
+        <h2 class="card-title">{{ 'CONDITION.HISTORY_TITLE' | translate }}</h2>
         <div class="loading-state" *ngIf="loadingHistorique">
-          <div class="spinner-sm"></div> Chargement...
+          <div class="spinner-sm"></div> {{ 'CONDITION.LOADING' | translate }}
         </div>
         <div class="empty-state" *ngIf="!loadingHistorique && historique.length === 0">
-          <span>📭</span><p>Aucune condition enregistrée</p>
+          <span>📭</span><p>{{ 'CONDITION.EMPTY' | translate }}</p>
         </div>
         <div class="list-scroll" *ngIf="!loadingHistorique && historique.length > 0">
           <div class="list-item" *ngFor="let c of historique">

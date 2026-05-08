@@ -150,11 +150,13 @@ abstract class Utilisateur implements UserInterface, PasswordAuthenticatedUserIn
         return $this->email ?? '';
     }
 
-    public function getRoles(): array
-    {
-        return ['ROLE_' . strtoupper($this->role)];
-    }
-
+  public function getRoles(): array
+{
+    return [
+        'ROLE_' . strtoupper($this->role),
+        'ROLE_USER',
+    ];
+}
     public function eraseCredentials(): void
     {
     }

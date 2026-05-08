@@ -18,6 +18,8 @@ export interface Equipement {
   id_Piece: number;
   etat?: string;
   description?: string;
+  nomFr: string; 
+  nomEn: string;
 
   // ✅ NEW (pour affichage)
   type_id?: number;
@@ -27,12 +29,15 @@ export interface Equipement {
 
 export interface PieceType {
   id_type: number;
-  nom: string;
+  nomFr: string;
+  nomEn: string;
   icon: string;
 }
 
 // ✅ NEW
 export interface EquipementType {
+  nomEn: string;
+  nomFr: string;
   id_type: number;
   nom: string;
   icon: string;

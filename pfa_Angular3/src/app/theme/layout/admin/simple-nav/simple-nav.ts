@@ -1,28 +1,24 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-import { addIcons } from 'ionicons';
-import {
-  homeOutline,
-  peopleOutline,
-  personOutline,
-  cardOutline,
-  gridOutline,
-  timeOutline,
-  albumsOutline,
-  logOutOutline
-} from 'ionicons/icons';
-
+import { TranslateModule } from '@ngx-translate/core';
+import { MyTranslateService } from '../../../../services/translate.service';
 @Component({
   selector: 'app-simple-nav',
   standalone: true,
-  imports: [CommonModule, RouterModule, IonicModule],
+  imports: [CommonModule, RouterModule, IonicModule, TranslateModule],
   templateUrl: './simple-nav.html',
   styleUrls: ['./simple-nav.scss']
 })
 export class SimpleNavComponent {
+
+  // ✅ i18n
+  private translateService = inject(MyTranslateService);
+  translate = this.translateService.translate;
+
+  // ✅ logique existante
   role: 'ADMIN' | 'CLIENT' | null = null;
   isOpen = true;
   isMobile = false;
@@ -32,6 +28,11 @@ export class SimpleNavComponent {
     this.checkScreen();
   }
 
+  ngOnInit() {
+    // ✅ important pour charger la langue
+    this.translateService.initLanguage();
+  }
+
   @HostListener('window:resize')
   onResize() {
     this.checkScreen();
@@ -39,12 +40,7 @@ export class SimpleNavComponent {
 
   checkScreen() {
     this.isMobile = window.innerWidth <= 992;
-
-    if (this.isMobile) {
-      this.isOpen = false;
-    } else {
-      this.isOpen = true;
-    }
+    this.isOpen = !this.isMobile;
   }
 
   toggleNav() {
@@ -68,17 +64,9 @@ export class SimpleNavComponent {
   }
 
   logout(): void {
-  localStorage.clear();
-  this.router.navigate(['/login']).then(() => {
-    window.location.reload();
-  });
-}
-/*
- logout(): void {
-  localStorage.clear();
-  this.router.navigate(['/login']).then(() => {
-    window.location.reload();
-  });
-}*/
-
+    localStorage.clear();
+    this.router.navigate(['/login']).then(() => {
+      window.location.reload();
+    });
+  }
 }

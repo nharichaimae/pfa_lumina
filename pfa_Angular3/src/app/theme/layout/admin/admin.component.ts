@@ -25,12 +25,16 @@ export class AdminComponent implements OnInit, OnDestroy {
   isScrolled = false;
   screenFull = false;
   fullPage = false;
+  role: 'ADMIN' | 'CLIENT' | null = null;
 
   @HostListener('window:scroll', [])
   onScroll() {
     this.isScrolled = window.scrollY > 10;
   }
 
+    constructor() {
+    this.role = localStorage.getItem('role') as 'ADMIN' | 'CLIENT';
+  }
   toggleSidebar() {
   if (window.innerWidth > 992) {
     this.fullPage = !this.fullPage;
@@ -50,6 +54,10 @@ export class AdminComponent implements OnInit, OnDestroy {
       this.screenFull = screenfull.isFullscreen;
       screenfull.on('change', this.screenfullHandler);
     }
+  }
+
+   isAdmin(): boolean {
+    return this.role === 'ADMIN';
   }
 
   ngOnDestroy() {

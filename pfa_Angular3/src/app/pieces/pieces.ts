@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PieceService, Piece, PieceType } from '../services/piece';
 import { Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { MyTranslateService } from '../services/translate.service';
 @Component({
   selector: 'app-pieces',
   templateUrl: './pieces.html',
   styleUrls: ['./pieces.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule,  TranslateModule]
 })
 export class PiecesComponent implements OnInit {
   pieces: Piece[] = [];
@@ -20,9 +22,14 @@ export class PiecesComponent implements OnInit {
 
   selectedType: PieceType | null = null;
 
+    private translateService = inject(MyTranslateService);
+  translate = this.translateService.translate;
+
+
   constructor(private pieceService: PieceService, private router: Router, private cdr: ChangeDetectorRef ,) {}
 
   ngOnInit(): void {
+    this.translateService.initLanguage();
     this.loadPieces();
     this.loadPieceTypes();
   }
@@ -31,21 +38,24 @@ export class PiecesComponent implements OnInit {
     this.pieceService.getPieces().subscribe(data => this.pieces = data);
   }
 
-  loadPieceTypes() {
-    this.pieceService.getPieceTypes().subscribe(data => {
-      this.uniqueTypes = data;
-
+loadPieceTypes() {
+  this.pieceService.getPieceTypes().subscribe({
+    next: (data) => {
+      console.log('Types reçus:', data); // 🔍 DEBUG — vois ce que retourne l'API
+      this.uniqueTypes = [...data];      // ✅ force la détection de changements
       if (data.length > 0) {
         this.selectedTypeId = data[0].id_type;
-        this.onTypeChange();
+        this.selectedType = data[0];     // ✅ initialise directement sans onTypeChange
       }
-      this.cdr.detectChanges();
-    });
-  }
+    },
+    error: (err) => console.error('Erreur chargement types:', err)
+  });
+}
 
   onTypeChange() {
-    this.selectedType = this.uniqueTypes.find(t => t.id_type == this.selectedTypeId) || null;
-  }
+ 
+  this.selectedType = this.uniqueTypes.find(t => t.id_type == this.selectedTypeId) || null;
+}
 
   addPiece() {
   if (!this.newPieceName.trim() || this.selectedTypeId === null) return;
@@ -72,5 +82,10 @@ export class PiecesComponent implements OnInit {
   deletePiece(id: number) {
     this.pieceService.deletePiece(id).subscribe(() => this.loadPieces());
   }
+
+  getTypeName(type: PieceType): string {
+  const lang = this.translateService.getCurrentLang();
+  return lang === 'fr' ? type.nomFr : type.nomEn;
+}
 
 }

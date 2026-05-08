@@ -14,10 +14,10 @@ namespace pfa__.net.Models
         public DateTime? DateRegle { get; set; }
 
         [Column("heureDebut")]
-        public string HeureDebut { get; set; } = "00:00:00"; 
+        public TimeSpan HeureDebut { get; set; }
 
         [Column("heureFin")]
-        public string HeureFin { get; set; } = "00:00:00";  
+        public TimeSpan HeureFin { get; set; }
 
         [Column("id_equipement")]
         public int IdEquipement { get; set; }
@@ -26,9 +26,10 @@ namespace pfa__.net.Models
         public bool ChaqueJour { get; set; } = false;
 
         [ForeignKey("IdEquipement")]
-        public Equipement Equipement { get; set; }
+        public Equipement? Equipement { get; set; }
 
-        public ICollection<ConditionHistorique> ConditionHistoriques { get; set; }
+        // ✅ Cette ligne doit être présente
+        public ICollection<ConditionHistorique>? ConditionHistoriques { get; set; }
             = new List<ConditionHistorique>();
     }
 }

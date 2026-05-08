@@ -7,13 +7,14 @@ import { ConditionService } from '../services/condition.service';
 import RecordRTC, { StereoAudioRecorder } from 'recordrtc';
 import { VoiceService } from '../services/voice';
 import { AiNotificationService } from '../ai-notification/ai-notification.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-client-dashb',
   templateUrl: './client-dashb.html',
   styleUrl: './client-dashb.scss',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,TranslateModule],
 })
 export class ClientDashb implements OnInit, OnDestroy {
   pieces: any[] = [];
@@ -30,6 +31,8 @@ export class ClientDashb implements OnInit, OnDestroy {
   feedbackMessage = '';
   feedbackEquipement = '';
   feedbackText = '';
+  message: string | undefined;
+  
 
   constructor(
     private pieceService: PieceService,
@@ -72,6 +75,7 @@ export class ClientDashb implements OnInit, OnDestroy {
   loadPieces() {
     this.pieceService.getPieces().subscribe({
       next: async (data: any[]) => {
+        console.log('RAW DATA API:', JSON.stringify(data[0]));
         this.pieces = (data || []).map(p => {
           const typeId = p.typeId ?? p.type_id ?? p.typeID ?? p.type_Id;
           const foundType = this.pieceTypes.find(t => t.id_type === typeId);
@@ -79,10 +83,10 @@ export class ClientDashb implements OnInit, OnDestroy {
           return {
             ...p,
             showMenu: false,
-            id: p.id ?? p.id_piece ?? p.id_Piece ?? p.Id_Piece,
+id: p.id_piece ?? p.Id_Piece ?? p.Id ?? p.id ?? 0,
             nom: p.nom ?? p.Nom,
             icon: p.icon ?? foundType?.icon ?? '',
-            typeNom: p.typeNom ?? foundType?.nom ?? '',
+            typeNom: p.typeNom ?? foundType?.nomFr ?? '',
             equipements: (p.equipements ?? p.Equipements ?? []).map((e: any) => ({
               ...e,
               id: e.id ?? e.Id_Equipement ?? e.id_equipement,
@@ -147,9 +151,18 @@ export class ClientDashb implements OnInit, OnDestroy {
     }
   }
 
-  goToAddEquipement(pieceId: number) {
-    this.router.navigate(['/equipement', pieceId]);
+goToAddEquipement(pieceId: any) {
+  const id = Number(pieceId);
+  console.log('pieceId reçu:', pieceId, '→ converti:', id);
+  
+  if (!id || id === 0 || isNaN(id)) {
+    console.error('Toutes les clés de la pièce:', pieceId);
+    this.message = 'Erreur : pieceId invalide';
+    return;
   }
+  
+  this.router.navigate(['/equipement', id]);
+}
 
   goToCondition(equip: any) {
     const nom = equip.nom?.toLowerCase() || '';
@@ -200,18 +213,22 @@ export class ClientDashb implements OnInit, OnDestroy {
   }
 
   toggleEquip(equip: any) {
-    const newEtat = equip.etat ? 'OFF' : 'ON';
 
-    this.pieceService.updateEquipementEtat(equip.id, newEtat).subscribe({
-      next: () => {
-        equip.etat = newEtat === 'ON';
-        this.cd.detectChanges();
-      },
-      error: () => {
-        this.cd.detectChanges();
-      }
-    });
-  }
+  const newEtat = equip.etat ? 'ON' : 'OFF';
+
+  console.log('Etat envoyé:', newEtat);
+
+  this.pieceService.updateEquipementEtat(equip.id, newEtat).subscribe({
+    next: () => {
+      equip.etat = newEtat === 'ON';
+      this.cd.detectChanges();
+    },
+    error: (err) => {
+      console.error(err);
+      this.cd.detectChanges();
+    }
+  });
+};
 
   private updateEquipementLocalState(equipId: any, newEtat: boolean) {
     this.zone.run(() => {
@@ -436,4 +453,9 @@ export class ClientDashb implements OnInit, OnDestroy {
       this.cd.detectChanges();
     });
   }
+
+  // Ajoutez cette méthode dans votre classe ClientDashb
+goToPieces() {
+  this.router.navigate(['/pieces']);
+}
 }

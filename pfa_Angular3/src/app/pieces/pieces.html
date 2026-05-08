@@ -1,5 +1,5 @@
 <div class="add-form">
-  <input [(ngModel)]="newPieceName" placeholder="Nom de la pièce">
+  <input [(ngModel)]="newPieceName" [placeholder]="'PIECE_FORM.PLACEHOLDER' | translate">
 
   <div style="display:flex; align-items:center; gap:10px;">
     <i *ngIf="selectedType"
@@ -8,11 +8,11 @@
     </i>
 
     <select [(ngModel)]="selectedTypeId" (change)="onTypeChange()">
-      <option *ngFor="let type of uniqueTypes" [value]="type.id_type">
-        {{ type.nom }}
-      </option>
+     <option *ngFor="let type of uniqueTypes" [value]="type.id_type">
+      {{ getTypeName(type) }}
+    </option>
     </select>
   </div>
 
-  <button (click)="addPiece()">Ajouter</button>
+  <button (click)="addPiece()">{{ 'PIECE_FORM.ADD_BUTTON' | translate }}</button>
 </div>

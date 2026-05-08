@@ -61,21 +61,29 @@ namespace pfa__.net.Data
             {
                 entity.ToTable("regle");
                 entity.HasKey(r => r.IdRegle);
+
                 entity.Property(r => r.IdRegle)
                       .HasColumnName("id_regle")
                       .ValueGeneratedOnAdd();
+
                 entity.Property(r => r.DateRegle)
                       .HasColumnName("dateRegle");
+
                 entity.Property(r => r.ChaqueJour)
                       .HasColumnName("chaque_jour");
+
                 entity.Property(r => r.IdEquipement)
                       .HasColumnName("id_equipement");
+
+                // ✅ Une seule fois, type correct
                 entity.Property(r => r.HeureDebut)
                       .HasColumnName("heureDebut")
-                      .HasColumnType("varchar(10)");
+                      .HasColumnType("time");
+
+                // ✅ Une seule fois, type correct
                 entity.Property(r => r.HeureFin)
                       .HasColumnName("heureFin")
-                      .HasColumnType("varchar(10)");
+                      .HasColumnType("time");
 
                 entity.HasOne(r => r.Equipement)
                       .WithMany(e => e.Regles)
@@ -88,15 +96,20 @@ namespace pfa__.net.Data
             {
                 entity.ToTable("condition_historique");
                 entity.HasKey(c => c.Id);
+
                 entity.Property(c => c.Id)
                       .HasColumnName("id")
                       .ValueGeneratedOnAdd();
+
                 entity.Property(c => c.IdRegle)
                       .HasColumnName("id_regle");
+
                 entity.Property(c => c.Valeur)
                       .HasColumnName("valeur");
+
                 entity.Property(c => c.DateHeure)
                       .HasColumnName("date_heure");
+
                 entity.Property(c => c.Source)
                       .HasColumnName("source")
                       .HasDefaultValue("auto");

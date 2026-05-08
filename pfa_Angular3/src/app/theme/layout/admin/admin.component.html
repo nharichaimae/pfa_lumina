@@ -23,8 +23,7 @@
           ></i>
         </button>
 
-        <app-nav-search></app-nav-search>
-      </div>
+<app-nav-search *ngIf="isAdmin()"></app-nav-search>      </div>
 
       <div class="navbar-right">
         <app-nav-right></app-nav-right>

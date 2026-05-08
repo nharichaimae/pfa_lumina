@@ -6,6 +6,8 @@ import {
 } from 'rxjs';
 import { switchMap, catchError, map } from 'rxjs/operators';
 
+
+
 export interface Equipement {
   id: number;
   nom: string;
@@ -51,6 +53,7 @@ export interface MissedNotification {
   confidence: number;
   missedAt: string;
 }
+
 
 @Injectable({ providedIn: 'root' })
 export class AiNotificationService {
@@ -411,7 +414,7 @@ export class AiNotificationService {
             piece: piece.nom,
             pieceId: piece.id,
             confidence: confidenceMap[model] ?? 0,
-            message: `Voulez-vous allumer ${eq.nom} dans ${piece.nom} ?`,
+           message: `AI.SUGGESTION_MSG:${eq.nom}:${piece.nom}`,
             icon: MODEL_TO_ICON[model] ?? 'power',
           });
         }

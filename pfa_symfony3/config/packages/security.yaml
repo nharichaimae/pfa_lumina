@@ -16,13 +16,7 @@ security:
 
         login:
             pattern: ^/api/login
-            stateless: true
-            #json_login:
-                #check_path: /api/login
-               # username_path: email
-                #password_path: password
-               # success_handler: lexik_jwt_authentication.handler.authentication_success
-                #failure_handler: lexik_jwt_authentication.handler.authentication_failure
+            security: false  # Votre AuthController gère le login manuellement
 
         api:
             pattern: ^/api
@@ -30,9 +24,9 @@ security:
             jwt: ~
 
     access_control:
-        - { path: ^/api/login, roles: PUBLIC_ACCESS }
+        - { path: ^/api/login,          roles: PUBLIC_ACCESS }
         - { path: ^/api/forgot-password, roles: PUBLIC_ACCESS }
-        - { path: ^/api/reset-password, roles: PUBLIC_ACCESS }
-        - { path: ^/api/set-password, roles: PUBLIC_ACCESS }
-        - { path: ^/api/admin, roles: ROLE_ADMIN }
-        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/reset-password,  roles: PUBLIC_ACCESS }
+        - { path: ^/api/set-password,    roles: PUBLIC_ACCESS }
+        - { path: ^/api/admin,           roles: ROLE_ADMIN }
+        - { path: ^/api,                 roles: IS_AUTHENTICATED_FULLY }

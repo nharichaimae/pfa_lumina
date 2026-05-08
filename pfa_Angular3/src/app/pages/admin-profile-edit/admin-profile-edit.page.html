@@ -1,8 +1,8 @@
 <div class="container mt-3">
-  <h4>Modifier Profil Admin</h4>
+  <h4>{{ 'PROFILE.EDIT_TITLE' | translate }}</h4>
 
   <div *ngIf="loading$ | async" class="alert alert-info mt-3">
-    Enregistrement...
+    {{ 'COMMON.LOADING' | translate }}
   </div>
 
   <div *ngIf="(error$ | async) as err" class="alert alert-danger mt-3">
@@ -11,26 +11,53 @@
 
   <form class="card mt-3" [formGroup]="form" (ngSubmit)="save()">
     <div class="card-body">
+
+      <!-- Email -->
       <div class="mb-3">
-        <label class="form-label">Email</label>
-        <input class="form-control" formControlName="email" />
-        <div class="text-danger mt-1" *ngIf="form.controls.email.touched && form.controls.email.invalid">
-          Email invalide
+        <label class="form-label">{{ 'CLIENT.EMAIL' | translate }}</label>
+        <input class="form-control" formControlName="email"
+          [class.is-invalid]="form.controls.email.touched && form.controls.email.invalid" />
+        <div class="invalid-feedback"
+          *ngIf="form.controls.email.touched && form.controls.email.invalid">
+          {{ 'LOGIN.EMAIL_INVALID' | translate }}
         </div>
       </div>
 
+      <!-- Nom -->
       <div class="mb-3">
-        <label class="form-label">Nom</label>
-        <input class="form-control" formControlName="nom" />
+        <label class="form-label">{{ 'CLIENT.NOM' | translate }}</label>
+        <input class="form-control" formControlName="nom"
+          [class.is-invalid]="form.controls.nom.touched && form.controls.nom.invalid" />
+        <div class="invalid-feedback"
+          *ngIf="form.controls.nom.touched && form.controls.nom.invalid">
+          {{ 'VALIDATION.MIN_LENGTH' | translate }}
+        </div>
       </div>
 
+      <!-- Prénom -->
       <div class="mb-3">
-        <label class="form-label">Prénom</label>
-        <input class="form-control" formControlName="prenom" />
+        <label class="form-label">{{ 'CLIENT.PRENOM' | translate }}</label>
+        <input class="form-control" formControlName="prenom"
+          [class.is-invalid]="form.controls.prenom.touched && form.controls.prenom.invalid" />
+        <div class="invalid-feedback"
+          *ngIf="form.controls.prenom.touched && form.controls.prenom.invalid">
+          {{ 'VALIDATION.MIN_LENGTH' | translate }}
+        </div>
       </div>
 
-      <button class="btn btn-success" type="submit">Enregistrer</button>
-      <button class="btn btn-secondary ms-2" type="button" (click)="cancel()">Annuler</button>
+      <!-- Actions -->
+      <button class="btn btn-success" type="submit"
+        [disabled]="loading$ | async">
+        <span *ngIf="loading$ | async"
+          class="spinner-border spinner-border-sm me-1" role="status"></span>
+        {{ 'COMMON.SAVE' | translate }}
+      </button>
+
+      <button class="btn btn-secondary ms-2" type="button"
+        (click)="cancel()" [disabled]="loading$ | async">
+        {{ 'COMMON.CANCEL' | translate }}
+      </button>
+
     </div>
   </form>
 </div>

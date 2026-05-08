@@ -3,12 +3,13 @@ import { Router ,RouterModule} from '@angular/router';
 import { ClientService } from '../../services/client.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @Component({
   standalone: true,
   templateUrl: './add-client.html',
-  imports: [CommonModule, FormsModule,RouterModule],
+  imports: [CommonModule, FormsModule,RouterModule,TranslateModule],
 })
 export class AddClientComponent {
 

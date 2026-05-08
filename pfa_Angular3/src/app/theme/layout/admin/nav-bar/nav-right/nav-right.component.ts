@@ -5,11 +5,13 @@ import { AuthService } from 'src/app/services/auth';
 import { CommonModule } from '@angular/common';
 import { AiNotificationService } from 'src/app/ai-notification/ai-notification.service';
 import { Subscription } from 'rxjs';
+import { MyTranslateService } from 'src/app/services/translate.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-nav-right',
   standalone: true,
-  imports: [SharedModule, CommonModule],
+  imports: [SharedModule, CommonModule,TranslateModule],
   templateUrl: './nav-right.component.html',
   styleUrls: ['./nav-right.component.scss'],
   providers: [NgbDropdownConfig]
@@ -24,10 +26,12 @@ export class NavRightComponent implements OnInit, OnDestroy {
   private aiService = inject(AiNotificationService);
   private subscription = new Subscription();
 
-  constructor() {
-    const config = inject(NgbDropdownConfig);
-    config.placement = 'bottom-right';
-  }
+ constructor(
+  public translateService: MyTranslateService,
+  private config: NgbDropdownConfig
+) {
+  this.config.placement = 'bottom-right';
+}
 
   ngOnInit(): void {
     this.userNom = this.authService.getNom() || '';

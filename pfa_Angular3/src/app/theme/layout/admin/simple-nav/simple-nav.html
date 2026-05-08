@@ -5,110 +5,83 @@
     <img src="assets/images/image2.png" alt="Lumina Smart Home" class="brand-logo">
 
     <div class="brand-text">
-      <span class="brand-title">LUMINA</span>
-      <span class="brand-subtitle">SMART HOME</span>
+      <span class="brand-title">{{ 'BRAND.TITLE' | translate }}</span>
+      <span class="brand-subtitle">{{ 'BRAND.SUBTITLE' | translate }}</span>
     </div>
   </div>
 
+  <!-- ADMIN -->
   <ul *ngIf="isAdmin()">
-    <li
-      routerLink="/dashboard"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-      (click)="closeSidebarOnMobile()"
-    >
+    <li routerLink="/dashboard" routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="closeSidebarOnMobile()">
       <i class="feather icon-home"></i>
-      <span>Dashboard</span>
+      <span>{{ 'NAV.DASHBOARD' | translate }}</span>
     </li>
 
-    <li
-      routerLink="/clients"
-      routerLinkActive="active"
-      (click)="closeSidebarOnMobile()"
-    >
+    <li routerLink="/clients" routerLinkActive="active"
+        (click)="closeSidebarOnMobile()">
       <i class="feather icon-users"></i>
-      <span>Comptes</span>
+      <span>{{ 'NAV.ACCOUNTS' | translate }}</span>
     </li>
 
-    <li
-      routerLink="/admin-profile"
-      routerLinkActive="active"
-      (click)="closeSidebarOnMobile()"
-    >
+    <li routerLink="/admin-profile" routerLinkActive="active"
+        (click)="closeSidebarOnMobile()">
       <i class="feather icon-user"></i>
-      <span>Profil</span>
+      <span>{{ 'NAV.PROFILE' | translate }}</span>
     </li>
 
-    <li
-      routerLink="/historique-paiement"
-      routerLinkActive="active"
-      (click)="closeSidebarOnMobile()"
-    >
+    <li routerLink="/admin-historique" routerLinkActive="active"
+        (click)="closeSidebarOnMobile()">
       <i class="feather icon-credit-card"></i>
-      <span>Paiement</span>
+      <span>{{ 'NAV.PAYMENT' | translate }}</span>
     </li>
   </ul>
 
+  <!-- CLIENT -->
   <ul *ngIf="isClient()">
-    <li
-      routerLink="/client-dash"
-      routerLinkActive="active"
-      (click)="closeSidebarOnMobile()"
-    >
+    <li routerLink="/client-dash" routerLinkActive="active"
+        (click)="closeSidebarOnMobile()">
       <i class="feather icon-home"></i>
-      <span>Dashboard</span>
+      <span>{{ 'NAV.DASHBOARD' | translate }}</span>
     </li>
 
-    <li
-      routerLink="/client-profile"
-      routerLinkActive="active"
-      (click)="closeSidebarOnMobile()"
-    >
+    <li routerLink="/client-profile" routerLinkActive="active"
+        (click)="closeSidebarOnMobile()">
       <i class="feather icon-user"></i>
-      <span>Profil</span>
+      <span>{{ 'NAV.PROFILE' | translate }}</span>
     </li>
 
-    <li
-      routerLink="/pieces"
-      routerLinkActive="active"
-      (click)="closeSidebarOnMobile()"
-    >
+    <li routerLink="/pieces" routerLinkActive="active"
+        (click)="closeSidebarOnMobile()">
       <i class="feather icon-plus-square"></i>
-      <span>Piece</span>
+      <span>{{ 'NAV.PIECE' | translate }}</span>
     </li>
 
-    <li
-      routerLink="/client-historique"
-      routerLinkActive="active"
-      (click)="closeSidebarOnMobile()"
-    >
+    <li routerLink="/client-historique" routerLinkActive="active"
+        (click)="closeSidebarOnMobile()">
       <i class="feather icon-credit-card"></i>
-      <span>Historique Paiement</span>
+      <span>{{ 'NAV.HISTORIC_PAYMENT' | translate }}</span>
     </li>
 
-    <li
-      routerLink="/paiement"
-      routerLinkActive="active"
-      (click)="closeSidebarOnMobile()"
-    >
+    <li routerLink="/paiement" routerLinkActive="active"
+        (click)="closeSidebarOnMobile()">
       <i class="feather icon-credit-card"></i>
-      <span>Paiement</span>
+      <span>{{ 'NAV.PAYMENT' | translate }}</span>
     </li>
 
-    <li
-      routerLink="/abonnement"
-      routerLinkActive="active"
-      (click)="closeSidebarOnMobile()"
-    >
+    <li routerLink="/abonnement" routerLinkActive="active"
+        (click)="closeSidebarOnMobile()">
       <i class="feather icon-package"></i>
-      <span>Abonnement</span>
+      <span>{{ 'NAV.SUBSCRIPTION' | translate }}</span>
     </li>
   </ul>
 
+  <!-- LOGOUT -->
   <div class="logout">
     <button (click)="logout()">
       <i class="feather icon-log-out"></i>
-      <span>Déconnexion</span>
+      <span>{{ 'NAV.LOGOUT' | translate }}</span>
     </button>
   </div>
 </nav>

@@ -1,43 +1,36 @@
 <div class="card">
   <div class="card-header">
-    <h5>Modifier le profil</h5>
+    <h5>{{ 'PROFILE.EDIT_TITLE' | translate }}</h5>
   </div>
-
   <div class="card-body">
     <form [formGroup]="form" (ngSubmit)="save()">
-
       <div class="form-group">
-        <label>Email</label>
+        <label>{{ 'CLIENT.EMAIL' | translate }}</label>
         <input class="form-control" formControlName="email" disabled />
       </div>
-
       <div class="form-group">
-        <label>Nom</label>
+        <label>{{ 'CLIENT.NOM' | translate }}</label>
         <input class="form-control" formControlName="nom" />
       </div>
-
       <div class="form-group">
-        <label>Prénom</label>
+        <label>{{ 'CLIENT.PRENOM' | translate }}</label>
         <input class="form-control" formControlName="prenom" />
       </div>
-
       <div class="form-group">
-        <label>Téléphone</label>
+        <label>{{ 'CLIENT.TELEPHONE' | translate }}</label>
         <input class="form-control" formControlName="telephone" />
       </div>
-
       <div class="form-group">
-        <label>CIN</label>
+        <label>{{ 'CLIENT.CIN' | translate }}</label>
         <input class="form-control" formControlName="cin" />
       </div>
-
       <div class="form-group">
-        <label>Nouveau mot de passe</label>
+        <label>{{ 'PROFILE.NEW_PASSWORD' | translate }}</label>
         <input type="password" class="form-control" formControlName="password" />
       </div>
-
-      <button class="btn btn-success mt-3">Enregistrer</button>
-
+      <button class="btn btn-success mt-3">
+        {{ 'COMMON.SAVE' | translate }}
+      </button>
     </form>
   </div>
 </div>

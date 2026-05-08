@@ -1,25 +1,22 @@
 import { enableProdMode, importProvidersFrom } from '@angular/core';
-import { environment } from './environments/environment';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
-import { provideAnimations } from '@angular/platform-browser/animations';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
-import { routes } from './app/app.routes';
-import { AppRoutingModule } from './app/app-routing.module';
-import { AppComponent } from './app/app.component';
-import { loadingInterceptor } from './app/interceptors/loading.interceptor';
-import { httpInterceptorProviders } from './app/services/interceptors';
+import { provideHttpClient } from '@angular/common/http';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { environment } from './environments/environment';
 
-if (environment.production) {
-  enableProdMode();
-}
+import { AppComponent } from './app/app.component';
+import { routes } from './app/app.routes';
+import { translateProviders } from './app/translate.config';
+
+if (environment.production) enableProdMode();
 
 bootstrapApplication(AppComponent, {
-  providers: [
-    importProvidersFrom(BrowserModule, AppRoutingModule),
-    provideAnimations(),
+ providers: [
+    provideHttpClient(), // 1️⃣ INDISPENSABLE de le mettre en premier
+    translateProviders,   // 2️⃣ La config i18n utilise HttpClient
+    importProvidersFrom(BrowserModule),
     provideRouter(routes),
-    provideHttpClient(withInterceptors([loadingInterceptor])),
-    ...httpInterceptorProviders
+    provideAnimations()
   ]
 }).catch(err => console.error(err));

@@ -1,23 +1,18 @@
-body {
-  font-family: "Inter", sans-serif;
-  background: linear-gradient(135deg,#667eea,#764ba2);
-  min-height: 100vh;
-  margin: 0;
-}
-
 .payment-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  padding: 40px 20px;
 }
 
 .payment-card {
   background: white;
   padding: 35px;
-  width: 360px;
-  border-radius: 14px;
-  box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+  width: 100%;
+  max-width: 400px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
   animation: fadeIn 0.5s ease;
 }
 
@@ -26,81 +21,129 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.title {
+.header-section {
   text-align: center;
-  margin-bottom: 5px;
-  font-size: 22px;
+  margin-bottom: 25px;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
   color: #1a1f36;
 }
 
 .subtitle {
-  text-align: center;
-  color: #777;
-  margin-bottom: 25px;
+  color: #718096;
+  margin: 8px 0 0;
   font-size: 14px;
+}
+
+.divider {
+  height: 3px;
+  width: 40px;
+  background: #a8cae4;
+  margin: 15px auto 0;
+  border-radius: 2px;
 }
 
 .form-group {
   margin-bottom: 20px;
 }
 
-label {
-  font-weight: 500;
+.input-label {
   display: block;
-  margin-bottom: 6px;
-  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: #4a5568;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Style Input Email */
+.input-container {
+  position: relative;
+}
+
+.input-container i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #a0aec0;
 }
 
 input {
   width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+  padding: 12px 12px 12px 40px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e0;
   font-size: 14px;
   transition: 0.3s;
 }
 
 input:focus {
   outline: none;
-  border-color: #6772e5;
-  box-shadow: 0 0 0 2px rgba(103,114,229,0.2);
+  border-color: #7188a9;
+  box-shadow: 0 0 0 3px rgba(113, 136, 169, 0.1);
 }
 
-.card-input {
-  border: 1px solid #ddd;
-  padding: 12px;
-  border-radius: 8px;
-  background: #fafafa;
+/* Zone Stripe */
+.stripe-card-box {
+  border: 1px solid #cbd5e0;
+  padding: 14px;
+  border-radius: 10px;
+  background: #ffffff;
+  min-height: 45px;
   transition: 0.3s;
 }
 
-.card-input:focus-within {
-  border-color: #6772e5;
-  box-shadow: 0 0 0 2px rgba(103,114,229,0.2);
+.stripe-card-box:focus-within {
+  border-color: #7188a9;
+  box-shadow: 0 0 0 3px rgba(113, 136, 169, 0.1);
 }
 
+/* Bouton avec votre dégradé personnalisé */
 .pay-button {
   width: 100%;
-  padding: 12px;
-  background: linear-gradient(135deg,#6772e5,#5469d4);
+  padding: 15px;
+  background: linear-gradient(180deg, #a8cae4 0%, #7188a9 50%, #496489 100%);
   border: none;
   color: white;
-  font-size: 15px;
-  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   transition: 0.3s;
 }
 
-.pay-button:hover {
+.pay-button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.pay-button:active {
-  transform: scale(0.98);
+  box-shadow: 0 5px 15px rgba(73, 100, 137, 0.3);
 }
 
 .pay-button:disabled {
-  background: #a5b4fc;
+  opacity: 0.6;
   cursor: not-allowed;
+  filter: grayscale(0.5);
+}
+
+/* Footer sécurisé */
+.secure-footer {
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #718096;
+  font-size: 12px;
+}
+
+.secure-footer i {
+  color: #48bb78;
 }

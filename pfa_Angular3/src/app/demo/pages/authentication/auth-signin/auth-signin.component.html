@@ -17,7 +17,7 @@
             <i class="feather icon-unlock auth-icon"></i>
           </div>
 
-          <h3 class="mb-4">Connexion</h3>
+          <h3 class="mb-4">{{ 'LOGIN.TITLE' | translate }}</h3>
 
           <!-- EMAIL -->
           <div class="input-group mb-3 position-relative">
@@ -25,13 +25,17 @@
               type="email"
               formControlName="email"
               class="form-control"
-              placeholder="Email Address"
+              [placeholder]="'LOGIN.EMAIL' | translate"
               [class.is-invalid]="submitted && email()?.invalid"
             />
 
             <div *ngIf="submitted && email()?.invalid" class="invalid-feedback d-block">
-              <div *ngIf="email()?.errors?.['required']">Email requis</div>
-              <div *ngIf="email()?.errors?.['email']">Email invalide</div>
+              <div *ngIf="email()?.errors?.['required']">
+                {{ 'LOGIN.EMAIL_REQUIRED' | translate }}
+              </div>
+              <div *ngIf="email()?.errors?.['email']">
+                {{ 'LOGIN.EMAIL_INVALID' | translate }}
+              </div>
             </div>
           </div>
 
@@ -41,7 +45,7 @@
               [type]="showPassword ? 'text' : 'password'"
               formControlName="password"
               class="form-control"
-              placeholder="Mot de passe"
+              [placeholder]="'LOGIN.PASSWORD' | translate"
               [class.is-invalid]="submitted && password()?.invalid"
             />
 
@@ -52,35 +56,42 @@
             ></i>
 
             <div *ngIf="submitted && password()?.invalid" class="invalid-feedback d-block">
-              <div *ngIf="password()?.errors?.['required']">Mot de passe requis</div>
-              <div *ngIf="password()?.errors?.['minlength']">Minimum 8 caractères</div>
+              <div *ngIf="password()?.errors?.['required']">
+                {{ 'LOGIN.PASSWORD_REQUIRED' | translate }}
+              </div>
+              <div *ngIf="password()?.errors?.['minlength']">
+                {{ 'LOGIN.PASSWORD_MIN' | translate }}
+              </div>
             </div>
           </div>
-           
+
           <!-- CHECKBOX -->
           <div class="form-group text-start mb-3">
             <div class="checkbox checkbox-fill d-inline">
               <input type="checkbox" id="saveDetails" />
-              <label for="saveDetails" class="cr">Se souvenir de moi</label>
+              <label for="saveDetails" class="cr">
+                {{ 'LOGIN.REMEMBER' | translate }}
+              </label>
             </div>
           </div>
-          <!-- FORGOT PASSWORD LINK -->
+
+          <!-- FORGOT PASSWORD -->
           <div class="text-start mb-3">
             <a
               href="javascript:void(0)"
               class="text-primary"
               (click)="openForgotPassword()"
             >
-              Mot de passe oublié ?
+              {{ 'LOGIN.FORGOT' | translate }}
             </a>
           </div>
 
           <!-- BUTTON -->
           <button type="submit" class="btn btn-primary w-100 mb-3">
-            Login
+            {{ 'LOGIN.BUTTON' | translate }}
           </button>
 
-          <!-- ERROR MESSAGE -->
+          <!-- ERROR -->
           <div class="text-danger">{{ errorMessage }}</div>
         </form>
 
@@ -91,9 +102,10 @@
             <i class="feather icon-mail auth-icon"></i>
           </div>
 
-          <h3 class="mb-3">Mot de passe oublié</h3>
+          <h3 class="mb-3">{{ 'FORGOT.TITLE' | translate }}</h3>
+
           <p class="mb-4 text-muted">
-            Entrez votre email pour recevoir un lien de réinitialisation
+            {{ 'FORGOT.DESCRIPTION' | translate }}
           </p>
 
           <div class="input-group mb-3 position-relative">
@@ -101,22 +113,26 @@
               type="email"
               formControlName="email"
               class="form-control"
-              placeholder="Votre email"
+              [placeholder]="'FORGOT.EMAIL' | translate"
               [class.is-invalid]="forgotSubmitted && forgotEmail()?.invalid"
             />
 
             <div *ngIf="forgotSubmitted && forgotEmail()?.invalid" class="invalid-feedback d-block">
-              <div *ngIf="forgotEmail()?.errors?.['required']">Email requis</div>
-              <div *ngIf="forgotEmail()?.errors?.['email']">Email invalide</div>
+              <div *ngIf="forgotEmail()?.errors?.['required']">
+                {{ 'FORGOT.EMAIL_REQUIRED' | translate }}
+              </div>
+              <div *ngIf="forgotEmail()?.errors?.['email']">
+                {{ 'FORGOT.EMAIL_INVALID' | translate }}
+              </div>
             </div>
           </div>
 
           <button type="submit" class="btn btn-primary w-100 mb-2">
-            Envoyer
+            {{ 'FORGOT.SEND' | translate }}
           </button>
 
           <button type="button" class="btn btn-light w-100 mb-3" (click)="closeForgotPassword()">
-            Retour
+            {{ 'FORGOT.BACK' | translate }}
           </button>
 
           <div class="text-success" *ngIf="forgotSuccessMessage">

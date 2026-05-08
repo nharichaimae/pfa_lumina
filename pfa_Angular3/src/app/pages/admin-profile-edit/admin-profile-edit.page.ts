@@ -5,11 +5,13 @@ import { RouterModule, Router } from '@angular/router';
 import { AdminProfileFacade } from '../../facades/admin-profile.facade';
 import { AuthService } from '../../services/auth';
 import { take } from 'rxjs/operators';
+import { TranslateModule } from '@ngx-translate/core';
+import { AdminUpdateDto } from 'src/app/dto/admin/admin-update.dto';
 
 @Component({
   standalone: true,
   selector: 'app-admin-profile-edit-page',
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, TranslateModule],
   templateUrl: './admin-profile-edit.page.html'
 })
 export class AdminProfileEditPage implements OnInit {
@@ -55,19 +57,23 @@ export class AdminProfileEditPage implements OnInit {
       });
     });
   }
-
-  save(): void {
-    if (this.form.invalid) {
-      this.form.markAllAsTouched();
-      return;
-    }
-
-    this.facade.updateProfile(this.adminId, this.form.value, () => {
-      this.router.navigate(['/admin-profile']);
-    });
+save(): void {
+  if (this.form.invalid) {
+    this.form.markAllAsTouched();
+    return;
   }
+  const raw = this.form.value;
+  const dto: AdminUpdateDto = {
+    email: raw.email ?? undefined,
+    nom: raw.nom ?? undefined,
+    prenom: raw.prenom ?? undefined,
+  };
+  this.facade.updateProfile(this.adminId, dto, () => {
+    this.router.navigate(['/admin-profile']);  // ✅ après save → retour au profil
+  });
+}
 
-  cancel(): void {
-    this.router.navigate(['/admin-profile']);
-  }
+cancel(): void {
+  this.router.navigate(['/admin-profile']);  // ✅ corrigé
+}
 }

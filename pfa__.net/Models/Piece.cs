@@ -8,6 +8,7 @@ namespace pfa__.net.Models
     {
         [Key]
         [Column("id_piece")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // ✅ AJOUT
         public int Id_Piece { get; set; }
 
         [Required]
@@ -19,9 +20,8 @@ namespace pfa__.net.Models
         public int type_id { get; set; }
 
         [ForeignKey(nameof(type_id))]
-        public PieceType PieceType { get; set; } 
+        public PieceType? PieceType { get; set; }
 
-        // user id 
         [Column("id")]
         public int? Id { get; set; }
 

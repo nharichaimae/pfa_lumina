@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaiementService } from '../services/paiement.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-historique',
   standalone: true,
-  imports: [CommonModule],   
+  imports: [CommonModule,TranslateModule],   
   templateUrl: './historique-paiement.html',
   styleUrls: ['./historique-paiement.scss']
 })
-export class HistoriqueComponent implements OnInit {
+export class HistoriqueAdminComponent implements OnInit {
 
   historique: any[] = [];
 

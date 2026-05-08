@@ -2,64 +2,134 @@
   <div class="auth-content">
     <div class="card">
       <div class="card-body text-center">
-        <h3 class="mb-4">Ajouter un client</h3>
+
+        <h3 class="mb-4">
+          {{ 'CLIENT.ADD_TITLE' | translate }}
+        </h3>
+
         <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+          <!-- NOM -->
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Nom"
-              name="nom" [(ngModel)]="client.nom" #nomCtrl="ngModel" required />
-            <div class="text-danger" *ngIf="nomCtrl.invalid && (nomCtrl.dirty || nomCtrl.touched)">
-              Le nom est obligatoire.
+            <input type="text" class="form-control"
+              [placeholder]="'CLIENT.NOM' | translate"
+              name="nom" [(ngModel)]="client.nom"
+              #nomCtrl="ngModel" required />
+
+            <div class="text-danger"
+              *ngIf="nomCtrl.invalid && (nomCtrl.dirty || nomCtrl.touched)">
+              {{ 'CLIENT.ERROR_NOM' | translate }}
             </div>
           </div>
+
+          <!-- PRENOM -->
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Prénom"
-              name="prenom" [(ngModel)]="client.prenom" #prenomCtrl="ngModel" required />
-            <div class="text-danger" *ngIf="prenomCtrl.invalid && (prenomCtrl.dirty || prenomCtrl.touched)">
-              Le prénom est obligatoire.
+            <input type="text" class="form-control"
+              [placeholder]="'CLIENT.PRENOM' | translate"
+              name="prenom" [(ngModel)]="client.prenom"
+              #prenomCtrl="ngModel" required />
+
+            <div class="text-danger"
+              *ngIf="prenomCtrl.invalid && (prenomCtrl.dirty || prenomCtrl.touched)">
+              {{ 'CLIENT.ERROR_PRENOM' | translate }}
             </div>
           </div>
+
+          <!-- EMAIL -->
           <div class="input-group mb-3">
-            <input type="email" class="form-control" placeholder="Email"
-              name="email" [(ngModel)]="client.email" #emailCtrl="ngModel" required email />
-            <div class="text-danger" *ngIf="emailCtrl.invalid && (emailCtrl.dirty || emailCtrl.touched)">
-              <div *ngIf="emailCtrl.errors?.required">L'email est obligatoire.</div>
-              <div *ngIf="emailCtrl.errors?.email">L'email n'est pas valide.</div>
+            <input type="email" class="form-control"
+              [placeholder]="'CLIENT.EMAIL' | translate"
+              name="email" [(ngModel)]="client.email"
+              #emailCtrl="ngModel" required email />
+
+            <div class="text-danger"
+              *ngIf="emailCtrl.invalid && (emailCtrl.dirty || emailCtrl.touched)">
+
+              <div *ngIf="emailCtrl.errors?.required">
+                {{ 'CLIENT.ERROR_EMAIL_REQUIRED' | translate }}
+              </div>
+
+              <div *ngIf="emailCtrl.errors?.email">
+                {{ 'CLIENT.ERROR_EMAIL_INVALID' | translate }}
+              </div>
+
             </div>
           </div>
+
+          <!-- PASSWORD -->
           <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Mot de passe"
-              name="password" [(ngModel)]="client.password" #passwordCtrl="ngModel" required minlength="8" />
-            <div class="text-danger" *ngIf="passwordCtrl.invalid && (passwordCtrl.dirty || passwordCtrl.touched)">
-              <div *ngIf="passwordCtrl.errors?.required">Le mot de passe est obligatoire.</div>
-              <div *ngIf="passwordCtrl.errors?.minlength">Le mot de passe doit contenir au moins 8 caractères.</div>
+            <input type="password" class="form-control"
+              [placeholder]="'CLIENT.PASSWORD' | translate"
+              name="password" [(ngModel)]="client.password"
+              #passwordCtrl="ngModel" required minlength="8" />
+
+            <div class="text-danger"
+              *ngIf="passwordCtrl.invalid && (passwordCtrl.dirty || passwordCtrl.touched)">
+
+              <div *ngIf="passwordCtrl.errors?.required">
+                {{ 'CLIENT.ERROR_PASSWORD_REQUIRED' | translate }}
+              </div>
+
+              <div *ngIf="passwordCtrl.errors?.minlength">
+                {{ 'CLIENT.ERROR_PASSWORD_MIN' | translate }}
+              </div>
+
             </div>
           </div>
+
+          <!-- TELEPHONE -->
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Téléphone"
-              name="telephone" [(ngModel)]="client.telephone" #telCtrl="ngModel" required pattern="[0-9]{10}" />
-            <div class="text-danger" *ngIf="telCtrl.invalid && (telCtrl.dirty || telCtrl.touched)">
-              <div *ngIf="telCtrl.errors?.required">Le téléphone est obligatoire.</div>
-              <div *ngIf="telCtrl.errors?.pattern">Le téléphone doit contenir 10 chiffres.</div>
+            <input type="text" class="form-control"
+              [placeholder]="'CLIENT.TELEPHONE' | translate"
+              name="telephone" [(ngModel)]="client.telephone"
+              #telCtrl="ngModel" required pattern="[0-9]{10}" />
+
+            <div class="text-danger"
+              *ngIf="telCtrl.invalid && (telCtrl.dirty || telCtrl.touched)">
+
+              <div *ngIf="telCtrl.errors?.required">
+                {{ 'CLIENT.ERROR_TEL_REQUIRED' | translate }}
+              </div>
+
+              <div *ngIf="telCtrl.errors?.pattern">
+                {{ 'CLIENT.ERROR_TEL_PATTERN' | translate }}
+              </div>
+
             </div>
           </div>
+
+          <!-- CIN -->
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="CIN"
-              name="cin" [(ngModel)]="client.cin" #cinCtrl="ngModel" required />
-            <div class="text-danger" *ngIf="cinCtrl.invalid && (cinCtrl.dirty || cinCtrl.touched)">
-              Le CIN est obligatoire.
+            <input type="text" class="form-control"
+              [placeholder]="'CLIENT.CIN' | translate"
+              name="cin" [(ngModel)]="client.cin"
+              #cinCtrl="ngModel" required />
+
+            <div class="text-danger"
+              *ngIf="cinCtrl.invalid && (cinCtrl.dirty || cinCtrl.touched)">
+              {{ 'CLIENT.ERROR_CIN' | translate }}
             </div>
           </div>
+
+          <!-- PHOTO -->
           <div class="input-group mb-4">
-            <input type="file" class="form-control" accept="image/*" (change)="onFileSelected($event)" />
+            <input type="file" class="form-control"
+              accept="image/*"
+              (change)="onFileSelected($event)" />
           </div>
-          <button type="submit" class="btn btn-primary w-100" [disabled]="f.invalid">
-            Ajouter le client
+
+          <!-- BUTTON -->
+          <button type="submit" class="btn btn-primary w-100"
+            [disabled]="f.invalid">
+            {{ 'CLIENT.SUBMIT' | translate }}
           </button>
 
         </form>
 
         <p class="mt-3 text-muted">
-          <a routerLink="/clients">← Retour à la liste</a>
+          <a routerLink="/clients">
+            {{ 'CLIENT.BACK' | translate }}
+          </a>
         </p>
 
       </div>

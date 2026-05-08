@@ -13,6 +13,13 @@ namespace pfa__.net.Models
         [Column("nom")]
         public string Nom { get; set; } = string.Empty;
 
+        // ✅ Nouveaux champs pour la traduction
+        [Column("nom_fr")]
+        public string NomFr { get; set; } = string.Empty;
+
+        [Column("nom_en")]
+        public string NomEn { get; set; } = string.Empty;
+
         [Column("icon")]
         public string Icon { get; set; } = string.Empty;
     }

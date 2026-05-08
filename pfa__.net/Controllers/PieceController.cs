@@ -27,10 +27,10 @@ namespace pfa__.net.Controllers
             int newPieceId = await _pieceRepository.AddPieceAsync(piece);
 
             return CreatedAtAction(
-    nameof(GetPiecesByUser),
-    new { id = newPieceId },
-    new { message = "Pièce ajoutée", pieceId = newPieceId }
-);
+                nameof(GetPiecesByUser),
+                new { id = newPieceId },
+                new { message = "Pièce ajoutée", pieceId = newPieceId }
+            );
         }
 
         [HttpGet("pieces")]
@@ -41,7 +41,6 @@ namespace pfa__.net.Controllers
                 return Unauthorized(new { message = "JWT invalide ou manquant" });
 
             var pieces = await _pieceRepository.ListerPiece(userId.Value);
-
             var piecesDto = pieces
                 .Select(p => PieceMapper.ToDto(p))
                 .ToList();
@@ -57,29 +56,25 @@ namespace pfa__.net.Controllers
                 return Unauthorized(new { message = "JWT invalide ou manquant" });
 
             var result = await _pieceRepository.SupprimerPieceAsync(id);
-
             if (!result)
                 return NotFound(new { message = "Pièce non trouvée" });
 
             return NoContent();
         }
 
-
         [HttpGet("piecetypes")]
         public async Task<IActionResult> GetPieceTypes()
         {
             var types = await _pieceRepository.GetPieceTypesAsync();
-
             var result = types.Select(t => new
             {
                 id_type = t.id_type,
-                nom = t.Nom,
-                icon = t.Icon
+                nomFr   = t.NomFr,
+                nomEn   = t.NomEn,
+                icon    = t.Icon
             });
-
-            return Ok(result);
+            return Ok(result); // ✅ un seul return, pas deux
         }
-        //duplicate 
 
         [HttpPost("piece/{id}/duplicate")]
         public async Task<IActionResult> DuplicatePiece(int id)
@@ -88,15 +83,13 @@ namespace pfa__.net.Controllers
             if (userId == null)
                 return Unauthorized(new { message = "JWT invalide ou manquant" });
 
-
             int newPieceId = await _pieceRepository.DuplicatePieceAsync(id, userId.Value);
+
             return CreatedAtAction(
                 nameof(GetPiecesByUser),
                 new { id = newPieceId },
                 new { message = "Pièce dupliquée", pieceId = newPieceId }
             );
-
-
         }
     }
 }

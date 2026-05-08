@@ -38,18 +38,34 @@ namespace pfa__.net.Controllers
             return Ok(RegleMapper.ToDto(regle));
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create([FromBody] RegleCreateDto dto)
-        {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
+       [HttpPost]
+public async Task<IActionResult> Create([FromBody] RegleCreateDto dto)
+{
+    if (!ModelState.IsValid)
+        return BadRequest(ModelState);
 
-            // ✅ Créer directement sans supprimer les anciennes
-            var model = RegleMapper.ToModel(dto);
-            var created = await _regleRepository.CreateAsync(model);
-            var withEquipement = await _regleRepository.GetByIdAsync(created.IdRegle);
-            return CreatedAtAction(nameof(GetById), new { id = created.IdRegle },
-                RegleMapper.ToDto(withEquipement!));
-        }
+    try
+    {
+        var model = RegleMapper.ToModel(dto);
+
+        var created = await _regleRepository.CreateAsync(model);
+
+        var result = await _regleRepository.GetByIdAsync(created.IdRegle);
+
+        if (result == null)
+            return StatusCode(500, "Erreur lors de la création");
+
+        return CreatedAtAction(
+            nameof(GetById),
+            new { id = result.IdRegle },
+            RegleMapper.ToDto(result)
+        );
+    }
+    catch (FormatException)
+    {
+        return BadRequest("Format d'heure invalide (HH:mm ou HH:mm:ss attendu)");
+    }
+}
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)

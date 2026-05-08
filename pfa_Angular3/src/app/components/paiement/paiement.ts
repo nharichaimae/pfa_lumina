@@ -3,13 +3,15 @@ import { StripeService } from '../../services/StripeService';
 import { loadStripe, Stripe, StripeCardElement, StripeElements } from '@stripe/stripe-js';
 import { AuthService } from '../../services/auth';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-paiement',
   templateUrl: './paiement.component.html',
   styleUrls: ['./paiement.component.css'],
+  imports: [CommonModule, ReactiveFormsModule, TranslateModule],
   
 })
 export class PaiementComponent implements OnInit {

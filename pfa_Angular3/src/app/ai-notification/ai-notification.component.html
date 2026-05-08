@@ -3,11 +3,10 @@
   <div class="ai-notif-header">
     <span class="ai-badge">
       <span class="ai-dot"></span>
-      AI Suggestions
+      {{ 'AI.NOTIFICATIONS_TITLE' | translate }}
     </span>
     <span class="notif-count">{{ suggestions.length }}</span>
   </div>
-
 
   <div class="ai-notif-card"
        *ngFor="let s of suggestions; trackBy: trackBySuggestion">
@@ -27,12 +26,17 @@
         <span class="material-icons">close</span>
       </button>
     </div>
+
     <div class="card-divider"></div>
 
-    <p class="notif-message">{{ s.message }}</p>
+<p class="suggestion-message">
+  {{ 'AI.SUGGESTION_MSG' | translate: { nom: s.nom, piece: s.piece } }}
+</p>
 
     <div class="confidence-bar-wrap">
-      <span class="confidence-label">Confiance IA</span>
+      <span class="confidence-label">
+        {{ 'AI.CONFIDENCE' | translate }}
+      </span>
 
       <div class="confidence-bar">
         <div class="confidence-fill"
@@ -50,43 +54,34 @@
     <div class="card-actions">
       <button class="btn-confirm" (click)="confirm(s)">
         <span class="material-icons">check</span>
-        Oui, allumer
+        {{ 'AI.ON_BUTTON' | translate }}
       </button>
     </div>
 
-
     <div class="timer-bar-wrap">
-      <!--<div class="timer-track">
-        <div class="timer-fill"
-             [style.width]="getTimerPercent(s.timeLeft)">
-        </div>
-      </div>-->
       <span class="timer-lbl">{{ formatTime(s.timeLeft) }}</span>
     </div>
 
   </div>
-
 </div>
 
-<!-- Panneau notifications manquées -->
+<!-- Missed panel -->
 <div class="missed-panel" *ngIf="showMissedPanel">
 
   <div class="missed-panel-header">
     <span class="material-icons">notifications</span>
-    Notifications manquées
+    {{ 'AI.MISSED_TITLE' | translate }}
 
     <button class="btn-close-panel" (click)="toggleMissedPanel()">
       <span class="material-icons">close</span>
     </button>
   </div>
 
-  <!-- Aucune -->
   <div *ngIf="missedNotifs.length === 0"
        style="padding:16px; font-size:13px; color:#718096;">
-    Aucune notification manquée
+    {{ 'AI.NO_MISSED' | translate }}
   </div>
 
-  <!-- Liste -->
   <div *ngFor="let m of missedNotifs" class="missed-item">
 
     <div class="missed-item-header">
@@ -102,20 +97,21 @@
       </span>
     </div>
 
-    <p class="missed-message">{{ m.message }}</p>
+    <p class="missed-message">
+  {{ 'AI.SUGGESTION_MSG' | translate: { nom: m.nom, piece: m.piece } }}
+</p>
 
     <div class="missed-actions">
       <button class="btn-missed-confirm" (click)="confirmMissed(m)">
         <span class="material-icons">check</span>
-        Oui
+        {{ 'AI.YES' | translate }}
       </button>
 
       <button class="btn-missed-reject" (click)="rejectMissed(m)">
         <span class="material-icons">close</span>
-        Non
+        {{ 'AI.NO' | translate }}
       </button>
     </div>
 
   </div>
-
 </div>

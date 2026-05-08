@@ -1,19 +1,23 @@
-<h1 class="dashboard-title">Dashboard Administrateur</h1>
+<h1 class="dashboard-title">
+  {{ 'DASHBOARD.TITLE' | translate }}
+</h1>
 
 <!-- CARDS -->
 <div class="row g-4 mt-2">
   <div
     class="col-xl-3 col-md-6"
     *ngFor="let card of [
-      { label: 'Utilisateurs', value: data?.totalUsers, color: 'primary' },
-      { label: 'Clients', value: data?.totalClients, color: 'info' },
-      { label: 'Clients actifs', value: data?.activeClients, color: 'success' },
-      { label: 'Clients inactifs', value: data?.inactiveClients, color: 'danger' }
+      { label: 'USERS', value: data?.totalUsers, color: 'primary' },
+      { label: 'CLIENTS', value: data?.totalClients, color: 'info' },
+      { label: 'ACTIVE_CLIENTS', value: data?.activeClients, color: 'success' },
+      { label: 'INACTIVE_CLIENTS', value: data?.inactiveClients, color: 'danger' }
     ]"
   >
     <div class="stat-card">
       <div class="stat-value">{{ card.value }}</div>
-      <div class="stat-label">{{ card.label }}</div>
+      <div class="stat-label">
+        {{ ('DASHBOARD.' + card.label) | translate }}
+      </div>
     </div>
   </div>
 </div>
@@ -23,10 +27,13 @@
 <!-- GRAPHIQUES -->
 <div class="row g-4 mt-4">
 
-  <!-- Ligne 1 : 2 graphes -->
+  <!-- Ligne 1 -->
   <div class="col-xl-6 col-md-6">
     <div class="chart-card">
-      <h5 class="chart-title">Utilisateurs par rôle</h5>
+      <h5 class="chart-title">
+        {{ 'DASHBOARD.ROLES' | translate }}
+      </h5>
+
       <apx-chart
         [series]="rolesChart.series"
         [chart]="rolesChart.chart"
@@ -37,7 +44,10 @@
 
   <div class="col-xl-6 col-md-6">
     <div class="chart-card">
-      <h5 class="chart-title">Totaux</h5>
+      <h5 class="chart-title">
+        {{ 'DASHBOARD.TOTALS' | translate }}
+      </h5>
+
       <apx-chart
         [series]="totalsChart.series"
         [chart]="totalsChart.chart"
@@ -46,19 +56,21 @@
     </div>
   </div>
 
-  <!-- Ligne 2 : 1 graphe centré -->
+  <!-- Ligne 2 -->
   <div class="col-xl-6 col-md-8 mx-auto">
     <div class="chart-card">
-      <h5 class="chart-title text-center">Clients par mois</h5>
+      <h5 class="chart-title text-center">
+        {{ 'DASHBOARD.CLIENTS_BY_MONTH' | translate }}
+      </h5>
+
       <apx-chart
-  *ngIf="clientsChart.series?.length"
-  [series]="clientsChart.series"
-  [chart]="clientsChart.chart"
-  [xaxis]="clientsChart.xaxis">
-</apx-chart>
+        *ngIf="clientsChart.series?.length"
+        [series]="clientsChart.series"
+        [chart]="clientsChart.chart"
+        [xaxis]="clientsChart.xaxis">
+      </apx-chart>
 
     </div>
   </div>
 
 </div>
-
