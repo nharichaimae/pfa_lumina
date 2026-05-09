@@ -1,23 +1,23 @@
 <div class="payment-wrapper">
   <div class="payment-card">
 
-    <h2 class="title">Abonnement</h2>
-    <p class="subtitle">Souscrivez facilement à votre offre</p>
+    <h2 class="title">{{ 'SUBSCRIPTION.TITLE' | translate }}</h2>
+    <p class="subtitle">{{ 'SUBSCRIPTION.SUBTITLE' | translate }}</p>
 
     <form [formGroup]="abonnementForm" (ngSubmit)="creerAbonnement()">
 
       <div class="form-group">
-        <label>Email</label>
-        <input type="email" formControlName="email" placeholder="exemple@email.com">
+        <label>{{ 'SUBSCRIPTION.EMAIL' | translate }}</label>
+        <input type="email" formControlName="email" [placeholder]="'SUBSCRIPTION.EMAIL_PLACEHOLDER' | translate">
       </div>
 
       <div class="form-group">
-        <label>Carte bancaire</label>
+        <label>{{ 'SUBSCRIPTION.CARD' | translate }}</label>
         <div id="card-element" class="card-input"></div>
       </div>
 
       <button class="pay-button" type="submit" [disabled]="abonnementForm.invalid">
-        Créer Abonnement
+        {{ 'SUBSCRIPTION.CREATE' | translate }}
       </button>
 
     </form>

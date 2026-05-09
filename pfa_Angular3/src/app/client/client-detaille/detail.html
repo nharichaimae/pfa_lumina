@@ -1,6 +1,6 @@
 <ng-container *ngIf="loading$ | async; else content">
   <div class="text-center p-5">
-    Chargement...
+    {{ 'CLIENT_DETAIL.LOADING' | translate }}
   </div>
 </ng-container>
 
@@ -13,12 +13,12 @@
            width="120">
 
       <h3>{{ client.nom }} {{ client.prenom }}</h3>
-      <p><strong>Email:</strong> {{ client.email }}</p>
-      <p><strong>Téléphone:</strong> {{ client.telephone }}</p>
-      <p><strong>CIN:</strong> {{ client.cin }}</p>
+      <p><strong>{{ 'CLIENT_DETAIL.EMAIL' | translate }}:</strong> {{ client.email }}</p>
+      <p><strong>{{ 'CLIENT_DETAIL.TELEPHONE' | translate }}:</strong> {{ client.telephone }}</p>
+      <p><strong>{{ 'CLIENT_DETAIL.CIN' | translate }}:</strong> {{ client.cin }}</p>
 
       <button class="btn btn-primary mt-3" routerLink="/clients">
-        ← Retour à la liste
+        {{ 'CLIENT_DETAIL.BACK' | translate }}
       </button>
     </div>
 
@@ -27,10 +27,10 @@
 
 <ng-template #notFound>
   <div class="text-center">
-    Client non trouvé
+    {{ 'CLIENT_DETAIL.NOT_FOUND' | translate }}
     <br>
     <button class="btn btn-primary mt-3" routerLink="/clients">
-      ← Retour à la liste
+      {{ 'CLIENT_DETAIL.BACK' | translate }}
     </button>
   </div>
 </ng-template>

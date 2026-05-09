@@ -5,13 +5,14 @@ import { PieceService, EquipementType } from '../services/piece';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-equipement',
   templateUrl: './equipement.html',
   styleUrls: ['./equipement.scss'],
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, FormsModule],
+  imports: [ReactiveFormsModule, CommonModule, FormsModule, TranslateModule],
 })
 export class AddEquipementComponent implements OnInit {
 
@@ -19,7 +20,6 @@ export class AddEquipementComponent implements OnInit {
   equipementForm: FormGroup;
   message: string = '';
 
-  // ✅ NEW
   equipementTypes: EquipementType[] = [];
   selectedTypeId: number | null = null;
   selectedType: EquipementType | null = null;
@@ -29,7 +29,8 @@ export class AddEquipementComponent implements OnInit {
     private pieceService: PieceService,
     private route: ActivatedRoute,
     private router: Router,
-    private cd: ChangeDetectorRef 
+    private cd: ChangeDetectorRef,
+    private translate: TranslateService
   ) {
     this.equipementForm = this.fb.group({
       nom: [''],
@@ -43,23 +44,22 @@ export class AddEquipementComponent implements OnInit {
       this.pieceId = Number(params.get('id'));
     });
 
-    // ✅ NEW: charger types equipements
     this.loadEquipementTypes();
   }
 
-loadEquipementTypes() {
-  this.pieceService.getEquipementTypes().subscribe({
-    next: (data) => {
-      this.equipementTypes = data || [];
-      if (this.equipementTypes.length > 0) {
-        this.selectedTypeId = this.equipementTypes[0].id_type;
-        this.onTypeChange();
-      }
-      this.cd.detectChanges();   // ✅ ajouté ici
-    },
-    error: (err) => console.error('Erreur getEquipementTypes:', err)
-  });
-}
+  loadEquipementTypes() {
+    this.pieceService.getEquipementTypes().subscribe({
+      next: (data) => {
+        this.equipementTypes = data || [];
+        if (this.equipementTypes.length > 0) {
+          this.selectedTypeId = this.equipementTypes[0].id_type;
+          this.onTypeChange();
+        }
+        this.cd.detectChanges();
+      },
+      error: (err) => console.error('Erreur getEquipementTypes:', err)
+    });
+  }
 
   onTypeChange() {
     this.selectedType =
@@ -67,31 +67,32 @@ loadEquipementTypes() {
   }
 
   onSubmit() {
-  if (!this.pieceId) {
-    this.message = 'Erreur : Id de pièce manquant';
-    return;
-  }
-
-  if (this.equipementForm.invalid) {
-    this.message = 'Veuillez remplir le nom et l’état';
-    return;
-  }
-
-  const data = {
-    nom: this.selectedType?.nom,   // ✅ ICI la correction
-    description: this.equipementForm.value.description,
-    etat: this.equipementForm.value.etat,
-    type_id: this.selectedTypeId ?? undefined
-  };
-
-  this.pieceService.addEquipement(this.pieceId, data).subscribe({
-    next: () => {
-      this.message = 'Équipement ajouté avec succès !';
-      this.equipementForm.reset({ etat: 'Off' });
-      this.router.navigate(['/client-dash']);
-    },
-    error: (err) => {
-      this.message = 'Erreur : ' + (err.error?.message || err.message);
+    if (!this.pieceId) {
+      this.message = this.translate.instant('ADD_EQUIPMENT.ERROR_PIECE_ID');
+      return;
     }
-  });
-} }
+
+    if (this.equipementForm.invalid) {
+      this.message = this.translate.instant('ADD_EQUIPMENT.ERROR_FORM');
+      return;
+    }
+
+    const data = {
+      nom: this.selectedType?.nom || '',
+      description: this.equipementForm.value.description,
+      etat: this.equipementForm.value.etat,
+      type_id: this.selectedTypeId ?? undefined
+    };
+
+    this.pieceService.addEquipement(this.pieceId, data).subscribe({
+      next: () => {
+        this.message = this.translate.instant('ADD_EQUIPMENT.SUCCESS');
+        this.equipementForm.reset({ etat: 'Off' });
+        this.router.navigate(['/client-dash']);
+      },
+      error: (err) => {
+        this.message = this.translate.instant('ADD_EQUIPMENT.ERROR') + (err.error?.message || err.message);
+      }
+    });
+  }
+}

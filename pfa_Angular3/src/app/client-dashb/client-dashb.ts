@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { ConditionService } from '../services/condition.service';
 import RecordRTC, { StereoAudioRecorder } from 'recordrtc';
 import { VoiceService } from '../services/voice';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AiNotificationService } from '../ai-notification/ai-notification.service';
 
 @Component({
@@ -13,7 +14,7 @@ import { AiNotificationService } from '../ai-notification/ai-notification.servic
   templateUrl: './client-dashb.html',
   styleUrl: './client-dashb.scss',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+ imports: [CommonModule, FormsModule, TranslateModule],
 })
 export class ClientDashb implements OnInit, OnDestroy {
   pieces: any[] = [];
@@ -39,7 +40,27 @@ export class ClientDashb implements OnInit, OnDestroy {
     private conditionService: ConditionService,
     private voiceService: VoiceService,
     private aiService: AiNotificationService,
+    private translate: TranslateService,
   ) {}
+  translatePieceName(name: string): string {
+  if (!name) return '';
+
+  const cleanName = name.trim();
+  const key = 'PIECE_TYPES.' + cleanName;
+  const translated = this.translate.instant(key);
+
+  return translated === key ? cleanName : translated;
+}
+
+translateEquipName(name: string): string {
+  if (!name) return '';
+
+  const cleanName = name.trim();
+  const key = 'EQUIPMENT_TYPES.' + cleanName;
+  const translated = this.translate.instant(key);
+
+  return translated === key ? cleanName : translated;
+}
 
   ngOnInit() {
     this.loadPieceTypes();

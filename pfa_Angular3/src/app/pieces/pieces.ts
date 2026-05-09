@@ -4,12 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { PieceService, Piece, PieceType } from '../services/piece';
 import { Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-pieces',
   templateUrl: './pieces.html',
   styleUrls: ['./pieces.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule, TranslateModule]
 })
 export class PiecesComponent implements OnInit {
   pieces: Piece[] = [];
@@ -20,7 +22,11 @@ export class PiecesComponent implements OnInit {
 
   selectedType: PieceType | null = null;
 
-  constructor(private pieceService: PieceService, private router: Router, private cdr: ChangeDetectorRef ,) {}
+  constructor(
+    private pieceService: PieceService,
+    private router: Router,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.loadPieces();
@@ -39,6 +45,7 @@ export class PiecesComponent implements OnInit {
         this.selectedTypeId = data[0].id_type;
         this.onTypeChange();
       }
+
       this.cdr.detectChanges();
     });
   }
@@ -48,29 +55,28 @@ export class PiecesComponent implements OnInit {
   }
 
   addPiece() {
-  if (!this.newPieceName.trim() || this.selectedTypeId === null) return;
+    if (!this.newPieceName.trim() || this.selectedTypeId === null) return;
 
-  const dto = {
-    name: this.newPieceName.trim(),
-    type_id: this.selectedTypeId
-  };
+    const dto = {
+      name: this.newPieceName.trim(),
+      type_id: this.selectedTypeId
+    };
 
-  this.pieceService.addPiece(dto as any).subscribe({
-    next: (res: any) => {
-      const newPieceId = res.pieceId;
-      this.newPieceName = '';
-      this.loadPieces();
-      this.router.navigate(['/equipement', newPieceId]);
-    },
-    error: (err) => {
-      console.error('Erreur ajout pièce:', err);
-      console.error('Message backend:', err?.error?.message);
-    }
-  });
-}
+    this.pieceService.addPiece(dto as any).subscribe({
+      next: (res: any) => {
+        const newPieceId = res.pieceId;
+        this.newPieceName = '';
+        this.loadPieces();
+        this.router.navigate(['/equipement', newPieceId]);
+      },
+      error: (err) => {
+        console.error('Erreur ajout pièce:', err);
+        console.error('Message backend:', err?.error?.message);
+      }
+    });
+  }
 
   deletePiece(id: number) {
     this.pieceService.deletePiece(id).subscribe(() => this.loadPieces());
   }
-
 }

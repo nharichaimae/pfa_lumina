@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
+import { TranslateModule } from '@ngx-translate/core';
+
 import { addIcons } from 'ionicons';
 import {
   homeOutline,
@@ -18,17 +20,36 @@ import {
 @Component({
   selector: 'app-simple-nav',
   standalone: true,
-  imports: [CommonModule, RouterModule, IonicModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    IonicModule,
+    TranslateModule
+  ],
   templateUrl: './simple-nav.html',
   styleUrls: ['./simple-nav.scss']
 })
 export class SimpleNavComponent {
+
   role: 'ADMIN' | 'CLIENT' | null = null;
   isOpen = true;
   isMobile = false;
 
   constructor(private router: Router) {
+
+    addIcons({
+      homeOutline,
+      peopleOutline,
+      personOutline,
+      cardOutline,
+      gridOutline,
+      timeOutline,
+      albumsOutline,
+      logOutOutline
+    });
+
     this.role = localStorage.getItem('role') as 'ADMIN' | 'CLIENT';
+
     this.checkScreen();
   }
 
@@ -68,17 +89,10 @@ export class SimpleNavComponent {
   }
 
   logout(): void {
-  localStorage.clear();
-  this.router.navigate(['/login']).then(() => {
-    window.location.reload();
-  });
-}
-/*
- logout(): void {
-  localStorage.clear();
-  this.router.navigate(['/login']).then(() => {
-    window.location.reload();
-  });
-}*/
+    localStorage.clear();
 
+    this.router.navigate(['/login']).then(() => {
+      window.location.reload();
+    });
+  }
 }

@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { AdminProfileFacade } from '../../facades/admin-profile.facade';
 import { AuthService } from '../../services/auth';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   standalone: true,
   selector: 'app-admin-profile-page',
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, TranslateModule],
   templateUrl: './admin-profile.page.html',
   styleUrls: ['./admin-profile.page.scss']
 })
@@ -26,7 +27,6 @@ export class AdminProfilePage implements OnInit {
     const adminId = this.authService.getUserId();
 
     if (!adminId) {
-      // 🔐 non authentifié → login
       this.authService.logout();
       return;
     }

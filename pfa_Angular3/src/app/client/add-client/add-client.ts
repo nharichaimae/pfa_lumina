@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { Router ,RouterModule} from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ClientService } from '../../services/client.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
-
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   standalone: true,
   templateUrl: './add-client.html',
-  imports: [CommonModule, FormsModule,RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, TranslateModule],
 })
 export class AddClientComponent {
 
@@ -21,20 +21,19 @@ export class AddClientComponent {
     cin: ''
   };
 
-  selectedFile!: File; // pour la photo
+  selectedFile!: File;
 
   constructor(
     private clientService: ClientService,
     private router: Router
   ) {}
 
-  // récupère la photo sélectionnée
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
   }
 
   onSubmit(f: NgForm) {
-    if (f.invalid) return; 
+    if (f.invalid) return;
 
     const formData = new FormData();
     formData.append('nom', this.client.nom);
@@ -51,7 +50,7 @@ export class AddClientComponent {
     this.clientService.addClient(formData).subscribe({
       next: () => {
         alert('Client ajouté avec succès ✅');
-        this.router.navigate(['/clients']); 
+        this.router.navigate(['/clients']);
       },
     });
   }

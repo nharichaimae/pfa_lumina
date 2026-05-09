@@ -3,11 +3,10 @@
   <div class="ai-notif-header">
     <span class="ai-badge">
       <span class="ai-dot"></span>
-      AI Suggestions
+      {{ 'AI_NOTIF.SUGGESTIONS' | translate }}
     </span>
     <span class="notif-count">{{ suggestions.length }}</span>
   </div>
-
 
   <div class="ai-notif-card"
        *ngFor="let s of suggestions; trackBy: trackBySuggestion">
@@ -22,17 +21,19 @@
         <span class="equip-label">{{ s.nom }}</span>
       </div>
 
-      <button class="btn-close"
-              (click)="dismiss(s.equipementId.toString())">
+      <button class="btn-close" (click)="dismiss(s.equipementId.toString())">
         <span class="material-icons">close</span>
       </button>
     </div>
+
     <div class="card-divider"></div>
 
     <p class="notif-message">{{ s.message }}</p>
 
     <div class="confidence-bar-wrap">
-      <span class="confidence-label">Confiance IA</span>
+      <span class="confidence-label">
+        {{ 'AI_NOTIF.CONFIDENCE' | translate }}
+      </span>
 
       <div class="confidence-bar">
         <div class="confidence-fill"
@@ -50,17 +51,11 @@
     <div class="card-actions">
       <button class="btn-confirm" (click)="confirm(s)">
         <span class="material-icons">check</span>
-        Oui, allumer
+        {{ 'AI_NOTIF.YES_TURN_ON' | translate }}
       </button>
     </div>
 
-
     <div class="timer-bar-wrap">
-      <!--<div class="timer-track">
-        <div class="timer-fill"
-             [style.width]="getTimerPercent(s.timeLeft)">
-        </div>
-      </div>-->
       <span class="timer-lbl">{{ formatTime(s.timeLeft) }}</span>
     </div>
 
@@ -73,7 +68,7 @@
 
   <div class="missed-panel-header">
     <span class="material-icons">notifications</span>
-    Notifications manquées
+    {{ 'AI_NOTIF.MISSED_TITLE' | translate }}
 
     <button class="btn-close-panel" (click)="toggleMissedPanel()">
       <span class="material-icons">close</span>
@@ -83,7 +78,7 @@
   <!-- Aucune -->
   <div *ngIf="missedNotifs.length === 0"
        style="padding:16px; font-size:13px; color:#718096;">
-    Aucune notification manquée
+    {{ 'AI_NOTIF.NO_MISSED' | translate }}
   </div>
 
   <!-- Liste -->
@@ -107,12 +102,12 @@
     <div class="missed-actions">
       <button class="btn-missed-confirm" (click)="confirmMissed(m)">
         <span class="material-icons">check</span>
-        Oui
+        {{ 'AI_NOTIF.YES' | translate }}
       </button>
 
       <button class="btn-missed-reject" (click)="rejectMissed(m)">
         <span class="material-icons">close</span>
-        Non
+        {{ 'AI_NOTIF.NO' | translate }}
       </button>
     </div>
 

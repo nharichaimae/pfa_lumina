@@ -1,0 +1,252 @@
+{
+  "ADD_CLIENT": {
+    "TITLE": "Add client",
+    "NOM": "Last name",
+    "NOM_REQUIRED": "Last name is required.",
+    "PRENOM": "First name",
+    "PRENOM_REQUIRED": "First name is required.",
+    "EMAIL": "Email",
+    "EMAIL_REQUIRED": "Email is required.",
+    "EMAIL_INVALID": "Email is not valid.",
+    "PASSWORD": "Password",
+    "PASSWORD_REQUIRED": "Password is required.",
+    "PASSWORD_MINLENGTH": "Password must contain at least 8 characters.",
+    "TELEPHONE": "Phone",
+    "TELEPHONE_REQUIRED": "Phone is required.",
+    "TELEPHONE_PATTERN": "Phone must contain 10 digits.",
+    "CIN": "CIN",
+    "CIN_REQUIRED": "CIN is required.",
+    "SUBMIT": "Add client",
+    "BACK": "← Back to list"
+  },
+  "CLIENT_DETAIL": {
+  "LOADING": "Loading...",
+  "EMAIL": "Email",
+  "TELEPHONE": "Phone",
+  "CIN": "CIN",
+  "NOT_FOUND": "Client not found",
+  "BACK": "← Back to list"
+},
+"CLIENT_LIST": {
+  "TITLE": "Client list",
+  "ADD_CLIENT": "+ Add client",
+  "NOM": "Last name",
+  "PRENOM": "First name",
+  "EMAIL": "Email",
+  "TELEPHONE": "Phone",
+  "ACTIONS": "Actions",
+  "DETAILS": "Details",
+  "DELETE": "Delete"
+},
+  "PIECES": {
+    "ADD_EQUIPMENT": "Add Equipment",
+    "DUPLICATE_ROOM": "Duplicate Room",
+    "DELETE_ROOM": "Delete Room",
+    "CONFIGURE": "Configure"
+  },
+  "PIECE_TYPES": {
+    "Salon": "Living room",
+    "Cuisine": "Kitchen",
+    "Chambre": "Bedroom",
+    "SalleDeBain": "Bathroom",
+    "SalleAManger": "Dining room",
+    "Bureau": "Office",
+    "Garage": "Garage",
+    "Jardin": "Garden",
+    "Terrasse": "Terrace",
+    "Couloir": "Hallway",
+    "Buanderie": "Laundry room",
+    "Dressing": "Dressing room"
+  },
+  "EQUIPMENT_TYPES": {
+    "Télévision": "Television",
+    "Climatisation": "Air conditioning",
+    "Chauffage": "Heating",
+    "Lampe": "Lamp"
+  },
+    "PAYMENT_ONE_SHOT": {
+        "TITLE": "One-Shot Payment",
+        "PAY": "Pay"
+    },
+    "PAYMENT": {
+  "USER_NOT_CONNECTED": "User not connected",
+  "ERROR_PAYMENT": "Payment error",
+  "SUCCESS_PAYMENT": "Payment successful ✅",
+  "ERROR_SERVER": "Server error",
+  "ERROR_SUBSCRIPTION": "Error while creating the subscription",
+  "SUCCESS_SUBSCRIPTION": "Subscription created and paid successfully!"
+},
+"SUBSCRIPTION": {
+  "TITLE": "Subscription",
+  "SUBTITLE": "Subscribe easily to your offer",
+  "EMAIL": "Email",
+  "EMAIL_PLACEHOLDER": "example@email.com",
+  "CARD": "Bank card",
+  "CREATE": "Create Subscription",
+  "USER_NOT_CONNECTED": "User not connected",
+  "STRIPE_LOAD_ERROR": "Stripe loading error",
+  "INVALID_EMAIL": "Please enter a valid email",
+  "PAYMENT_ERROR": "Payment error: ",
+  "SUCCESS": "Subscription created successfully ✅",
+  "SERVER_ERROR": "Server error"
+},
+"ADMIN_DASHBOARD": {
+  "TITLE": "Admin Dashboard",
+  "USERS": "Users",
+  "CLIENTS": "Clients",
+  "ACTIVE_CLIENTS": "Active clients",
+  "INACTIVE_CLIENTS": "Inactive clients",
+  "USERS_BY_ROLE": "Users by role",
+  "TOTALS": "Totals",
+  "CLIENTS_BY_MONTH": "Clients by month"
+},
+"ADD_EQUIPMENT": {
+  "TITLE": "Add Equipment",
+  "TYPE": "Equipment type",
+  "DESCRIPTION": "Description",
+  "DESCRIPTION_PLACEHOLDER": "Ex: Living room TV...",
+  "ADD": "Add",
+  "ERROR_PIECE_ID": "Error: missing room ID",
+  "ERROR_FORM": "Please fill in the name and status",
+  "SUCCESS": "Equipment added successfully!",
+  "ERROR": "Error: "
+},
+"PAYMENT_HISTORY": {
+  "TITLE": "Payment history",
+  "LOADING": "Loading...",
+  "AMOUNT": "Amount",
+  "DATE": "Date",
+  "STATUS": "Status",
+  "SUBSCRIPTION": "Subscription",
+  "PAYMENT": "Payment",
+  "EMPTY": "No payment found.",
+  "CLIENT_ID_ERROR": "Unable to retrieve the client id",
+  "LOAD_ERROR": "Loading error"
+},
+"ADMIN_PAYMENT_HISTORY": {
+  "TITLE": "Payment History",
+  "EMPTY": "No payment found.",
+  "NOM": "Last name",
+  "PRENOM": "First name",
+  "AMOUNT": "Amount",
+  "STATUS": "Status",
+  "ACTION": "Action",
+  "ACTIVE": "ACTIVE",
+  "INACTIVE": "INACTIVE",
+  "BLOCK": "Block",
+  "UNBLOCK": "Unblock",
+  "CONFIRM_BLOCK": "Block this user?",
+  "CONFIRM_UNBLOCK": "Unblock this user?"
+},
+"BRAND": { "TITLE": "LUMINA", "SUBTITLE": "SMART HOME" },
+  "NAV": {
+    "DASHBOARD": "Dashboard",
+    "ACCOUNTS": "Accounts",
+    "PROFILE": "Profile",
+    "PAYMENT": "Payment",
+    "PIECE": "Room",
+    "HISTORIC_PAYMENT": "Payment History",
+    "SUBSCRIPTION": "Subscription",
+    "LOGOUT": "Logout"
+  },
+  "HOME": {
+  "BRAND_TITLE": "LUMINA",
+  "BRAND_SUBTITLE": "SMART HOME",
+  "NAV_HOME": "Home",
+  "NAV_LOGIN": "Login",
+  "HERO_TITLE_1": "Your home",
+  "HERO_TITLE_2": "thinks, listens and obeys",
+  "HERO_DESC": "Lumina AI combines the best of predictive AI, voice control and manual control. Save 35% energy while enjoying absolute comfort.",
+  "MODES_TITLE_1": "Four",
+  "MODES_TITLE_2": "connected control modes",
+  "AI_TITLE": "Predictive AI",
+  "AI_DESC": "Learns your habits, anticipates your needs and optimizes consumption in real time.",
+  "VOICE_TITLE": "Voice command",
+  "VOICE_DESC": "\"Turn on the living room\", \"Night mode\" — your voice is enough. Natural French recognition.",
+  "MANUAL_TITLE": "Manual control",
+  "MANUAL_DESC": "Touch interfaces, virtual physical buttons, toggles and sliders for full control.",
+  "CONDITION_TITLE": "Condition",
+  "CONDITION_DESC": "Define smart conditions to automate your equipment based on time, temperature or presence."
+},
+"ADMIN_PROFILE": {
+  "EDIT_PROFILE": "Edit profile",
+  "PERSONAL_INFO": "Personal information",
+  "NOM": "Last name",
+  "PRENOM": "First name",
+  "EMAIL": "Email",
+  "ROLE": "Role",
+  "LOADING": "Loading...",
+  "LOAD_ERROR": "Unable to load profile."
+},
+"CLIENT_PROFILE": {
+  "EDIT": "Edit",
+  "PHOTO_ALT": "Profile photo",
+  "PERSONAL_INFO": "Personal information",
+  "TELEPHONE": "Phone",
+  "CIN": "CIN",
+  "EMAIL": "Email",
+  "ROLE": "Role",
+  "CLIENT": "Client",
+  "LOADING": "Loading..."
+},
+"EDIT_CLIENT_PROFILE": {
+  "TITLE": "Edit profile",
+  "EMAIL": "Email",
+  "NOM": "Last name",
+  "PRENOM": "First name",
+  "TELEPHONE": "Phone",
+  "CIN": "CIN",
+  "NEW_PASSWORD": "New password",
+  "SAVE": "Save",
+  "UPDATE_ERROR": "Update error"
+},
+  "adminProfile": {
+    "editTitle": "Edit Admin Profile",
+    "saving": "Saving...",
+    "email": "Email",
+    "invalidEmail": "Invalid email",
+    "nom": "Last Name",
+    "prenom": "First Name",
+    "save": "Save",
+    "cancel": "Cancel"
+  },
+  "REGLE": {
+    "TAB": "Rules",
+    "TITLE": "Schedule automatic rule",
+    "LIST_TITLE": "Scheduled rules",
+    "DATE": "Rule date",
+    "HOUR_START": "Start time",
+    "HOUR_END": "End time",
+    "PREVIEW": "Preview",
+    "CREATE": "Create rule",
+    "CREATING": "Creating...",
+    "REPEAT": "Repeat every day",
+    "REPEAT_ON": "✅ Rule applied every day",
+    "REPEAT_OFF": "Enable to repeat every day"
+  },
+
+  "CONDITION": {
+    "TAB": "Conditions",
+    "TITLE": "Apply a condition",
+    "STATE_LABEL": "Equipment state",
+    "HINT": "Select the desired state",
+    "SUBMIT": "Apply now",
+    "SUBMITTING": "Applying...",
+    "HISTORY_TITLE": "Conditions history",
+    "LOADING": "Loading...",
+    "EMPTY": "No condition saved"
+  },
+  "AI_NOTIF": {
+  "SUGGESTIONS": "AI Suggestions",
+  "CONFIDENCE": "AI Confidence",
+  "YES_TURN_ON": "Yes, turn on",
+  "MISSED_TITLE": "Missed notifications",
+  "NO_MISSED": "No missed notification",
+  "YES": "Yes",
+  "NO": "No"
+}
+
+
+}
+
+

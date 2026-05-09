@@ -1,8 +1,8 @@
 <div class="container mt-3">
-  <h4>Modifier Profil Admin</h4>
+  <h4>{{ 'adminProfile.editTitle' | translate }}</h4>
 
   <div *ngIf="loading$ | async" class="alert alert-info mt-3">
-    Enregistrement...
+    {{ 'adminProfile.saving' | translate }}
   </div>
 
   <div *ngIf="(error$ | async) as err" class="alert alert-danger mt-3">
@@ -12,25 +12,30 @@
   <form class="card mt-3" [formGroup]="form" (ngSubmit)="save()">
     <div class="card-body">
       <div class="mb-3">
-        <label class="form-label">Email</label>
+        <label class="form-label">{{ 'adminProfile.email' | translate }}</label>
         <input class="form-control" formControlName="email" />
         <div class="text-danger mt-1" *ngIf="form.controls.email.touched && form.controls.email.invalid">
-          Email invalide
+          {{ 'adminProfile.invalidEmail' | translate }}
         </div>
       </div>
 
       <div class="mb-3">
-        <label class="form-label">Nom</label>
+        <label class="form-label">{{ 'adminProfile.nom' | translate }}</label>
         <input class="form-control" formControlName="nom" />
       </div>
 
       <div class="mb-3">
-        <label class="form-label">Prénom</label>
+        <label class="form-label">{{ 'adminProfile.prenom' | translate }}</label>
         <input class="form-control" formControlName="prenom" />
       </div>
 
-      <button class="btn btn-success" type="submit">Enregistrer</button>
-      <button class="btn btn-secondary ms-2" type="button" (click)="cancel()">Annuler</button>
+      <button class="btn btn-success" type="submit">
+        {{ 'adminProfile.save' | translate }}
+      </button>
+
+      <button class="btn btn-secondary ms-2" type="button" (click)="cancel()">
+        {{ 'adminProfile.cancel' | translate }}
+      </button>
     </div>
   </form>
 </div>

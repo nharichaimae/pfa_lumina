@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RegleService } from '../../services/regle.service';
 import { Regle } from '../../Models/models';
 
+
 @Component({
   selector: 'app-regle-form',
   standalone: true,

@@ -6,19 +6,24 @@
            [class]="piece.icon || piece.Icon"
            style="font-size:20px;">
         </i>
-        {{ piece.nom || piece.typeNom || piece.TypeNom }}
+
+        {{ ('PIECE_TYPES.' + (piece.typeNom || piece.TypeNom || piece.nom)) | translate }}
       </h3>
+
       <div class="piece-actions">
         <button class="menu-btn" (click)="piece.showMenu = !piece.showMenu">⋮</button>
+
         <div class="menu-dropdown" *ngIf="piece.showMenu">
           <button (click)="goToAddEquipement(piece.id); piece.showMenu=false">
-            ➕ Ajouter Équipement
+            ➕ {{ 'PIECES.ADD_EQUIPMENT' | translate }}
           </button>
+
           <button (click)="duplicatePiece(piece.id); piece.showMenu=false">
-            📋 Dupliquer Pièce
+            📋 {{ 'PIECES.DUPLICATE_ROOM' | translate }}
           </button>
+
           <button class="btn-delete" (click)="deletePiece(piece.id); piece.showMenu=false">
-            🗑️ Supprimer Pièce
+            🗑️ {{ 'PIECES.DELETE_ROOM' | translate }}
           </button>
         </div>
       </div>
@@ -31,33 +36,34 @@
              [class]="equip.icon || equip.Icon"
              style="font-size:18px;">
           </i>
-          {{ equip.nom || equip.typeNom || equip.TypeNom }}
+
+          {{ ('EQUIPMENT_TYPES.' + (equip.typeNom || equip.TypeNom || equip.nom)) | translate }}
         </span>
+
         <div class="equip-actions">
-
-       
           <label class="switch">
-          <input 
-            type="checkbox"
-            [ngModel]="equip.etat"
-            (ngModelChange)="toggleEquip(equip)">
-          <span class="slider round"></span>
-        </label>
+            <input type="checkbox" [checked]="equip.etat" (change)="toggleEquip(equip)">
+            <span class="slider round"></span>
+          </label>
 
-          <button class="config-btn" (click)="goToCondition(equip)" title="Configurer">⚡</button>
+          <button class="config-btn" (click)="goToCondition(equip)" [title]="'PIECES.CONFIGURE' | translate">⚡</button>
           <button class="delete-btn" (click)="deleteEquip(equip.id)">🗑️</button>
         </div>
       </li>
     </ul>
   </div>
+
   <div class="voice-section">
-      <button 
-        class="voice-global-btn" 
-        (click)="toggleVoice()"
-        [class.recording]="isRecording">
-        
-        <div class="voice-wave">
-          <span></span><span></span><span></span><span></span><span></span>
-        </div>
-     <i class="fa-solid fa-microphone"></i></button>
+    <button 
+      class="voice-global-btn" 
+      (click)="toggleVoice()"
+      [class.recording]="isRecording">
+      
+      <div class="voice-wave">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <i class="fa-solid fa-microphone"></i>
+    </button>
+  </div>
 </div>

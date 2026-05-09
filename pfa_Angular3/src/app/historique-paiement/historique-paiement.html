@@ -1,21 +1,21 @@
 <div class="payment-history mt-4">
   <h2>
     <i class="feather icon-credit-card"></i>
-    Historique des Paiements
+    {{ 'ADMIN_PAYMENT_HISTORY.TITLE' | translate }}
   </h2>
 
   <div *ngIf="!historique || historique.length === 0" class="alert alert-info">
-    Aucun paiement trouvé.
+    {{ 'ADMIN_PAYMENT_HISTORY.EMPTY' | translate }}
   </div>
 
   <table *ngIf="historique && historique.length > 0" class="table">
     <thead>
       <tr>
-        <th>Nom</th>
-        <th>Prénom</th>
-        <th>Montant</th>
-        <th>Statut</th>
-        <th>Action</th>
+        <th>{{ 'ADMIN_PAYMENT_HISTORY.NOM' | translate }}</th>
+        <th>{{ 'ADMIN_PAYMENT_HISTORY.PRENOM' | translate }}</th>
+        <th>{{ 'ADMIN_PAYMENT_HISTORY.AMOUNT' | translate }}</th>
+        <th>{{ 'ADMIN_PAYMENT_HISTORY.STATUS' | translate }}</th>
+        <th>{{ 'ADMIN_PAYMENT_HISTORY.ACTION' | translate }}</th>
       </tr>
     </thead>
     <tbody>
@@ -31,7 +31,7 @@
               'bg-danger': h.statutAbonnement === 'INACTIF'
             }"
           >
-            {{ h.statutAbonnement }}
+            {{ h.statutAbonnement === 'ACTIF' ? ('ADMIN_PAYMENT_HISTORY.ACTIVE' | translate) : ('ADMIN_PAYMENT_HISTORY.INACTIVE' | translate) }}
           </span>
         </td>
         <td>
@@ -40,7 +40,7 @@
             class="btn btn-danger btn-sm"
             (click)="bloquer(h.userId)"
           >
-            Bloquer
+            {{ 'ADMIN_PAYMENT_HISTORY.BLOCK' | translate }}
           </button>
 
           <button
@@ -48,7 +48,7 @@
             class="btn btn-success btn-sm"
             (click)="debloquer(h.userId)"
           >
-            Débloquer
+            {{ 'ADMIN_PAYMENT_HISTORY.UNBLOCK' | translate }}
           </button>
         </td>
       </tr>

@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaiementService } from '../services/paiement.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-historique',
   standalone: true,
-  imports: [CommonModule],   
+  imports: [CommonModule, TranslateModule],
   templateUrl: './historique-paiement.html',
   styleUrls: ['./historique-paiement.scss']
 })
@@ -16,14 +17,14 @@ export class HistoriqueComponent implements OnInit {
 
   constructor(
     private paiementService: PaiementService,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
     this.loadHistorique();
   }
 
-  // 🔄 charger les données
   loadHistorique() {
     this.paiementService.getHistorique().subscribe({
       next: (data) => {
@@ -37,24 +38,22 @@ export class HistoriqueComponent implements OnInit {
     });
   }
 
-  // 🔴 Bloquer
   bloquer(userId: number) {
-    if (confirm("Bloquer cet utilisateur ?")) {
+    if (confirm(this.translate.instant('ADMIN_PAYMENT_HISTORY.CONFIRM_BLOCK'))) {
       this.paiementService.bloquerUser(userId).subscribe({
         next: () => {
-          this.loadHistorique(); // refresh
+          this.loadHistorique();
         },
         error: (err) => console.error(err)
       });
     }
   }
 
-  // 🟢 Débloquer
   debloquer(userId: number) {
-    if (confirm("Débloquer cet utilisateur ?")) {
+    if (confirm(this.translate.instant('ADMIN_PAYMENT_HISTORY.CONFIRM_UNBLOCK'))) {
       this.paiementService.debloquerUser(userId).subscribe({
         next: () => {
-          this.loadHistorique(); // refresh
+          this.loadHistorique();
         },
         error: (err) => console.error(err)
       });

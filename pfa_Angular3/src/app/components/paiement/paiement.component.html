@@ -1,6 +1,9 @@
 <div class="paiement-container">
-   <h2>Paiement One-Shot</h2> 
+   <h2>{{ 'PAYMENT_ONE_SHOT.TITLE' | translate }}</h2> 
    <div id="card-element">
     
    </div> 
-   <button (click)="payerOneShot()">Payer {{ montant }} MAD</button> 
+   <button (click)="payerOneShot()">
+     {{ 'PAYMENT_ONE_SHOT.PAY' | translate }} {{ montant }} MAD
+   </button>
+</div>

@@ -4,11 +4,12 @@ import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
 import { ClientService } from '../../services/client';
 import { AuthService } from '../../services/auth';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   standalone: true,
   selector: 'app-client-profile-edit-page',
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, TranslateModule],
   templateUrl: './edit-profile.component.html'
 })
 export class EditProfileComponent implements OnInit {
@@ -31,23 +32,22 @@ export class EditProfileComponent implements OnInit {
     private fb: FormBuilder,
     private clientService: ClientService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
-    // Récupère l'ID depuis le JWT
     const id = this.authService.getUserId();
+
     if (!id) {
       console.error('ID utilisateur non trouvé dans le token');
       this.router.navigate(['/login']);
       return;
     }
-    this.clientId = id;
 
-    // Charge le client
+    this.clientId = id;
     this.clientService.loadClient(this.clientId);
 
-    // Remplit le formulaire quand le client est chargé
     this.client$.subscribe(client => {
       if (client) {
         this.form.patchValue({
@@ -75,7 +75,7 @@ export class EditProfileComponent implements OnInit {
     this.clientService.updateClient(this.clientId, payload).subscribe({
       next: () => this.router.navigate(['/client-profile']),
       error: (err) => {
-        this.error = err.error?.message || 'Erreur lors de la mise à jour';
+        this.error = err.error?.message || this.translate.instant('EDIT_CLIENT_PROFILE.UPDATE_ERROR');
         console.error(err);
       }
     });

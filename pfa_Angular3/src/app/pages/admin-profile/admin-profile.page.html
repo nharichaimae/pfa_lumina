@@ -3,48 +3,46 @@
   <section class="profile-hero">
     <button class="edit-btn" type="button" (click)="goEdit()">
       <i class="feather icon-edit-2"></i>
-      Modifier le profil
+      {{ 'ADMIN_PROFILE.EDIT_PROFILE' | translate }}
     </button>
 
-
     <h1 class="profile-name">
-    {{ p.nom }} {{ p.prenom }}
-  </h1>
+      {{ p.nom }} {{ p.prenom }}
+    </h1>
   </section>
 
   <!-- Card -->
   <section class="profile-card">
     <div class="card-title">
       <i class="feather icon-user"></i>
-      <span>Informations personnelles</span>
+      <span>{{ 'ADMIN_PROFILE.PERSONAL_INFO' | translate }}</span>
     </div>
 
     <div class="grid">
-      <!-- Col 1 -->
       <div class="field">
-        <div class="label">Nom</div>
+        <div class="label">{{ 'ADMIN_PROFILE.NOM' | translate }}</div>
         <div class="value">{{ p.nom }}</div>
       </div>
 
       <div class="field">
-        <div class="label">Prénom</div>
+        <div class="label">{{ 'ADMIN_PROFILE.PRENOM' | translate }}</div>
         <div class="value">{{ p.prenom }}</div>
       </div>
 
-      <!-- Col 2 -->
       <div class="field">
-        <div class="label">Email</div>
+        <div class="label">{{ 'ADMIN_PROFILE.EMAIL' | translate }}</div>
         <div class="value">{{ p.email }}</div>
       </div>
 
       <div class="field">
-        <div class="label">Rôle</div>
+        <div class="label">{{ 'ADMIN_PROFILE.ROLE' | translate }}</div>
         <div class="value">{{ p.role }}</div>
       </div>
     </div>
   </section>
 </div>
 
-<!-- States -->
-<div class="state" *ngIf="(loading$ | async)">Chargement...</div>
-<div class="state state-error" *ngIf="(error$ | async)">Impossible de charger le profil.</div>
+<div class="state" *ngIf="(loading$ | async)">{{ 'ADMIN_PROFILE.LOADING' | translate }}</div>
+<div class="state state-error" *ngIf="(error$ | async)">
+  {{ 'ADMIN_PROFILE.LOAD_ERROR' | translate }}
+</div>

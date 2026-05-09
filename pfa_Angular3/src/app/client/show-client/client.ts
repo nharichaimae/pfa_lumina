@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../../services/client.service';
-import { Router,RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SearchService } from '../../services/search.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { ClientFilterPipe } from "../../pipes/client-filter-pipe";
-
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 interface Client {
   id: number;
@@ -17,10 +17,11 @@ interface Client {
   cin: string;
   photoProfil?: string;
 }
+
 @Component({
   selector: 'app-client',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, ClientFilterPipe],
+  imports: [CommonModule, FormsModule, RouterModule, ClientFilterPipe, TranslateModule],
   templateUrl: './client.html',
   styleUrls: ['./client.scss'],
 })
@@ -31,29 +32,33 @@ export class ClientComponent implements OnInit {
   constructor(
     private clientService: ClientService,
     private router: Router,
-    private SearchService : SearchService,
-    private cdr: ChangeDetectorRef
+    private SearchService: SearchService,
+    private cdr: ChangeDetectorRef,
+    private translate: TranslateService
   ) {}
 
-ngOnInit(): void {
+  ngOnInit(): void {
     this.loadClients();
     this.SearchService.search$.subscribe(text => {
       this.searchText = text;
     });
   }
-loadClients(): void {
-  this.clientService.getAllClients().subscribe({
-    next: (res: Client[]) => {
-  this.clients = res;
-   this.cdr.detectChanges();
-}
-  });
-}
-voirDetails(id: number): void {
+
+  loadClients(): void {
+    this.clientService.getAllClients().subscribe({
+      next: (res: Client[]) => {
+        this.clients = res;
+        this.cdr.detectChanges();
+      }
+    });
+  }
+
+  voirDetails(id: number): void {
     this.router.navigate(['/clients', id]);
   }
+
   supprimerClient(id: number): void {
-    if (confirm('Voulez-vous vraiment supprimer ce client ?')) {
+    if (confirm(this.translate.instant('CLIENT_LIST.CONFIRM_DELETE'))) {
       this.clientService.deleteClient(id).subscribe({
         next: () => this.loadClients(),
         error: (err) => console.error('Erreur suppression:', err)

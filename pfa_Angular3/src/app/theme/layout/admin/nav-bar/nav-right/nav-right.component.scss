@@ -74,7 +74,19 @@
   border-style: solid;
   border-color: transparent transparent #ffffff transparent;
 }
+.lang-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  transition: background 0.2s;
 
+  &:hover {
+    background: rgba(74, 127, 165, 0.12);
+  }
+}
 /* animation */
 @keyframes fadeIn {
   from {

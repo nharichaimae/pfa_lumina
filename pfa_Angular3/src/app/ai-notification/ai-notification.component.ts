@@ -6,6 +6,7 @@ import {
   AiNotificationService, AiSuggestion, MissedNotification,
 } from './ai-notification.service';
 import { filter, Subscription } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
 
 const CONFIDENCE_THRESHOLD = 0.70;
 const COOLDOWN_MS           = 5 * 60 * 1000;
@@ -13,7 +14,7 @@ const COOLDOWN_MS           = 5 * 60 * 1000;
 @Component({
   selector:    'app-ai-notification',
   standalone:  true,
-  imports:     [CommonModule],
+  imports:     [CommonModule, TranslateModule],
   templateUrl: './ai-notification.component.html',
   styleUrls:   ['./ai-notification.component.scss'],
 })
@@ -31,9 +32,9 @@ export class AiNotificationComponent implements OnInit, OnDestroy {
   private handledIds    = new Set<number>();
 
   private testParams = {
-    hour: 22,
-    temperature: -7,
-    is_daylight: 0,
+    hour: 10,
+    temperature: 40,
+    is_daylight: 1,
     is_holiday:  0,
     is_weekend:  0,
     day_type:    'workday',

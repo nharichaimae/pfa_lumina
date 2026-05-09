@@ -1,14 +1,14 @@
 <div class="add-equipement-container">
 
-  <h2>Ajouter Équipement</h2>
+  <h2>{{ 'ADD_EQUIPMENT.TITLE' | translate }}</h2>
 
-  <!-- message -->
   <div *ngIf="message" class="msg">
     {{ message }}
   </div>
 
   <form [formGroup]="equipementForm" (ngSubmit)="onSubmit()" class="form-card">
-    <label>Type d’équipement</label>
+    <label>{{ 'ADD_EQUIPMENT.TYPE' | translate }}</label>
+
     <div class="type-row">
       <i
         *ngIf="selectedType"
@@ -19,23 +19,20 @@
 
       <select [(ngModel)]="selectedTypeId" (change)="onTypeChange()" [ngModelOptions]="{standalone: true}">
         <option *ngFor="let t of equipementTypes" [value]="t.id_type">
-          {{ t.nom }}
+          {{ ('EQUIPMENT_TYPES.' + t.nom) | translate }}
         </option>
       </select>
     </div>
 
-    <!-- DESCRIPTION -->
-    <label>Description</label>
+    <label>{{ 'ADD_EQUIPMENT.DESCRIPTION' | translate }}</label>
     <textarea
       formControlName="description"
       rows="3"
-      placeholder="Ex: TV du salon..."
+      [placeholder]="'ADD_EQUIPMENT.DESCRIPTION_PLACEHOLDER' | translate"
     ></textarea>
 
-
-    <!-- BUTTON -->
     <button type="submit" class="btn-add">
-      Ajouter
+      {{ 'ADD_EQUIPMENT.ADD' | translate }}
     </button>
 
   </form>

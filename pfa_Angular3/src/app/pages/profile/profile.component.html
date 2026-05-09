@@ -2,7 +2,7 @@
   <div class="profile-hero">
     <a routerLink="/client-profile/edit" class="edit-btn">
       <i class="ti ti-edit"></i>
-      Modifier
+      {{ 'CLIENT_PROFILE.EDIT' | translate }}
     </a>
 
     <div class="profile-avatar-wrap">
@@ -10,7 +10,7 @@
         *ngIf="client.photoProfil"
         [src]="'http://127.0.0.1:8000/uploads/' + client.photoProfil"
         class="profile-avatar"
-        alt="Photo profil"
+        [alt]="'CLIENT_PROFILE.PHOTO_ALT' | translate"
       />
     </div>
 
@@ -21,31 +21,35 @@
   <div class="profile-card">
     <div class="card-title">
       <i class="ti ti-user-circle"></i>
-      Informations personnelles
+      {{ 'CLIENT_PROFILE.PERSONAL_INFO' | translate }}
     </div>
 
     <div class="grid">
       <div class="field">
-        <div class="label">Téléphone</div>
+        <div class="label">{{ 'CLIENT_PROFILE.TELEPHONE' | translate }}</div>
         <div class="value">{{ client.telephone }}</div>
       </div>
 
       <div class="field">
-        <div class="label">CIN</div>
+        <div class="label">{{ 'CLIENT_PROFILE.CIN' | translate }}</div>
         <div class="value">{{ client.cin }}</div>
       </div>
 
       <div class="field">
-        <div class="label">Email</div>
+        <div class="label">{{ 'CLIENT_PROFILE.EMAIL' | translate }}</div>
         <div class="value email">{{ client.email }}</div>
       </div>
 
       <div class="field">
-        <div class="label">Rôle</div>
+        <div class="label">{{ 'CLIENT_PROFILE.ROLE' | translate }}</div>
         <div class="value">
-          <span class="role-badge">Client</span>
+          <span class="role-badge">{{ 'CLIENT_PROFILE.CLIENT' | translate }}</span>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+<div class="state" *ngIf="loading$ | async">
+  {{ 'CLIENT_PROFILE.LOADING' | translate }}
 </div>

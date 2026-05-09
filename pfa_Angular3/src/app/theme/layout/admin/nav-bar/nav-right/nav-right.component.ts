@@ -5,11 +5,12 @@ import { AuthService } from 'src/app/services/auth';
 import { CommonModule } from '@angular/common';
 import { AiNotificationService } from 'src/app/ai-notification/ai-notification.service';
 import { Subscription } from 'rxjs';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-nav-right',
   standalone: true,
-  imports: [SharedModule, CommonModule],
+  imports: [SharedModule, CommonModule, TranslateModule],
   templateUrl: './nav-right.component.html',
   styleUrls: ['./nav-right.component.scss'],
   providers: [NgbDropdownConfig]
@@ -22,6 +23,7 @@ export class NavRightComponent implements OnInit, OnDestroy {
 
   private authService = inject(AuthService);
   private aiService = inject(AiNotificationService);
+  private translate = inject(TranslateService);
   private subscription = new Subscription();
 
   constructor() {
@@ -33,7 +35,12 @@ export class NavRightComponent implements OnInit, OnDestroy {
     this.userNom = this.authService.getNom() || '';
     this.userPrenom = this.authService.getPrenom() || '';
 
+    const savedLang = localStorage.getItem('lang') || 'fr';
+    this.translate.setDefaultLang('fr');
+    this.translate.use(savedLang);
+
     const userId = localStorage.getItem('userId') ?? localStorage.getItem('id') ?? 'guest';
+
     this.aiService.getMissedNotifs(userId).subscribe({
       next: res => {
         this.aiService.updateMissedCount((res.missed ?? []).length);
@@ -47,6 +54,21 @@ export class NavRightComponent implements OnInit, OnDestroy {
       })
     );
   }
+
+  changeLanguage(lang: string): void {
+  console.log('LANG CLICKED:', lang);
+
+  localStorage.setItem('lang', lang);
+
+  this.translate.use(lang).subscribe({
+    next: () => {
+      console.log('LANG CHANGED TO:', lang);
+    },
+    error: (err) => {
+      console.error('TRANSLATE ERROR:', err);
+    }
+  });
+}
 
   onBellClick(): void {
     this.aiService.togglePanel();

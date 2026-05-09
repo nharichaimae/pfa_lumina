@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { AdminProfileFacade } from '../../facades/admin-profile.facade';
 import { AuthService } from '../../services/auth';
 import { take } from 'rxjs/operators';
@@ -9,7 +10,7 @@ import { take } from 'rxjs/operators';
 @Component({
   standalone: true,
   selector: 'app-admin-profile-edit-page',
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, TranslateModule],
   templateUrl: './admin-profile-edit.page.html'
 })
 export class AdminProfileEditPage implements OnInit {
@@ -23,7 +24,7 @@ export class AdminProfileEditPage implements OnInit {
     prenom: ['', [Validators.required, Validators.minLength(2)]]
   });
 
-  private adminId!: number; // sera défini dynamiquement
+  private adminId!: number;
 
   constructor(
     private fb: FormBuilder,
@@ -33,21 +34,19 @@ export class AdminProfileEditPage implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // récupérer ID de l'admin connecté
     const id = this.authService.getUserId();
     if (!id) {
-      // si non authentifié → redirection login
       this.router.navigate(['/login']);
       return;
     }
+
     this.adminId = id;
 
-    // charger le profil
     this.facade.loadProfile(this.adminId);
 
-    // remplir le formulaire dès que les données sont disponibles
     this.profile$.pipe(take(1)).subscribe((p) => {
       if (!p) return;
+
       this.form.patchValue({
         email: p.email,
         nom: p.nom,
