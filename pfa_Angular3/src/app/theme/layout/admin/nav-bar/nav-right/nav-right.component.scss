@@ -2,7 +2,20 @@
   font-weight: 500;
   cursor: pointer;
 }
+.lang-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 2px;
+}
 
+.flag-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  object-fit: cover;
+  display: block;
+}
 .bell-btn {
   position:        relative;
   background:      none;

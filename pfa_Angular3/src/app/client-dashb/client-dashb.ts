@@ -61,6 +61,9 @@ translateEquipName(name: string): string {
 
   return translated === key ? cleanName : translated;
 }
+goToPieces() {
+  this.router.navigate(['/pieces']);
+}
 
   ngOnInit() {
     this.loadPieceTypes();
@@ -89,37 +92,50 @@ translateEquipName(name: string): string {
       error: () => this.loadPieces()
     });
   }
+isLoading = true;
+ loadPieces() {
+  this.isLoading = true;
 
-  loadPieces() {
-    this.pieceService.getPieces().subscribe({
-      next: async (data: any[]) => {
-        this.pieces = (data || []).map(p => {
-          const typeId = p.typeId ?? p.type_id ?? p.typeID ?? p.type_Id;
-          const foundType = this.pieceTypes.find(t => t.id_type === typeId);
+  this.pieceService.getPieces().subscribe({
+    next: async (data: any[]) => {
 
-          return {
-            ...p,
-            showMenu: false,
-            id: p.id ?? p.id_piece ?? p.id_Piece ?? p.Id_Piece,
-            nom: p.nom ?? p.Nom,
-            icon: p.icon ?? foundType?.icon ?? '',
-            typeNom: p.typeNom ?? foundType?.nom ?? '',
-            equipements: (p.equipements ?? p.Equipements ?? []).map((e: any) => ({
-              ...e,
-              id: e.id ?? e.Id_Equipement ?? e.id_equipement,
-              nom: e.nom ?? e.Nom,
-              description: e.description ?? e.Description,
-              etat: this.normalizeEtat(e)
-            }))
-          };
-        });
+      this.pieces = (data || []).map(p => {
+        const typeId = p.typeId ?? p.type_id ?? p.typeID ?? p.type_Id;
+        const foundType = this.pieceTypes.find(t => t.id_type === typeId);
 
-        await this.loadEtatsEquipements();
-        this.cd.detectChanges();
-      },
-      error: (err) => console.error('Erreur getPieces:', err)
-    });
-  }
+        return {
+          ...p,
+          showMenu: false,
+          id: p.id ?? p.id_piece ?? p.id_Piece ?? p.Id_Piece,
+          nom: p.nom ?? p.Nom,
+          icon: p.icon ?? foundType?.icon ?? '',
+          typeNom: p.typeNom ?? foundType?.nom ?? '',
+          equipements: (p.equipements ?? p.Equipements ?? []).map((e: any) => ({
+            ...e,
+            id: e.id ?? e.Id_Equipement ?? e.id_equipement,
+            nom: e.nom ?? e.Nom,
+            description: e.description ?? e.Description,
+            etat: this.normalizeEtat(e)
+          }))
+        };
+      });
+
+      await this.loadEtatsEquipements();
+
+      this.isLoading = false;
+
+      this.cd.detectChanges();
+    },
+
+    error: (err) => {
+      console.error('Erreur getPieces:', err);
+
+      this.isLoading = false;
+
+      this.cd.detectChanges();
+    }
+  });
+}
 
   private normalizeEtat(e: any): boolean {
     const val = (e.etat ?? e.Etat ?? 'OFF').toString().toUpperCase();

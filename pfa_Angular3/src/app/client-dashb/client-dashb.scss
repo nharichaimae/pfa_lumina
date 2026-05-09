@@ -10,6 +10,65 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
+.empty-state-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+  min-height: 70vh;
+  background: #ffffff;
+  border-radius: 12px;
+}
+
+.empty-illustration {
+  margin-bottom: 1.5rem;
+}
+
+.empty-illustration i {
+  font-size: 72px;
+  color: #b0bcd0;
+}
+
+.empty-state-container h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #3d4a5c;
+  margin: 0 0 0.6rem;
+}
+
+.empty-state-container p {
+  font-size: 15px;
+  color: #7a8a9a;
+  margin: 0 0 2rem;
+  max-width: 380px;
+  line-height: 1.6;
+}
+
+.btn-primary-lumina {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: #3b5bdb;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-primary-lumina:hover {
+  background: #2f4ac4;
+}
+
+.btn-primary-lumina i {
+  font-size: 18px;
+}
+
 /* ============================= */
 /* GRID */
 /* ============================= */

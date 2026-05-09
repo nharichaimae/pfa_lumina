@@ -2,12 +2,12 @@
 
   <!-- Langue -->
   <button class="lang-btn" (click)="changeLanguage('fr')" title="Français">
-    🇫🇷
-  </button>
+  <img src="assets/fr.jpeg" class="flag-icon" alt="FR">
+</button>
 
-  <button class="lang-btn" (click)="changeLanguage('en')" title="English">
-    🇬🇧
-  </button>
+<button class="lang-btn" (click)="changeLanguage('en')" title="English">
+  <img src="assets/en.jpeg" class="flag-icon" alt="EN">
+</button>
 
   <!-- seulement pour CLIENT -->
   <button class="bell-btn" (click)="onBellClick()" *ngIf="isClient()">

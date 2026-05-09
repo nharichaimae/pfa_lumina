@@ -244,6 +244,11 @@
   "NO_MISSED": "No missed notification",
   "YES": "Yes",
   "NO": "No"
+},
+"DASHBOARD": {
+  "NO_PIECES_TITLE": "No room added",
+  "NO_PIECES_DESC": "Start by adding your first room.",
+  "ADD_FIRST_PIECE": "Add a room"
 }
 
 

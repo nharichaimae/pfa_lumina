@@ -1,106 +1,103 @@
-body {
-  font-family: "Inter", sans-serif;
-  background: linear-gradient(135deg,#667eea,#764ba2);
-  min-height: 100vh;
-  margin: 0;
-}
-
 .payment-wrapper {
+  min-height: calc(100vh - 80px);
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  align-items: flex-start;
+  padding: 70px 20px 30px;
+  background: #f8fafc;
 }
 
 .payment-card {
-  background: white;
-  padding: 35px;
-  width: 360px;
-  border-radius: 14px;
-  box-shadow: 0 10px 35px rgba(0,0,0,0.15);
-  animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  padding: 42px 45px;
+  border-radius: 16px;
+  border: 1px solid #d7e4f0;
+  box-shadow: 0 20px 45px rgba(30, 60, 90, 0.12);
 }
 
 .title {
   text-align: center;
-  margin-bottom: 5px;
-  font-size: 22px;
-  color: #1a1f36;
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  color: #061f3f;
 }
 
 .subtitle {
   text-align: center;
-  color: #777;
-  margin-bottom: 25px;
-  font-size: 14px;
+  color: #5b6f8d;
+  margin: 12px 0 42px;
+  font-size: 16px;
+  position: relative;
+}
+
+.subtitle::after {
+  content: "";
+  width: 45px;
+  height: 4px;
+  background: #b8d3e8;
+  border-radius: 10px;
+  position: absolute;
+  left: 50%;
+  bottom: -24px;
+  transform: translateX(-50%);
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 label {
-  font-weight: 500;
   display: block;
-  margin-bottom: 6px;
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 800;
+  color: #092648;
+  text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
-input {
+input,
+.card-input,
+#card-element {
   width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  font-size: 14px;
-  transition: 0.3s;
+  height: 52px;
+  border: 1px solid #cbd8e6;
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 16px;
+  background: #ffffff;
+  box-sizing: border-box;
 }
 
-input:focus {
+input:focus,
+.card-input:focus-within,
+#card-element:focus-within {
   outline: none;
-  border-color: #6772e5;
-  box-shadow: 0 0 0 2px rgba(103,114,229,0.2);
-}
-
-.card-input {
-  border: 1px solid #ddd;
-  padding: 12px;
-  border-radius: 8px;
-  background: #fafafa;
-  transition: 0.3s;
-}
-
-.card-input:focus-within {
-  border-color: #6772e5;
-  box-shadow: 0 0 0 2px rgba(103,114,229,0.2);
+  border-color: #8fb5d6;
+  box-shadow: 0 0 0 3px rgba(143, 181, 214, 0.18);
 }
 
 .pay-button {
   width: 100%;
-  padding: 12px;
-  background: linear-gradient(135deg,#6772e5,#5469d4);
+  height: 64px;
   border: none;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #b8d3e8 0%, #8faac8 50%, #4f6d95 100%);
   color: white;
-  font-size: 15px;
-  border-radius: 8px;
+  font-size: 19px;
+  font-weight: 800;
   cursor: pointer;
-  transition: 0.3s;
+  margin-top: 10px;
+  box-shadow: 0 12px 25px rgba(60, 90, 130, 0.18);
 }
 
-.pay-button:hover {
+.pay-button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.pay-button:active {
-  transform: scale(0.98);
 }
 
 .pay-button:disabled {
-  background: #a5b4fc;
+  opacity: 0.65;
   cursor: not-allowed;
 }

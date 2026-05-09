@@ -1,4 +1,8 @@
-<div class="pieces-container">
+<div *ngIf="isLoading" class="loading-state">
+  {{ 'PAYMENT_HISTORY.LOADING' | translate }}
+</div>
+
+<div class="pieces-container" *ngIf="!isLoading && pieces && pieces.length > 0; else noPieces">
   <div class="piece-card" *ngFor="let piece of pieces">
     <div class="piece-header">
       <h3 style="display:flex; align-items:center; gap:10px;">
@@ -67,3 +71,19 @@
     </button>
   </div>
 </div>
+
+<ng-template #noPieces>
+  <div *ngIf="!isLoading" class="empty-state-container">
+    <div class="empty-illustration">
+      <i class="feather icon-home"></i>
+    </div>
+
+    <h2>{{ 'DASHBOARD.NO_PIECES_TITLE' | translate }}</h2>
+    <p>{{ 'DASHBOARD.NO_PIECES_DESC' | translate }}</p>
+
+    <button class="btn-primary-lumina" (click)="goToPieces()">
+      <i class="feather icon-plus"></i>
+      {{ 'DASHBOARD.ADD_FIRST_PIECE' | translate }}
+    </button>
+  </div>
+</ng-template>

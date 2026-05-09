@@ -245,6 +245,11 @@
   "NO_MISSED": "Aucune notification manquée",
   "YES": "Oui",
   "NO": "Non"
+},
+"DASHBOARD": {
+  "NO_PIECES_TITLE": "Aucune pièce ajoutée",
+  "NO_PIECES_DESC": "Commencez par ajouter votre première pièce.",
+  "ADD_FIRST_PIECE": "Ajouter une pièce"
 }
 
 }
