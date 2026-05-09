@@ -250,6 +250,10 @@
   "NO_PIECES_TITLE": "Aucune pièce ajoutée",
   "NO_PIECES_DESC": "Commencez par ajouter votre première pièce.",
   "ADD_FIRST_PIECE": "Ajouter une pièce"
+},
+"ADD_PIECE": {
+  "PLACEHOLDER": "Nom de la pièce",
+  "ADD": "Ajouter"
 }
 
 }

@@ -249,6 +249,10 @@
   "NO_PIECES_TITLE": "No room added",
   "NO_PIECES_DESC": "Start by adding your first room.",
   "ADD_FIRST_PIECE": "Add a room"
+},
+"ADD_PIECE": {
+  "PLACEHOLDER": "Room name",
+  "ADD": "Add"
 }
 
 
